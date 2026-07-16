@@ -240,6 +240,12 @@ function enviarReporte(){
 
 let datos = {
 
+nombre: document.getElementById("nombre").value,
+
+correo: document.getElementById("correo").value,
+
+telefono: document.getElementById("telefono").value,
+
 tipo: document.getElementById("tipo").value,
 
 descripcion: document.getElementById("descripcion").value,
@@ -247,7 +253,6 @@ descripcion: document.getElementById("descripcion").value,
 ubicacion: document.getElementById("ubicacion").value,
 
 prioridad: document.querySelector('input[name="prioridad"]:checked')?.value || "Normal"
-
 
 };
 
@@ -291,5 +296,7 @@ alert("❌ Error al enviar reporte");
 
 
 </script>
+
+  
   
 </html>
