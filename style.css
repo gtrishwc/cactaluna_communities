@@ -757,22 +757,22 @@ tr:hover{
 }
 
 /* ==================================================
-   FORMULARIO DE REPORTES
+   FORMULARIO REPORTES V2
 ================================================== */
 
 
-form{
+.panel form{
 
     display:flex;
-
     flex-direction:column;
-
-    gap:15px;
+    gap:18px;
 
 }
 
 
-form label{
+.panel form label{
+
+    display:block;
 
     font-weight:600;
 
@@ -781,34 +781,43 @@ form label{
 }
 
 
-select,
-textarea{
+.panel select,
+.panel textarea{
 
     width:100%;
 
-    padding:15px;
-
-    border:1px solid #dfe8e2;
+    padding:14px;
 
     border-radius:14px;
 
+    border:1px solid #d8e6dc;
+
+    font-size:16px;
+
     font-family:inherit;
 
-    font-size:15px;
-
     background:white;
-
-    outline:none;
 
 }
 
 
-select:focus,
-textarea:focus{
+.panel textarea{
+
+    resize:vertical;
+
+    min-height:130px;
+
+}
+
+
+.panel select:focus,
+.panel textarea:focus{
+
+    outline:none;
 
     border-color:var(--verde-principal);
 
-    box-shadow:0 0 0 3px var(--verde-claro);
+    box-shadow:0 0 0 4px var(--verde-claro);
 
 }
 
@@ -818,21 +827,18 @@ textarea:focus{
 
     display:flex;
 
-    gap:20px;
-
-    flex-wrap:wrap;
+    gap:12px;
 
 }
-
 
 
 .prioridad label{
 
     background:var(--verde-claro);
 
-    padding:12px 18px;
+    padding:10px 18px;
 
-    border-radius:20px;
+    border-radius:25px;
 
     cursor:pointer;
 
@@ -842,9 +848,9 @@ textarea:focus{
 
 .btn{
 
-    margin-top:20px;
+    width:100%;
 
-    padding:15px;
+    padding:16px;
 
     border:none;
 
@@ -854,22 +860,17 @@ textarea:focus{
 
     color:white;
 
-    font-size:16px;
+    font-size:17px;
 
-    font-weight:600;
+    font-weight:bold;
 
     cursor:pointer;
 
-    transition:.3s;
-
 }
-
 
 
 .btn:hover{
 
     background:var(--verde-hover);
-
-    transform:translateY(-3px);
 
 }
