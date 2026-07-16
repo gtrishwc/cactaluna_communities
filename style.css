@@ -317,3 +317,7 @@ html{
     font-weight:bold;
 
 }
+
+body{
+    border:10px solid red !important;
+}
