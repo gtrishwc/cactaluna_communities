@@ -104,3 +104,216 @@ html{
     scroll-behavior:smooth;
 
 }
+
+/* ==================================================
+   SIDEBAR - MENU LATERAL
+================================================== */
+
+.sidebar{
+
+    width:260px;
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        180deg,
+        var(--verde-principal),
+        var(--verde-secundario)
+    );
+
+    color:white;
+
+    padding:25px;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    box-shadow:var(--sombra);
+
+    z-index:1000;
+
+}
+
+
+/* LOGO */
+
+.logo{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+
+.logo-circle{
+
+    width:70px;
+
+    height:70px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:white;
+
+    color:var(--verde-principal);
+
+    border-radius:50%;
+
+    font-size:35px;
+
+}
+
+
+.logo h2{
+
+    margin-top:15px;
+
+    font-size:22px;
+
+}
+
+
+.logo p{
+
+    opacity:.8;
+
+    font-size:14px;
+
+}
+
+
+
+/* MENU */
+
+.sidebar a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:13px 15px;
+
+    margin:8px 0;
+
+    border-radius:14px;
+
+    transition:.3s;
+
+}
+
+
+.sidebar a:hover{
+
+    background:
+    rgba(255,255,255,.18);
+
+    transform:translateX(5px);
+
+}
+
+
+/* ==================================================
+   CONTENIDO PRINCIPAL
+================================================== */
+
+
+.main{
+
+    margin-left:260px;
+
+    padding:35px;
+
+}
+
+
+
+/* ==================================================
+   HEADER SUPERIOR
+================================================== */
+
+
+.topbar{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:var(--radio);
+
+    box-shadow:var(--sombra);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+
+.topbar h1{
+
+    color:var(--verde-principal);
+
+}
+
+
+.topbar p{
+
+    color:var(--gris);
+
+}
+
+
+
+/* PERFIL */
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.avatar{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:var(--verde-claro);
+
+    color:var(--verde-principal);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
