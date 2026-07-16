@@ -185,31 +185,23 @@ onclick="enviarReporte()">
 
 </body>
 
-  <script>
+<script>
 
 function enviarReporte(){
 
-let datos = {
+alert("🚀 El botón funciona");
 
-tipo: document.getElementById("tipo").value,
-
-descripcion: document.getElementById("descripcion").value,
-
-ubicacion: document.getElementById("ubicacion").value,
-
-prioridad: document.querySelector('input[name="prioridad"]:checked')?.value || "Normal"
-
-};
+let tipo = document.getElementById("tipo")?.value;
+let descripcion = document.getElementById("descripcion")?.value;
+let ubicacion = document.getElementById("ubicacion")?.value;
 
 
-console.log(datos);
-
-
-alert("Reporte preparado correctamente");
+console.log("TIPO:", tipo);
+console.log("DESCRIPCIÓN:", descripcion);
+console.log("UBICACIÓN:", ubicacion);
 
 
 }
-
 
 </script>
   
