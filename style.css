@@ -755,3 +755,121 @@ tr:hover{
 
 
 }
+
+/* ==================================================
+   FORMULARIO DE REPORTES
+================================================== */
+
+
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+form label{
+
+    font-weight:600;
+
+    color:var(--texto);
+
+}
+
+
+select,
+textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    border:1px solid #dfe8e2;
+
+    border-radius:14px;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    background:white;
+
+    outline:none;
+
+}
+
+
+select:focus,
+textarea:focus{
+
+    border-color:var(--verde-principal);
+
+    box-shadow:0 0 0 3px var(--verde-claro);
+
+}
+
+
+
+.prioridad{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.prioridad label{
+
+    background:var(--verde-claro);
+
+    padding:12px 18px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+}
+
+
+
+.btn{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--verde-principal);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.btn:hover{
+
+    background:var(--verde-hover);
+
+    transform:translateY(-3px);
+
+}
