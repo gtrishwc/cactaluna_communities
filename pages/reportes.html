@@ -395,8 +395,13 @@ body:JSON.stringify(datos)
 
 console.log("Respuesta Google:", respuesta);
 
-alert("Respuesta recibida: " + respuesta);
+let resultado = JSON.parse(respuesta);
 
+
+alert(
+"✅ Reporte recibido\n\n" +
+"Folio: " + resultado.folio + "\n\n" +
+resultado.mensaje
 })
 
 .catch(error => {
