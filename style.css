@@ -1,47 +1,106 @@
+/* ==================================================
+   Cacta Luna Communities
+   Archivo: style.css
+   Tema: Real de Palmas - Verde Ecológico
+   Versión: 1.0
+================================================== */
+
+
 /* ==========================
-   1. VARIABLES
+   VARIABLES DEL SISTEMA
 ========================== */
 
 :root{
-  --verde-principal:#1F6F5B;
-  --verde-secundario:#2D8F78;
-  --verde-claro:#EAF6F2;
-  --blanco:#FFFFFF;
-  --gris:#5F6B6D;
-  --fondo:#F6FAF8;
 
-  --radio:18px;
-  --sombra:0 10px 30px rgba(0,0,0,.08);
+    --verde-principal:#2E8B57;
+
+    --verde-secundario:#4CAF7A;
+
+    --verde-claro:#E8F5EE;
+
+    --verde-hover:#267348;
+
+    --fondo:#F7FBF8;
+
+    --blanco:#FFFFFF;
+
+    --texto:#263238;
+
+    --gris:#607D8B;
+
+
+    --sombra:
+    0 10px 30px rgba(46,139,87,.12);
+
+
+    --radio:18px;
+
 }
 
-/* ==========================
-   2. RESET
-========================== */
 
 /* ==========================
-   3. BODY
+   RESET GENERAL
 ========================== */
 
-/* ==========================
-   4. SIDEBAR
-========================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+body{
+
+    background:var(--fondo);
+
+    color:var(--texto);
+
+    font-family:
+    'Poppins',
+    Arial,
+    sans-serif;
+
+}
+
 
 /* ==========================
-   5. HEADER
+   TITULOS
 ========================== */
 
-/* ==========================
-   6. TARJETAS
-========================== */
+
+h1,h2,h3,h4{
+
+    font-weight:600;
+
+}
+
 
 /* ==========================
-   7. TABLAS
+   LINKS
 ========================== */
 
-/* ==========================
-   8. BOTONES
-========================== */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
 
 /* ==========================
-   9. RESPONSIVE
+   SCROLL SUAVE
 ========================== */
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
