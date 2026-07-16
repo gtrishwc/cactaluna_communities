@@ -187,21 +187,63 @@ onclick="enviarReporte()">
 
 <script>
 
+const URL_APP_SCRIPT = "PEGA_AQUI_TU_URL";
+
+
 function enviarReporte(){
 
-alert("🚀 El botón funciona");
 
-let tipo = document.getElementById("tipo")?.value;
-let descripcion = document.getElementById("descripcion")?.value;
-let ubicacion = document.getElementById("ubicacion")?.value;
+let datos = {
+
+tipo: document.getElementById("tipo").value,
+
+descripcion: document.getElementById("descripcion").value,
+
+ubicacion: document.getElementById("ubicacion").value,
+
+prioridad: document.querySelector('input[name="prioridad"]:checked')?.value || "Normal"
 
 
-console.log("TIPO:", tipo);
-console.log("DESCRIPCIÓN:", descripcion);
-console.log("UBICACIÓN:", ubicacion);
+};
+
+
+fetch(URL_APP_SCRIPT, {
+
+method:"POST",
+
+body:JSON.stringify(datos)
+
+})
+
+
+.then(res => res.text())
+
+.then(respuesta => {
+
+
+console.log(respuesta);
+
+
+alert("✅ Reporte enviado correctamente");
+
+
+})
+
+
+.catch(error=>{
+
+
+console.error(error);
+
+
+alert("❌ Error al enviar reporte");
+
+
+});
 
 
 }
+
 
 </script>
   
