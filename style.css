@@ -928,3 +928,52 @@ color:var(--verde-principal);
     background:var(--verde-hover);
 
 }
+
+/* ==================================================
+   SUBIDA DE IMAGEN
+================================================== */
+
+
+.campo{
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+}
+
+
+input[type="file"]{
+
+padding:12px;
+
+background:#f5f8f6;
+
+border-radius:14px;
+
+border:1px solid #d8e6dc;
+
+font-family:inherit;
+
+}
+
+
+input[type="file"]::file-selector-button{
+
+background:var(--verde-principal);
+
+color:white;
+
+border:none;
+
+padding:10px 15px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+margin-right:10px;
+
+}
