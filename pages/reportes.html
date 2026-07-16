@@ -405,9 +405,18 @@ alert("Datos capturados");
 
 
 
+console.log(datos);
+
+alert("Datos capturados");
+
+
 fetch(URL_APP_SCRIPT, {
 
 method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
 
 body:JSON.stringify(datos)
 
@@ -416,10 +425,9 @@ body:JSON.stringify(datos)
 
 .then(res => res.text())
 
-
 .then(respuesta => {
 
-console.log(respuesta);
+console.log("Respuesta Google:", respuesta);
 
 alert("✅ Reporte enviado correctamente");
 
@@ -433,10 +441,6 @@ console.error(error);
 alert("❌ Error al enviar reporte");
 
 });
-
-
-
-}
 
 
 
