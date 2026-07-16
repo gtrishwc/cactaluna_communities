@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,7 +17,8 @@
 
 <body>
 
-  <!-- NAVEGACION APP -->
+
+<!-- NAVEGACION APP -->
 
 <nav class="app-nav">
 
@@ -38,10 +40,13 @@
 
 </nav>
 
+
+
 <div class="main">
 
 
 <header class="topbar">
+
 
 <div>
 
@@ -52,11 +57,13 @@
 </div>
 
 
+
 <div class="profile">
 
 <div class="avatar">
 G
 </div>
+
 
 <div>
 
@@ -66,9 +73,12 @@ Residente
 
 </div>
 
+
 </div>
 
+
 </header>
+
 
 
 
@@ -78,7 +88,10 @@ Residente
 <h2>Nuevo reporte</h2>
 
 
+
 <form>
+
+
 
 <div class="campo">
 
@@ -94,6 +107,8 @@ required
 >
 
 </div>
+
+
 
 
 <div class="campo">
@@ -112,6 +127,8 @@ required
 </div>
 
 
+
+
 <div class="campo">
 
 <label>
@@ -126,12 +143,19 @@ required
 >
 
 </div>
+
+
+
+
+<div class="campo">
+
 <label>
 Categoría
 </label>
 
 
-<select>
+<select id="tipo">
+
 
 <option>💡 Alumbrado</option>
 
@@ -143,13 +167,37 @@ Categoría
 
 <option>🛠 Mantenimiento</option>
 
+
 </select>
 
+</div>
 
+
+
+
+
+<div class="campo">
 
 <label>
-Descripción
+📝 Descripción
 </label>
+
+
+<textarea
+
+id="descripcion"
+
+placeholder="Describe el problema..."
+
+required
+
+></textarea>
+
+
+</div>
+
+
+
 
 
 <div class="campo">
@@ -157,29 +205,52 @@ Descripción
 <label>
 📷 Evidencia fotográfica
 </label>
+
+
+<input
+
+type="file"
+
+id="foto"
+
+accept="image/*"
+
+>
+
+
+</div>
+
+
+
+
+
 <div class="campo">
+
 
 <label>
 📍 Ubicación
 </label>
 
-<input 
+
+<input
+
 type="text"
+
 id="ubicacion"
+
 placeholder="Ejemplo: Calle Palma Real #25"
+
 >
+
 
 </div>
 
-  
-<input 
-type="file" 
-id="foto"
-accept="image/*"
->
 
-</div>
 
+
+
+
+<div class="campo">
 
 
 <label>
@@ -187,79 +258,152 @@ Prioridad
 </label>
 
 
+
 <div class="prioridad">
 
 
 <label>
-<input type="radio" name="prioridad">
+
+<input 
+type="radio" 
+name="prioridad"
+value="Baja">
+
 Baja
+
 </label>
 
 
+
+
 <label>
-<input type="radio" name="prioridad">
+
+<input 
+type="radio" 
+name="prioridad"
+value="Media">
+
 Media
+
 </label>
+
+
 
 
 <label>
-<input type="radio" name="prioridad">
+
+<input 
+type="radio" 
+name="prioridad"
+value="Urgente">
+
 Urgente
+
 </label>
+
+
+
+</div>
 
 
 </div>
 
 
 
-<button 
-class="btn" 
-onclick="enviarReporte()">
+
+
+
+
+<button
+
+type="button"
+
+class="btn"
+
+onclick="enviarReporte()"
+
+>
+
 📨 Enviar reporte
+
 </button>
+
+
 
 
 </form>
 
 
-</div>
-
 
 </div>
 
 
-</body>
+
+</div>
+
+
+
+
 
 <script>
 
+
 const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbxpXc9n-_RmhQfEw3DQXmHV5Udcq-03ZOmjmt_cSItq1PQv-D5WRS6TCsAWEgulcBw9Bw/exec";
+
 
 
 function enviarReporte(){
 
 
+
 let datos = {
 
-nombre: document.getElementById("nombre").value,
 
-correo: document.getElementById("correo").value,
+nombre:
+document.getElementById("nombre").value,
 
-telefono: document.getElementById("telefono").value,
 
-tipo: document.getElementById("tipo").value,
+correo:
+document.getElementById("correo").value,
 
-descripcion: document.getElementById("descripcion").value,
 
-ubicacion: document.getElementById("ubicacion").value,
+telefono:
+document.getElementById("telefono").value,
 
-prioridad: document.querySelector('input[name="prioridad"]:checked')?.value || "Normal"
+
+tipo:
+document.getElementById("tipo").value,
+
+
+descripcion:
+document.getElementById("descripcion").value,
+
+
+ubicacion:
+document.getElementById("ubicacion").value,
+
+
+prioridad:
+document.querySelector('input[name="prioridad"]:checked')?.value || "Normal"
+
+
 
 };
 
+
+
+
+
 console.log(datos);
+
 
 alert("Datos capturados");
 
+
+
+
+
+/*
 
 fetch(URL_APP_SCRIPT, {
 
@@ -271,6 +415,7 @@ body:JSON.stringify(datos)
 
 
 .then(res => res.text())
+
 
 .then(respuesta => {
 
@@ -295,12 +440,19 @@ alert("❌ Error al enviar reporte");
 
 });
 
+*/
+
 
 }
 
 
+
 </script>
 
-  
-  
+
+
+</body>
+
+
 </html>
+```
