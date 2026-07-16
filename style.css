@@ -1004,3 +1004,32 @@ border-color:var(--verde-principal);
 box-shadow:0 0 0 4px var(--verde-claro);
 
 }
+
+.campo input{
+
+width:100%;
+
+padding:14px;
+
+border-radius:14px;
+
+border:1px solid #d8e6dc;
+
+font-size:16px;
+
+font-family:inherit;
+
+background:white;
+
+}
+
+
+.campo input:focus{
+
+outline:none;
+
+border-color:var(--verde-principal);
+
+box-shadow:0 0 0 4px var(--verde-claro);
+
+}
