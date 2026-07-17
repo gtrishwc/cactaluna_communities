@@ -1033,3 +1033,151 @@ border-color:var(--verde-principal);
 box-shadow:0 0 0 4px var(--verde-claro);
 
 }
+
+/* ==================================================
+   AGENDA COMUNITARIA
+================================================== */
+
+.evento-destacado{
+
+    background:linear-gradient(135deg,#3d8b6d,#5da886);
+
+    color:white;
+
+    padding:30px;
+
+    border-radius:24px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    margin-bottom:30px;
+
+}
+
+.evento-destacado h2{
+
+    margin:15px 0;
+
+    font-size:30px;
+
+}
+
+.evento-destacado p{
+
+    line-height:1.8;
+
+    opacity:.95;
+
+}
+
+.evento-badge{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.2);
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+}
+
+.titulo-seccion{
+
+    margin-bottom:20px;
+
+    color:var(--texto);
+
+}
+
+.lista-eventos{
+
+    display:grid;
+
+    gap:18px;
+
+}
+
+.evento-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+    transition:.30s;
+
+}
+
+.evento-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.15);
+
+}
+
+.evento-icono{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--verde-claro);
+
+    font-size:34px;
+
+}
+
+.evento-card h3{
+
+    margin-bottom:8px;
+
+    color:var(--texto);
+
+}
+
+.evento-card p{
+
+    color:#666;
+
+}
+
+@media(max-width:700px){
+
+.evento-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.evento-icono{
+
+margin-bottom:10px;
+
+}
+
+}
