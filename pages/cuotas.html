@@ -221,6 +221,12 @@ async function obtenerPago(){
 
     try{
 
+        async function obtenerPago(){
+
+    alert("Botón presionado");
+
+    try{
+
         const respuesta = await fetch(URL_APP + "?accion=obtenerPago");
 
         const datos = await respuesta.json();
