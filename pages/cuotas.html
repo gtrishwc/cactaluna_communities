@@ -145,6 +145,116 @@ Serán obtenidos de forma segura desde el servidor cuando esta función esté di
 </div>
 
 </div>
+<!-- MODAL INFORMACIÓN DE PAGO -->
+<div id="modalPago" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:9999;">
 
+  <div style="background:#fff;border-radius:20px;padding:30px;max-width:500px;width:90%;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.3);">
+
+    <button onclick="cerrarModal()" style="position:absolute;top:15px;right:20px;background:none;border:none;font-size:22px;color:#666;cursor:pointer;">
+      ✕
+    </button>
+
+    <h2 style="color:#2E8B57;text-align:center;">💳 Información de Pago</h2>
+
+    <p><strong>Banco:</strong> <span id="banco"></span></p>
+
+    <p><strong>Titular:</strong> <span id="titular"></span></p>
+
+    <p>
+      <strong>Número de cuenta:</strong><br>
+      <span id="cuenta" style="font-size:20px;font-weight:bold;color:#1e7a4d;"></span>
+    </p>
+
+    <p>
+      <strong>Aportación sugerida:</strong>
+      $<span id="cuota"></span> MXN
+    </p>
+
+    <p id="mensaje"></p>
+
+    <button onclick="copiarCuenta()">
+      📋 Copiar número de cuenta
+    </button>
+
+    <button onclick="enviarWhatsapp()">
+      📲 Enviar comprobante
+    </button>
+
+  </div>
+
+</div>
+
+    <script>
+
+const URL_APP = "https://script.google.com/macros/s/AKfycbyN1sWJhIwe_HEMBWsMz07c9esLnuU7_XZIM2YENPG4z0EhEIaQM_NtbCQUJahRM1XVzw/exec";
+
+let datosPago = {};
+
+document.getElementById("btnPago").addEventListener("click", obtenerPago);
+
+async function obtenerPago(){
+
+    try{
+
+        const respuesta = await fetch(URL_APP + "?accion=obtenerPago");
+
+        const datos = await respuesta.json();
+
+        datosPago = datos;
+
+        document.getElementById("banco").textContent = datos.Banco;
+        document.getElementById("titular").textContent = datos.Titular;
+        document.getElementById("cuenta").textContent = datos.Cuenta;
+        document.getElementById("cuota").textContent = datos.Cuota;
+        document.getElementById("mensaje").textContent = datos.Mensaje;
+
+        document.getElementById("modalPago").style.display="flex";
+
+    }
+
+    catch(error){
+
+        alert("No fue posible obtener la información de pago.");
+
+        console.error(error);
+
+    }
+
+}
+
+function cerrarModal(){
+
+    document.getElementById("modalPago").style.display="none";
+
+}
+
+function copiarCuenta(){
+
+    navigator.clipboard.writeText(datosPago.Cuenta);
+
+    alert("✅ Número de cuenta copiado.");
+
+}
+
+function enviarWhatsapp(){
+
+    const texto =
+`Hola, buen día.
+
+Adjunto el comprobante de mi aportación voluntaria correspondiente a la cuota vecinal de Real de Palmas Etapa 1.
+
+Gracias.`;
+
+    window.open(
+
+"https://wa.me/"+datosPago.WhatsApp+"?text="+encodeURIComponent(texto),
+
+"_blank"
+
+    );
+
+}
+
+</script>
 </body>
 </html>
