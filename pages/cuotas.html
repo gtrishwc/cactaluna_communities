@@ -225,10 +225,13 @@ window.onload = function(){
 
     try{
 
+        alert("Conectando con servidor...");
+
         const respuesta = await fetch(URL_APP + "?accion=obtenerPago");
 
-        const datos = await respuesta.json();
+alert("Respuesta recibida");
 
+const datos = await respuesta.json();
         datosPago = datos;
 
         document.getElementById("banco").textContent = datos.Banco;
