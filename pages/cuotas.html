@@ -92,7 +92,7 @@ button:hover{
 <h1>💰 Cuotas Vecinales</h1>
 
 <p>
-Gracias por contribuir al mantenimiento y mejora de nuestra comunidad.
+La cuota vecinal voluntaria tiene como objetivo contar con un fondo para mantenimiento, limpieza, seguridad y mejoras de nuestra comunidad.
 </p>
 
 </div>
@@ -199,8 +199,12 @@ const URL_APP = "https://script.google.com/macros/s/AKfycbyN1sWJhIwe_HEMBWsMz07c
 
 let datosPago = {};
 
-document.getElementById("btnPago").addEventListener("click", obtenerPago);
+window.onload = function(){
 
+    document.getElementById("btnPago")
+    .addEventListener("click", obtenerPago);
+
+};
 async function obtenerPago(){
 
     try{
@@ -247,12 +251,16 @@ function copiarCuenta(){
 
 function enviarWhatsapp(){
 
-    const texto =
+const texto =
 `Hola, buen día.
 
-Adjunto el comprobante de mi aportación voluntaria correspondiente a la cuota vecinal de Real de Palmas Etapa 1.
+Comparto mi comprobante de la aportación voluntaria de la cuota vecinal de Real de Palmas Etapa 1.
 
-Gracias.`;
+Nombre:
+Calle:
+Número de casa:
+
+Gracias por su apoyo al mantenimiento de nuestra comunidad.`;
 
     window.open(
 
