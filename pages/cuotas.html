@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Cuotas Vecinales</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+
+body{
+    background:#f5f7fa;
+    font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+}
+
+.contenedor{
+    max-width:1000px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.titulo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.titulo h1{
+    color:#1e7a4d;
+    margin-bottom:10px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.icono{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+button{
+    margin-top:20px;
+    background:#2E8B57;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+button:hover{
+    background:#226b43;
+}
+
+.aviso{
+    margin-top:40px;
+    background:#fff8e6;
+    border-left:5px solid #ffc107;
+    padding:20px;
+    border-radius:12px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<div class="titulo">
+
+<h1>💰 Cuotas Vecinales</h1>
+
+<p>
+Gracias por contribuir al mantenimiento y mejora de nuestra comunidad.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icono">📄</div>
+
+<h2>Información de Pago</h2>
+
+<p>
+Consulta de forma segura la información necesaria para realizar tu pago.
+</p>
+
+<button id="btnPago">
+Obtener información
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="icono">📤</div>
+
+<h2>Enviar Comprobante</h2>
+
+<p>
+Una vez realizado tu pago podrás enviar tu comprobante al comité.
+</p>
+
+<button>
+Próximamente
+</button>
+
+</div>
+
+</div>
+
+<div class="aviso">
+
+<strong>🔒 Información protegida</strong>
+
+<p>
+Los datos bancarios no se encuentran almacenados en esta página.
+Serán obtenidos de forma segura desde el servidor cuando esta función esté disponible.
+</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
