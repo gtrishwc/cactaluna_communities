@@ -21,7 +21,6 @@ body{
 }
 
 
-
 /* NAVEGACION */
 
 .app-nav{
@@ -51,7 +50,7 @@ body{
 }
 
 
-
+/* CONTENIDO */
 
 .main{
 
@@ -62,6 +61,8 @@ body{
 }
 
 
+
+/* ENCABEZADO */
 
 
 .topbar{
@@ -115,6 +116,9 @@ body{
 
 
 
+/* PANEL */
+
+
 .panel{
 
     background:white;
@@ -133,6 +137,9 @@ body{
 
 }
 
+
+
+/* FORMULARIO */
 
 
 .campo{
@@ -157,14 +164,12 @@ input,
 select,
 textarea{
 
-
     width:100%;
     padding:12px;
     border-radius:10px;
     border:1px solid #ddd;
     box-sizing:border-box;
     font-size:15px;
-
 
 }
 
@@ -179,8 +184,8 @@ textarea{
 
 
 
-.btn{
 
+.btn{
 
     width:100%;
     background:#2E8B57;
@@ -192,7 +197,6 @@ textarea{
     font-size:16px;
     font-weight:bold;
 
-
 }
 
 
@@ -202,6 +206,7 @@ textarea{
     background:#1e7a4d;
 
 }
+
 
 
 
@@ -227,25 +232,27 @@ textarea{
 
 
 
+
 @media(max-width:700px){
 
 
 .topbar{
 
-    flex-direction:column;
-    gap:20px;
+flex-direction:column;
+gap:20px;
 
 }
 
 
 .app-nav{
 
-    overflow:auto;
+overflow:auto;
 
 }
 
 
 }
+
 
 
 </style>
@@ -264,17 +271,21 @@ textarea{
 🏠 Inicio
 </a>
 
+
 <a href="novedades.html">
 📢 Avisos
 </a>
+
 
 <a href="reportes.html" class="activo">
 📝 Reportes
 </a>
 
+
 <a href="comunidad.html">
 👥 Comunidad
 </a>
+
 
 </nav>
 
@@ -294,9 +305,11 @@ textarea{
 📝 Crear Reporte
 </h1>
 
+
 <p>
 Real de Palmas • Atención a residentes
 </p>
+
 
 </div>
 
@@ -307,14 +320,11 @@ Real de Palmas • Atención a residentes
 
 
 <div class="avatar">
-
 G
-
 </div>
 
 
 <div>
-
 
 Residente
 
@@ -326,6 +336,8 @@ Residente
 
 
 </header>
+
+
 
 
 
@@ -367,8 +379,9 @@ required
 
 >
 
-
 </div>
+
+
 
 
 
@@ -402,6 +415,8 @@ required
 
 
 
+
+
 <div class="campo">
 
 <label>
@@ -423,6 +438,7 @@ required
 
 
 </div>
+
 
 
 
@@ -461,6 +477,15 @@ Categoría
 </option>
 
 
+<option>
+💡 Alumbrado
+</option>
+
+
+<option>
+🗑 Limpieza
+</option>
+
 
 
 </select>
@@ -474,15 +499,16 @@ Categoría
 
 
 
+
+
+
 <div class="campo">
 
 
 <label>
-
 📝 Descripción
-
-
 </label>
+
 
 
 <p style="font-size:14px;color:#555;">
@@ -498,10 +524,11 @@ Si el problema persiste, reporte al
 
 <strong>911</strong>
 
-y comparta el número de folio para darle seguimiento.
+y comparta el número de folio para seguimiento.
 
 
 </p>
+
 
 
 
@@ -526,20 +553,23 @@ required
 
 
 
+
 <div class="campo">
 
 
 <label>
-
 📷 Evidencia fotográfica
-
 </label>
 
 
 <input
+
 type="file"
+
 id="foto"
+
 accept="image/*"
+
 >
 
 
@@ -552,15 +582,13 @@ accept="image/*"
 
 
 
+
 <div class="campo">
 
 
 <label>
-
 📍 Ubicación
-
 </label>
-
 
 
 <input
@@ -583,13 +611,12 @@ placeholder="Ejemplo: Calle Palma Real #25"
 
 
 
+
 <div class="campo">
 
 
 <label>
-
 Prioridad
-
 </label>
 
 
@@ -609,7 +636,6 @@ name="prioridad"
 value="Baja"
 
 >
-
 
 Baja
 
@@ -633,7 +659,6 @@ checked
 
 >
 
-
 Media
 
 </label>
@@ -654,7 +679,6 @@ value="Urgente"
 
 >
 
-
 Urgente
 
 </label>
@@ -672,6 +696,7 @@ Urgente
 
 
 
+
 <button
 
 type="button"
@@ -682,9 +707,7 @@ onclick="enviarReporte()"
 
 >
 
-
 📨 Enviar reporte
-
 
 </button>
 
@@ -692,7 +715,12 @@ onclick="enviarReporte()"
 
 
 
+
+
 </form>
+
+
+
 
 
 
@@ -710,14 +738,17 @@ Importante:
 <br><br>
 
 
-Los reportes de ruido deben realizarse directamente al
+Los reportes relacionados con ruido deben realizarse directamente al
 
 <strong>911</strong>.
 
-Una vez obtenido el número de folio, el Comité puede apoyar con seguimiento ante las autoridades correspondientes.
+Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las autoridades correspondientes.
+
 
 
 </div>
+
+
 
 
 
@@ -731,28 +762,43 @@ Una vez obtenido el número de folio, el Comité puede apoyar con seguimiento an
 
     <script>
 
-
 const URL_APP_SCRIPT = 
 "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
 
 
-function enviarReporte(){
-
+async function enviarReporte(){
 
 
 let prioridadSeleccionada = 
 document.querySelector('input[name="prioridad"]:checked');
 
+
+
 const archivo = document.getElementById("foto").files[0];
+
+
 
 let imagenBase64 = "";
 
+let nombreArchivo = "";
+
+
+
 if(archivo){
+
 
 imagenBase64 = await convertirImagen(archivo);
 
+
+nombreArchivo = archivo.name;
+
+
 }
+
+
+
+
 
 let datos = {
 
@@ -784,7 +830,16 @@ document.getElementById("ubicacion").value,
 prioridad:
 prioridadSeleccionada 
 ? prioridadSeleccionada.value 
-: "Normal"
+: "Normal",
+
+
+
+imagen:
+imagenBase64,
+
+
+nombreArchivo:
+nombreArchivo
 
 
 };
@@ -799,10 +854,13 @@ console.log("Datos enviados:", datos);
 
 
 
+
 fetch(URL_APP_SCRIPT, {
 
 
+
 method:"POST",
+
 
 
 headers:{
@@ -814,14 +872,22 @@ headers:{
 },
 
 
+
 body:JSON.stringify(datos)
+
 
 
 })
 
 
 
+
+
+
 .then(respuesta => respuesta.json())
+
+
+
 
 
 
@@ -834,15 +900,16 @@ console.log("Respuesta Apps Script:", resultado);
 
 
 
-if(resultado.ok === true || resultado.estado === "ok"){
+
+if(resultado.ok === true){
 
 
 
 alert(
 
-"✅ Reporte recibido correctamente\n\n" +
+"✅ Reporte recibido correctamente\n\n"+
 
-"📄 Folio: " + resultado.folio + "\n\n" +
+"📄 Folio: "+resultado.folio+"\n\n"+
 
 "El Comité dará seguimiento a tu solicitud."
 
@@ -850,13 +917,13 @@ alert(
 
 
 
+
 document.getElementById("formReporte").reset();
 
 
 
+
 }
-
-
 
 else{
 
@@ -864,9 +931,9 @@ else{
 
 alert(
 
-"⚠️ Ocurrió un problema:\n\n" +
+"⚠️ Error al registrar reporte:\n\n"+
 
-(resultado.error || resultado.mensaje)
+resultado.error
 
 );
 
@@ -880,11 +947,13 @@ alert(
 
 
 
+
+
 .catch(error => {
 
 
 
-console.error("Error:", error);
+console.error(error);
 
 
 
@@ -900,12 +969,58 @@ alert(
 
 
 
+
+
+}
+
+
+
+
+
+
+
+
+
+function convertirImagen(archivo){
+
+
+
+return new Promise((resolve)=>{
+
+
+
+const lector = new FileReader();
+
+
+
+
+
+lector.onload=function(){
+
+
+
+resolve(lector.result);
+
+
+
+};
+
+
+
+
+lector.readAsDataURL(archivo);
+
+
+
+});
+
+
+
 }
 
 
 
 </script>
-
 
 
 </body>
