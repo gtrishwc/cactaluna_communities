@@ -1,349 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Reportes | Cacta Luna Communities</title>
-
-<link rel="stylesheet" href="../style.css">
-
-</head>
-
-
-<body>
-
-<!-- NAVEGACION APP -->
-
-<nav class="app-nav">
-
-<a href="../index.html">
-🏠 Inicio
-</a>
-
-<a href="novedades.html">
-📢 Avisos
-</a>
-
-<a href="reportes.html" class="activo">
-📝 Reportes
-</a>
-
-<a href="comunidad.html">
-👥 Comunidad
-</a>
-
-</nav>
-
-
-
-<div class="main">
-
-
-<header class="topbar">
-
-
-<div>
-
-<h1>📝 Crear Reporte</h1>
-
-<p>Real de Palmas • Atención a residentes</p>
-
-</div>
-
-
-
-<div class="profile">
-
-<div class="avatar">
-G
-</div>
-
-
-<div>
-
-<strong>Giovanna</strong><br>
-
-Residente
-
-</div>
-
-
-</div>
-
-
-</header>
-
-
-
-
-<div class="panel">
-
-
-<h2>Nuevo reporte</h2>
-
-
-
-<form>
-
-
-
-<div class="campo">
-
-<label>
-👤 Nombre
-</label>
-
-<input 
-type="text"
-id="nombre"
-placeholder="Nombre del residente"
-required
->
-
-</div>
-
-
-
-
-<div class="campo">
-
-<label>
-📧 Correo electrónico
-</label>
-
-<input 
-type="email"
-id="correo"
-placeholder="correo@ejemplo.com"
-required
->
-
-</div>
-
-
-
-
-<div class="campo">
-
-<label>
-📱 Teléfono
-</label>
-
-<input 
-type="tel"
-id="telefono"
-placeholder="6620000000"
-required
->
-
-</div>
-
-
-
-
-<div class="campo">
-
-<label>
-Categoría
-</label>
-
-
-<select id="tipo">
-
-
-<option>❓ Otro</option>
-
-<option>🚰 Agua</option>
-
-<option>🔊 Ruido</option>
-
-<option>🚨 Robo</option>
-
-
-</select>
-
-</div>
-
-
-
-
-
-<div class="campo">
-
-<label>
-📝 Descripción **¿Problemas con ruido?** Favor de primero dialogar con su vecino. Si el problema persiste, reporte al **911** y comparta el número de folio para darle seguimiento.
-
-
-
-<textarea
-
-id="descripcion"
-
-placeholder="Describe el problema..."
-
-required
-
-></textarea>
-
-
-</div>
-
-
-
-
-
-<div class="campo">
-
-<label>
-📷 Evidencia fotográfica
-</label>
-
-
-<input
-
-type="file"
-
-id="foto"
-
-accept="image/*"
-
->
-
-
-</div>
-
-
-
-
-
-<div class="campo">
-
-
-<label>
-📍 Ubicación
-</label>
-
-
-<input
-
-type="text"
-
-id="ubicacion"
-
-placeholder="Ejemplo: Calle Palma Real #25"
-
->
-
-
-</div>
-
-
-
-
-
-
-<div class="campo">
-
-
-<label>
-Prioridad
-</label>
-
-
-
-<div class="prioridad">
-
-
-<label>
-
-<input 
-type="radio" 
-name="prioridad"
-value="Baja">
-
-Baja
-
-</label>
-
-
-
-
-<label>
-
-<input 
-type="radio" 
-name="prioridad"
-value="Media">
-
-Media
-
-</label>
-
-
-
-
-<label>
-
-<input 
-type="radio" 
-name="prioridad"
-value="Urgente">
-
-Urgente
-
-</label>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<button
-
-type="button"
-
-class="btn"
-
-onclick="enviarReporte()"
-
->
-
-📨 Enviar reporte
-
-</button>
-
-
-
-
-</form>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
 <script>
 
-const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyATiRJowhtw7iwgN06KWidzNTN3n2X4VmmnLZxCifkeoFz-dxAr4p2jWc5w6nBuGYyew/exec";
+const URL_APP_SCRIPT = "AQUI_PON_LA_URL_EXEC_DE_TU_APPS_SCRIPT";
 
 
 function enviarReporte(){
@@ -368,57 +25,95 @@ prioridad: document.querySelector('input[name="prioridad"]:checked')?.value || "
 };
 
 
-console.log(datos);
 
+console.log("Datos enviados:", datos);
 
-alert("Datos capturados");
-
-
-console.log("Enviando a:", URL_APP_SCRIPT);
 
 
 fetch(URL_APP_SCRIPT, {
 
+
 method:"POST",
+
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
 
 body:JSON.stringify(datos)
 
+
 })
 
 
-.then(res => res.text())
+.then(respuesta => respuesta.json())
 
 
-.then(respuesta => {
-
-console.log("Respuesta Google:", respuesta);
+.then(resultado => {
 
 
-let resultado = JSON.parse(respuesta);
+console.log("Respuesta:", resultado);
+
+
+
+if(resultado.estado === "ok"){
 
 
 alert(
-"✅ Reporte recibido\n\n" +
+
+"✅ Reporte recibido correctamente\n\n" +
+
 "Folio: " + resultado.folio + "\n\n" +
-resultado.mensaje
+
+"El comité dará seguimiento a tu solicitud."
+
 );
+
+
+
+document.querySelector("form").reset();
+
+
+
+}else{
+
+
+alert(
+
+"⚠️ No se pudo registrar el reporte:\n" +
+
+resultado.mensaje
+
+);
+
+
+}
+
 
 
 })
 
+
 .catch(error => {
 
-console.error(error);
 
-alert("❌ Error al enviar reporte");
+console.error("Error:",error);
+
+
+alert(
+
+"❌ Error al enviar el reporte. Intenta nuevamente."
+
+);
+
 
 });
 
 
 }
 
+
 </script>
-
-</body>
-
-</html>
