@@ -744,7 +744,15 @@ function enviarReporte(){
 let prioridadSeleccionada = 
 document.querySelector('input[name="prioridad"]:checked');
 
+const archivo = document.getElementById("foto").files[0];
 
+let imagenBase64 = "";
+
+if(archivo){
+
+imagenBase64 = await convertirImagen(archivo);
+
+}
 
 let datos = {
 
