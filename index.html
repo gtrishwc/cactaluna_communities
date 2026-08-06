@@ -352,49 +352,43 @@ Una vez generado el folio, el Comité puede apoyar con seguimiento ante las auto
     
 <script>
 
-    console.log("SCRIPT CARGADO");
+console.log("SCRIPT CARGADO");
 
-function toggleMenu() {
+function toggleMenu(){
     document.getElementById("sidebar").classList.toggle("show");
 }
 
-async function cargarClima() {
+async function cargarClima(){
 
-    
+    try{
 
-function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("show");
-}
-
-async function cargarClima() {
-
-    try {
-
-        const respuesta = await fetch("https://api.open-meteo.com/v1/forecast?latitude=29.123&longitude=-110.975&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code");
+        const respuesta = await fetch(
+            "https://api.open-meteo.com/v1/forecast?latitude=29.123&longitude=-110.975&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code"
+        );
 
         const datos = await respuesta.json();
 
         let icono = "☀️";
-        let descripcion = "Soleado";
+        let descripcion = "Despejado";
 
         switch(datos.current.weather_code){
 
             case 0:
-                icono = "☀️";
-                descripcion = "Despejado";
+                icono="☀️";
+                descripcion="Despejado";
                 break;
 
             case 1:
             case 2:
             case 3:
-                icono = "⛅";
-                descripcion = "Parcialmente nublado";
+                icono="⛅";
+                descripcion="Parcialmente nublado";
                 break;
 
             case 45:
             case 48:
-                icono = "🌫️";
-                descripcion = "Neblina";
+                icono="🌫️";
+                descripcion="Neblina";
                 break;
 
             case 51:
@@ -403,39 +397,40 @@ async function cargarClima() {
             case 61:
             case 63:
             case 65:
-                icono = "🌧️";
-                descripcion = "Lluvia";
+                icono="🌧️";
+                descripcion="Lluvia";
                 break;
 
             case 71:
             case 73:
             case 75:
-                icono = "❄️";
-                descripcion = "Nieve";
+                icono="❄️";
+                descripcion="Nieve";
                 break;
 
             case 95:
-                icono = "⛈️";
-                descripcion = "Tormenta";
+                icono="⛈️";
+                descripcion="Tormenta";
                 break;
         }
 
         document.getElementById("climaActual").innerHTML = `
-            <div class="clima-temp">${icono} ${datos.current.temperature_2m}°C</div>
-            <div class="clima-desc">${descripcion}</div>
-
-            <div class="clima-extra">
-                <div>💧 ${datos.current.relative_humidity_2m}%</div>
-                <div>💨 ${datos.current.wind_speed_10m} km/h</div>
-            </div>
+            <h1>${icono} ${datos.current.temperature_2m}°C</h1>
+            <p>${descripcion}</p>
+            <small>
+                💧 ${datos.current.relative_humidity_2m}% |
+                💨 ${datos.current.wind_speed_10m} km/h
+            </small>
         `;
 
-    } catch (error) {
+        console.log(datos);
+
+    }catch(error){
 
         console.error(error);
 
         document.getElementById("climaActual").innerHTML =
-            "No fue posible obtener el clima.";
+        "No fue posible cargar el clima.";
 
     }
 
@@ -444,7 +439,6 @@ async function cargarClima() {
 cargarClima();
 
 </script>
-
 </body>
 
 
