@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Reportes | Cacta Luna Communities</title>
@@ -16,34 +17,101 @@
 body{
     background:#f5f7fa;
     font-family:Arial, Helvetica, sans-serif;
+    margin:0;
 }
 
 
-.contenedor{
 
-    max-width:900px;
-    margin:auto;
-    padding:30px 20px;
+/* NAVEGACION */
 
-}
-
-
-.header{
+.app-nav{
 
     background:white;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-    text-align:center;
+    display:flex;
+    gap:20px;
+    padding:15px 25px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
 
 }
 
 
-.header h1{
+.app-nav a{
+
+    text-decoration:none;
+    color:#444;
+    font-weight:bold;
+
+}
+
+
+.app-nav .activo{
 
     color:#1e7a4d;
 
 }
+
+
+
+
+.main{
+
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+
+}
+
+
+
+
+.topbar{
+
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.topbar h1{
+
+    margin:0;
+    color:#1e7a4d;
+
+}
+
+
+
+.profile{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+}
+
+
+
+.avatar{
+
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#2E8B57;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:20px;
+
+}
+
 
 
 
@@ -59,19 +127,27 @@ body{
 
 
 
-.campo{
+.panel h2{
 
-    margin-bottom:18px;
+    color:#1e7a4d;
 
 }
 
 
 
-label{
+.campo{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.campo label{
 
     display:block;
     font-weight:bold;
-    margin-bottom:7px;
+    margin-bottom:8px;
 
 }
 
@@ -81,12 +157,14 @@ input,
 select,
 textarea{
 
+
     width:100%;
     padding:12px;
-    border:1px solid #ddd;
     border-radius:10px;
+    border:1px solid #ddd;
     box-sizing:border-box;
     font-size:15px;
+
 
 }
 
@@ -103,15 +181,17 @@ textarea{
 
 .btn{
 
+
     width:100%;
     background:#2E8B57;
     color:white;
     border:none;
     padding:15px;
     border-radius:30px;
+    cursor:pointer;
     font-size:16px;
     font-weight:bold;
-    cursor:pointer;
+
 
 }
 
@@ -133,13 +213,6 @@ textarea{
 }
 
 
-.prioridad label{
-
-    font-weight:normal;
-
-}
-
-
 
 .info{
 
@@ -152,6 +225,29 @@ textarea{
 }
 
 
+
+
+@media(max-width:700px){
+
+
+.topbar{
+
+    flex-direction:column;
+    gap:20px;
+
+}
+
+
+.app-nav{
+
+    overflow:auto;
+
+}
+
+
+}
+
+
 </style>
 
 
@@ -159,363 +255,3 @@ textarea{
 
 
 <body>
-
-
-<div class="contenedor">
-
-
-<div class="header">
-
-<h1>📝 Crear Reporte</h1>
-
-<p>
-Real de Palmas Etapa 1<br>
-Atención a residentes
-</p>
-
-</div>
-
-
-
-
-<div class="panel">
-
-
-<form id="formReporte">
-
-
-<div class="campo">
-
-<label>
-👤 Nombre
-</label>
-
-<input 
-id="nombre"
-type="text"
-placeholder="Nombre completo"
-required>
-
-</div>
-
-
-
-
-<div class="campo">
-
-<label>
-📧 Correo
-</label>
-
-<input 
-id="correo"
-type="email"
-placeholder="correo@ejemplo.com"
-required>
-
-</div>
-
-
-
-
-<div class="campo">
-
-<label>
-📱 Teléfono
-</label>
-
-<input 
-id="telefono"
-type="tel"
-placeholder="6620000000"
-required>
-
-</div>
-
-
-
-
-<div class="campo">
-
-<label>
-📂 Tipo de reporte
-</label>
-
-
-<select id="tipo">
-
-
-<option>❓ Otro</option>
-
-<option>🚰 Agua</option>
-
-<option>💡 Alumbrado</option>
-
-<option>🚨 Seguridad</option>
-
-<option>🔊 Ruido</option>
-
-<option>🗑 Limpieza</option>
-
-
-</select>
-
-
-</div>
-
-
-
-
-<div class="campo">
-
-<label>
-📍 Ubicación
-</label>
-
-<input
-id="ubicacion"
-type="text"
-placeholder="Calle y número de casa">
-
-
-</div>
-
-
-
-
-
-<div class="campo">
-
-<label>
-⚠️ Prioridad
-</label>
-
-
-<div class="prioridad">
-
-
-<label>
-<input type="radio" name="prioridad" value="Baja">
-Baja
-</label>
-
-
-<label>
-<input type="radio" name="prioridad" value="Media" checked>
-Media
-</label>
-
-
-<label>
-<input type="radio" name="prioridad" value="Urgente">
-Urgente
-</label>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-<div class="campo">
-
-<label>
-📝 Descripción
-</label>
-
-
-<textarea
-id="descripcion"
-placeholder="Describe el problema..."
-required></textarea>
-
-
-</div>
-
-
-
-
-
-<button 
-type="button"
-class="btn"
-onclick="enviarReporte()">
-
-📨 Enviar reporte
-
-</button>
-
-
-
-</form>
-
-
-
-
-<div class="info">
-
-<strong>Importante:</strong>
-
-<br>
-
-Los reportes de ruido deben realizarse primero al 911.
-Una vez obtenido el folio, el comité puede apoyar con seguimiento.
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<script>
-
-
-const URL_APP_SCRIPT = 
-"https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
-
-
-
-
-
-function enviarReporte(){
-
-
-
-let datos={
-
-
-nombre:
-document.getElementById("nombre").value,
-
-
-correo:
-document.getElementById("correo").value,
-
-
-telefono:
-document.getElementById("telefono").value,
-
-
-tipo:
-document.getElementById("tipo").value,
-
-
-ubicacion:
-document.getElementById("ubicacion").value,
-
-
-descripcion:
-document.getElementById("descripcion").value,
-
-
-prioridad:
-document.querySelector(
-'input[name="prioridad"]:checked'
-)?.value || "Media"
-
-
-
-};
-
-
-
-
-
-fetch(URL_APP_SCRIPT,{
-
-
-method:"POST",
-
-
-headers:{
-
-
-"Content-Type":"application/json"
-
-
-},
-
-
-body:JSON.stringify(datos)
-
-
-})
-
-
-
-.then(res=>res.json())
-
-
-.then(resultado=>{
-
-
-
-if(resultado.estado==="ok"){
-
-
-alert(
-
-"✅ Reporte recibido\n\n"+
-"Folio: "+resultado.folio+
-"\n\nEl comité dará seguimiento."
-
-);
-
-
-
-document.getElementById("formReporte").reset();
-
-
-
-}else{
-
-
-alert(
-"Error: "+resultado.mensaje
-);
-
-
-}
-
-
-
-})
-
-
-
-.catch(error=>{
-
-
-console.error(error);
-
-
-alert(
-"❌ No fue posible enviar el reporte."
-);
-
-
-});
-
-
-
-}
-
-
-
-</script>
-
-
-</body>
-
-</html>
