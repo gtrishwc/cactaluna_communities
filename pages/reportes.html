@@ -456,6 +456,9 @@ Categoría
 
 <select id="tipo">
 
+<option>
+🚨 Seguridad
+</option>
     
 <option>
 🚰 Agua
@@ -465,9 +468,6 @@ Categoría
 ❓ Otro
 </option>
 
-<option>
-🚨 Seguridad
-</option>
 
 <option>
 🔊 Ruido
@@ -742,16 +742,22 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 
 <script>
 
-const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
+```javascript
+const URL_APP_SCRIPT = 
+"https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
-function enviarReporte(){
+
+async function enviarReporte(){
 
 const boton = document.getElementById("btnEnviar");
 
 boton.disabled = true;
 boton.innerHTML = "⏳ Procesando reporte...";
 
-let prioridadSeleccionada = document.querySelector('input[name="prioridad"]:checked');
+
+let prioridadSeleccionada = 
+document.querySelector('input[name="prioridad"]:checked');
+
 
 let datos = {
 
@@ -767,59 +773,99 @@ descripcion: document.getElementById("descripcion").value,
 
 ubicacion: document.getElementById("ubicacion").value,
 
-prioridad: prioridadSeleccionada
-? prioridadSeleccionada.value
+prioridad: prioridadSeleccionada 
+? prioridadSeleccionada.value 
 : "Normal"
 
 };
 
-console.log("Enviando:", datos);
+
+console.log("Enviando:",datos);
+
+
 
 fetch(URL_APP_SCRIPT,{
 
 method:"POST",
 
+headers:{
+"Content-Type":"application/json"
+},
+
 body:JSON.stringify(datos)
 
 })
 
+
 .then(respuesta=>respuesta.text())
+
 
 .then(texto=>{
 
-console.log("Respuesta servidor:",texto);
+
+console.log("Respuesta:",texto);
+
+
 
 let resultado={};
+
 
 try{
 
 resultado=JSON.parse(texto);
 
-}catch(e){}
+}catch(e){
+
+console.log("Respuesta no JSON");
+
+}
+
+
 
 alert(
-"✅ Reporte enviado correctamente."
+"✅ Reporte enviado correctamente.\n\n"+
+"El Comité dará seguimiento a tu solicitud."
 );
+
+
 
 document.getElementById("formReporte").reset();
 
+
+
 boton.disabled=false;
+
 boton.innerHTML="📨 Enviar reporte";
+
+
 
 })
 
+
 .catch(error=>{
+
 
 console.error(error);
 
-alert("❌ Error de conexión con el servidor");
+
+
+alert(
+"❌ Error al enviar el reporte."
+);
+
+
 
 boton.disabled=false;
+
 boton.innerHTML="📨 Enviar reporte";
+
 
 });
 
+
 }
+```
+
 
 </script>
 
