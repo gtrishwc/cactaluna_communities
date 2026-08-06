@@ -255,3 +255,667 @@ textarea{
 
 
 <body>
+
+    <!-- NAVEGACION APP -->
+
+<nav class="app-nav">
+
+<a href="../index.html">
+🏠 Inicio
+</a>
+
+<a href="novedades.html">
+📢 Avisos
+</a>
+
+<a href="reportes.html" class="activo">
+📝 Reportes
+</a>
+
+<a href="comunidad.html">
+👥 Comunidad
+</a>
+
+</nav>
+
+
+
+
+<div class="main">
+
+
+
+<header class="topbar">
+
+
+<div>
+
+<h1>
+📝 Crear Reporte
+</h1>
+
+<p>
+Real de Palmas • Atención a residentes
+</p>
+
+</div>
+
+
+
+
+<div class="profile">
+
+
+<div class="avatar">
+
+G
+
+</div>
+
+
+<div>
+
+<strong>Giovanna</strong>
+
+<br>
+
+Residente
+
+</div>
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+<div class="panel">
+
+
+<h2>
+Nuevo reporte
+</h2>
+
+
+
+
+
+<form id="formReporte">
+
+
+
+
+
+<div class="campo">
+
+<label>
+👤 Nombre
+</label>
+
+
+<input
+
+type="text"
+
+id="nombre"
+
+placeholder="Nombre del residente"
+
+required
+
+>
+
+
+</div>
+
+
+
+
+
+
+<div class="campo">
+
+<label>
+📧 Correo electrónico
+</label>
+
+
+<input
+
+type="email"
+
+id="correo"
+
+placeholder="correo@ejemplo.com"
+
+required
+
+>
+
+
+</div>
+
+
+
+
+
+
+<div class="campo">
+
+<label>
+📱 Teléfono
+</label>
+
+
+<input
+
+type="tel"
+
+id="telefono"
+
+placeholder="6620000000"
+
+required
+
+>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="campo">
+
+<label>
+Categoría
+</label>
+
+
+
+<select id="tipo">
+
+
+<option>
+❓ Otro
+</option>
+
+
+<option>
+🚰 Agua
+</option>
+
+
+<option>
+💡 Alumbrado
+</option>
+
+
+<option>
+🚨 Seguridad
+</option>
+
+
+<option>
+🔊 Ruido
+</option>
+
+
+<option>
+🗑 Limpieza
+</option>
+
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="campo">
+
+
+<label>
+
+📝 Descripción
+
+
+</label>
+
+
+<p style="font-size:14px;color:#555;">
+
+
+<strong>
+¿Problemas con ruido?
+</strong>
+
+Favor de primero dialogar con su vecino.
+
+Si el problema persiste, reporte al
+
+<strong>911</strong>
+
+y comparta el número de folio para darle seguimiento.
+
+
+</p>
+
+
+
+<textarea
+
+id="descripcion"
+
+placeholder="Describe el problema..."
+
+required
+
+></textarea>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="campo">
+
+
+<label>
+
+📷 Evidencia fotográfica
+
+</label>
+
+
+<input
+
+type="file"
+
+id="foto"
+
+accept="image/*"
+
+>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="campo">
+
+
+<label>
+
+📍 Ubicación
+
+</label>
+
+
+
+<input
+
+type="text"
+
+id="ubicacion"
+
+placeholder="Ejemplo: Calle Palma Real #25"
+
+>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="campo">
+
+
+<label>
+
+Prioridad
+
+</label>
+
+
+
+<div class="prioridad">
+
+
+
+<label>
+
+<input
+
+type="radio"
+
+name="prioridad"
+
+value="Baja"
+
+>
+
+
+Baja
+
+</label>
+
+
+
+
+
+<label>
+
+<input
+
+type="radio"
+
+name="prioridad"
+
+value="Media"
+
+checked
+
+>
+
+
+Media
+
+</label>
+
+
+
+
+
+<label>
+
+<input
+
+type="radio"
+
+name="prioridad"
+
+value="Urgente"
+
+>
+
+
+Urgente
+
+</label>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<button
+
+type="button"
+
+class="btn"
+
+onclick="enviarReporte()"
+
+>
+
+
+📨 Enviar reporte
+
+
+</button>
+
+
+
+
+
+</form>
+
+
+
+
+
+
+<div class="info">
+
+
+<strong>
+Importante:
+</strong>
+
+
+<br><br>
+
+
+Los reportes de ruido deben realizarse directamente al
+
+<strong>911</strong>.
+
+Una vez obtenido el número de folio, el Comité puede apoyar con seguimiento ante las autoridades correspondientes.
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+    <script>
+
+
+const URL_APP_SCRIPT = 
+"https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
+
+
+
+function enviarReporte(){
+
+
+
+let prioridadSeleccionada = 
+document.querySelector('input[name="prioridad"]:checked');
+
+
+
+let datos = {
+
+
+nombre:
+document.getElementById("nombre").value,
+
+
+correo:
+document.getElementById("correo").value,
+
+
+telefono:
+document.getElementById("telefono").value,
+
+
+tipo:
+document.getElementById("tipo").value,
+
+
+descripcion:
+document.getElementById("descripcion").value,
+
+
+ubicacion:
+document.getElementById("ubicacion").value,
+
+
+prioridad:
+prioridadSeleccionada 
+? prioridadSeleccionada.value 
+: "Normal"
+
+
+};
+
+
+
+
+
+console.log("Datos enviados:", datos);
+
+
+
+
+
+fetch(URL_APP_SCRIPT, {
+
+
+method:"POST",
+
+
+headers:{
+
+
+"Content-Type":"application/json"
+
+
+},
+
+
+body:JSON.stringify(datos)
+
+
+})
+
+
+
+.then(respuesta => respuesta.json())
+
+
+
+.then(resultado => {
+
+
+
+console.log("Respuesta Apps Script:", resultado);
+
+
+
+
+if(resultado.ok === true || resultado.estado === "ok"){
+
+
+
+alert(
+
+"✅ Reporte recibido correctamente\n\n" +
+
+"📄 Folio: " + resultado.folio + "\n\n" +
+
+"El Comité dará seguimiento a tu solicitud."
+
+);
+
+
+
+document.getElementById("formReporte").reset();
+
+
+
+}
+
+
+
+else{
+
+
+
+alert(
+
+"⚠️ Ocurrió un problema:\n\n" +
+
+(resultado.error || resultado.mensaje)
+
+);
+
+
+
+}
+
+
+
+})
+
+
+
+.catch(error => {
+
+
+
+console.error("Error:", error);
+
+
+
+alert(
+
+"❌ No fue posible enviar el reporte."
+
+);
+
+
+
+});
+
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
