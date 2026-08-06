@@ -18,57 +18,38 @@ body{
     margin:0;
 }
 
-
 .contenedor{
-
     max-width:1000px;
     margin:auto;
     padding:40px 20px;
-
 }
-
 
 .titulo{
-
     text-align:center;
     margin-bottom:40px;
-
 }
-
 
 .titulo h1{
-
     color:#1e7a4d;
-
 }
 
-
 .cards{
-
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
-
 }
 
-
 .card{
-
     background:white;
     border-radius:18px;
     padding:30px;
     text-align:center;
     box-shadow:0 8px 25px rgba(0,0,0,.08);
-
 }
-
 
 .icono{
-
     font-size:50px;
-
 }
-
 
 button{
 
@@ -84,7 +65,6 @@ button{
     box-shadow:0 6px 15px rgba(46,139,87,.25);
 
 }
-
 
 button:hover{
 
@@ -104,36 +84,37 @@ button:hover{
 }
 
 
-/* BOTON CERRAR MODAL */
+/* CERRAR MODAL */
 
 .cerrarModal{
 
     position:absolute;
-    top:10px;
+    top:15px;
     right:15px;
 
-    background:none;
-    color:#777;
+    background:#eee;
+    color:#555;
 
     border:none;
-    padding:5px;
+    width:35px;
+    height:35px;
+
+    border-radius:50%;
+
+    padding:0;
     margin:0;
 
-    font-size:22px;
-
-    box-shadow:none;
+    font-size:18px;
 
 }
-
 
 .cerrarModal:hover{
 
-    background:none;
-    color:#2E8B57;
+    background:#2E8B57;
+    color:white;
     transform:none;
 
 }
-
 
 </style>
 
@@ -151,11 +132,10 @@ button:hover{
 <h1>💰 Cuotas Vecinales</h1>
 
 <p>
-La cuota vecinal voluntaria tiene como objetivo contar con un fondo para mantenimiento, limpieza, seguridad y mejoras de nuestra comunidad.
+La cuota vecinal voluntaria tiene como objetivo crear un fondo para el mantenimiento, limpieza de la cerrada, seguridad, mejoras de la comunidad y apoyo con servicios necesarios previo a la entrega de nuestra cerrada.
 </p>
 
 </div>
-
 
 
 <div class="cards">
@@ -179,9 +159,7 @@ Consulta de forma segura la información necesaria para realizar tu transferenci
 Obtener información
 </button>
 
-
 </div>
-
 
 
 <div class="card">
@@ -190,328 +168,15 @@ Obtener información
 
 <h2>Enviar Comprobante</h2>
 
-
 <p>
 Después de realizar tu transferencia, envía tu comprobante al comité junto con tu nombre, calle y número de casa.
 </p>
 
-
 <button onclick="enviarWhatsapp()">
-
 Enviar por WhatsApp
-
 </button>
 
-
 </div>
 
 
 </div>
-
-
-
-
-<div class="aviso">
-
-
-<strong>📌 Importante al realizar tu transferencia</strong>
-
-
-<p>
-Al momento de realizar tu transferencia, favor de incluir en el concepto o referencia:
-</p>
-
-
-<ul>
-
-<li>Nombre del propietario o residente</li>
-
-<li>Número de casa</li>
-
-<li>Calle</li>
-
-</ul>
-
-
-<p>
-Gracias por contribuir al mantenimiento y mejora de nuestra comunidad.
-</p>
-
-
-</div>
-
-
-
-<p>
-
-🔒 Los datos del destinatario no se encuentran publicados en esta página. La información de pago se consulta de forma segura desde nuestro sistema.
-
-</p>
-
-
-
-</div>
-
-
-
-
-
-<!-- MODAL -->
-
-<div id="modalPago" 
-style="
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.6);
-justify-content:center;
-align-items:center;
-z-index:9999;
-">
-
-
-<div style="
-background:white;
-border-radius:20px;
-padding:30px;
-max-width:500px;
-width:90%;
-position:relative;
-">
-
-
-<button onclick="cerrarModal()" class="cerrarModal">
-
-✕
-
-</button>
-
-
-
-<h2 style="color:#2E8B57;text-align:center;">
-
-💳 Información de Pago
-
-</h2>
-
-
-
-<p>
-<strong>Banco:</strong>
-<span id="banco"></span>
-</p>
-
-
-
-<p>
-<strong>Titular:</strong><br>
-<span id="titular"></span>
-</p>
-
-<button onclick="copiarTitular()">
-👤 Copiar titular
-</button>
-
-
-
-<p>
-
-<strong>Número de cuenta:</strong>
-
-<br>
-
-<span id="cuenta" style="font-size:20px;font-weight:bold;color:#1e7a4d;"></span>
-
-</p>
-
-
-
-<p>
-
-<strong>Aportación sugerida:</strong>
-
-$<span id="cuota"></span> MXN
-
-</p>
-
-
-
-<p id="mensaje"></p>
-
-
-
-<button onclick="copiarCuenta()">
-
-📋 Copiar número de cuenta
-
-</button>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<script>
-
-
-const URL_APP = "https://script.google.com/macros/s/AKfycbyN1sWJhIwe_HEMBWsMz07c9esLnuU7_XZIM2YENPG4z0EhEIaQM_NtbCQUJahRM1XVzw/exec";
-
-
-let datosPago = {};
-
-
-
-window.onload = function(){
-
-
-document.getElementById("btnPago")
-.addEventListener("click", obtenerPago);
-
-
-};
-
-
-
-async function obtenerPago(){
-
-
-try{
-
-
-const respuesta = await fetch(URL_APP + "?accion=obtenerPago");
-
-
-const datos = await respuesta.json();
-
-
-datosPago = datos;
-
-
-
-document.getElementById("banco").textContent = datos.Banco;
-
-document.getElementById("titular").textContent = datos.Titular;
-
-document.getElementById("cuenta").textContent = datos.Cuenta;
-
-document.getElementById("cuota").textContent = datos.Cuota;
-
-document.getElementById("mensaje").textContent = datos.Mensaje;
-
-
-
-document.getElementById("modalPago").style.display="flex";
-
-
-}
-
-
-catch(error){
-
-
-alert("No fue posible obtener la información de pago.");
-
-
-console.error(error);
-
-
-}
-
-
-}
-
-
-
-
-function cerrarModal(){
-
-
-document.getElementById("modalPago").style.display="none";
-
-
-}
-
-
-
-
-document.getElementById("modalPago").onclick=function(e){
-
-
-if(e.target.id==="modalPago"){
-
-cerrarModal();
-
-}
-
-
-};
-
-
-
-
-
-
-function copiarCuenta(){
-
-
-navigator.clipboard.writeText(datosPago.Cuenta);
-
-
-alert("✅ Número de cuenta copiado.");
-
-
-}
-
-    function copiarTitular(){
-
-    navigator.clipboard.writeText(datosPago.Titular);
-
-    alert("✅ Titular copiado.");
-
-}
-
-
-
-function enviarWhatsapp(){
-
-
-const texto = 
-`Hola, buen día.
-
-Comparto mi comprobante de la aportación voluntaria de la cuota vecinal de Real de Palmas Etapa 1.
-
-Nombre:
-Calle:
-Número de casa:
-
-Gracias.`;
-
-
-
-window.open(
-
-"https://wa.me/5216453319616?text="+encodeURIComponent(texto),
-
-"_blank"
-
-);
-
-
-}
-
-
-
-</script>
-
-
-</body>
-
-</html>
