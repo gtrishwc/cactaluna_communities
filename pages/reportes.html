@@ -748,7 +748,12 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
 
-function enviarReporte(){
+async function enviarReporte(){
+
+const boton = document.getElementById("btnEnviar");
+
+boton.disabled = true;
+boton.innerHTML = "⏳ Procesando reporte...";
 
 
 let prioridadSeleccionada = document.querySelector('input[name="prioridad"]:checked');
@@ -784,6 +789,10 @@ fetch(URL_APP_SCRIPT, {
 
 method:"POST",
 
+headers:{
+"Content-Type":"application/json"
+},
+
 body:JSON.stringify(datos)
 
 })
@@ -799,32 +808,23 @@ console.log("Respuesta servidor:", texto);
 
 
 
-let resultado;
+let resultado = {};
 
-
-
-try {
+try{
 
 resultado = JSON.parse(texto);
 
-}
+}catch(e){
 
-catch(e){
-
-resultado = {};
+console.log("Respuesta no JSON");
 
 }
 
-
-
-if(resultado.ok === true || resultado.estado === "ok"){
 
 
 alert(
-"✅ Reporte recibido correctamente\n\n"+
-"📄 Folio: "+
-(resultado.folio || "Generado")+
-"\n\nEl Comité dará seguimiento a tu solicitud."
+"✅ Reporte enviado correctamente.\n\n"+
+"El Comité dará seguimiento a tu solicitud."
 );
 
 
@@ -832,26 +832,9 @@ alert(
 document.getElementById("formReporte").reset();
 
 
+boton.disabled = false;
 
-}
-
-else{
-
-
-// Si llegó aquí pero el correo salió,
-// mostramos confirmación en lugar de error
-
-alert(
-"✅ Reporte enviado correctamente."
-);
-
-
-
-document.getElementById("formReporte").reset();
-
-
-
-}
+boton.innerHTML = "📨 Enviar reporte";
 
 
 
@@ -861,16 +844,21 @@ document.getElementById("formReporte").reset();
 .catch(error=>{
 
 
-console.error(error);
+console.error("Error:",error);
 
 
 alert(
-"❌ Error de conexión con el servidor"
+"❌ Error al enviar el reporte."
 );
 
 
-});
 
+boton.disabled = false;
+
+boton.innerHTML = "📨 Enviar reporte";
+
+
+});
 
 
 }
