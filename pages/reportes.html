@@ -1,36 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Reportes | Cacta Luna Communities</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<style>
+
+body{
+    background:#f5f7fa;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+.contenedor{
+
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px;
+
+}
+
+
+.header{
+
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    text-align:center;
+
+}
+
+
+.header h1{
+
+    color:#1e7a4d;
+
+}
+
+
+
+.panel{
+
+    background:white;
+    margin-top:25px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.campo{
+
+    margin-bottom:18px;
+
+}
+
+
+
+label{
+
+    display:block;
+    font-weight:bold;
+    margin-bottom:7px;
+
+}
+
+
+
+input,
+select,
+textarea{
+
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    box-sizing:border-box;
+    font-size:15px;
+
+}
+
+
+
+textarea{
+
+    height:120px;
+    resize:none;
+
+}
+
+
+
+.btn{
+
+    width:100%;
+    background:#2E8B57;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+
+}
+
+
+
+.btn:hover{
+
+    background:#1e7a4d;
+
+}
+
+
+
+.prioridad{
+
+    display:flex;
+    gap:20px;
+
+}
+
+
+.prioridad label{
+
+    font-weight:normal;
+
+}
+
+
+
+.info{
+
+    margin-top:20px;
+    background:#fff8e6;
+    border-left:5px solid #ffc107;
+    padding:15px;
+    border-radius:10px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="contenedor">
+
+
+<div class="header">
+
+<h1>📝 Crear Reporte</h1>
+
+<p>
+Real de Palmas Etapa 1<br>
+Atención a residentes
+</p>
+
+</div>
+
+
+
+
+<div class="panel">
+
+
+<form id="formReporte">
+
+
+<div class="campo">
+
+<label>
+👤 Nombre
+</label>
+
+<input 
+id="nombre"
+type="text"
+placeholder="Nombre completo"
+required>
+
+</div>
+
+
+
+
+<div class="campo">
+
+<label>
+📧 Correo
+</label>
+
+<input 
+id="correo"
+type="email"
+placeholder="correo@ejemplo.com"
+required>
+
+</div>
+
+
+
+
+<div class="campo">
+
+<label>
+📱 Teléfono
+</label>
+
+<input 
+id="telefono"
+type="tel"
+placeholder="6620000000"
+required>
+
+</div>
+
+
+
+
+<div class="campo">
+
+<label>
+📂 Tipo de reporte
+</label>
+
+
+<select id="tipo">
+
+
+<option>❓ Otro</option>
+
+<option>🚰 Agua</option>
+
+<option>💡 Alumbrado</option>
+
+<option>🚨 Seguridad</option>
+
+<option>🔊 Ruido</option>
+
+<option>🗑 Limpieza</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+<div class="campo">
+
+<label>
+📍 Ubicación
+</label>
+
+<input
+id="ubicacion"
+type="text"
+placeholder="Calle y número de casa">
+
+
+</div>
+
+
+
+
+
+<div class="campo">
+
+<label>
+⚠️ Prioridad
+</label>
+
+
+<div class="prioridad">
+
+
+<label>
+<input type="radio" name="prioridad" value="Baja">
+Baja
+</label>
+
+
+<label>
+<input type="radio" name="prioridad" value="Media" checked>
+Media
+</label>
+
+
+<label>
+<input type="radio" name="prioridad" value="Urgente">
+Urgente
+</label>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="campo">
+
+<label>
+📝 Descripción
+</label>
+
+
+<textarea
+id="descripcion"
+placeholder="Describe el problema..."
+required></textarea>
+
+
+</div>
+
+
+
+
+
+<button 
+type="button"
+class="btn"
+onclick="enviarReporte()">
+
+📨 Enviar reporte
+
+</button>
+
+
+
+</form>
+
+
+
+
+<div class="info">
+
+<strong>Importante:</strong>
+
+<br>
+
+Los reportes de ruido deben realizarse primero al 911.
+Una vez obtenido el folio, el comité puede apoyar con seguimiento.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
 <script>
 
-const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
+
+const URL_APP_SCRIPT = 
+"https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
+
+
+
 
 
 function enviarReporte(){
 
 
-let datos = {
 
-nombre: document.getElementById("nombre").value,
+let datos={
 
-correo: document.getElementById("correo").value,
 
-telefono: document.getElementById("telefono").value,
+nombre:
+document.getElementById("nombre").value,
 
-tipo: document.getElementById("tipo").value,
 
-descripcion: document.getElementById("descripcion").value,
+correo:
+document.getElementById("correo").value,
 
-ubicacion: document.getElementById("ubicacion").value,
 
-prioridad: document.querySelector('input[name="prioridad"]:checked')?.value || "Normal"
+telefono:
+document.getElementById("telefono").value,
+
+
+tipo:
+document.getElementById("tipo").value,
+
+
+ubicacion:
+document.getElementById("ubicacion").value,
+
+
+descripcion:
+document.getElementById("descripcion").value,
+
+
+prioridad:
+document.querySelector(
+'input[name="prioridad"]:checked'
+)?.value || "Media"
+
+
 
 };
 
 
 
-console.log("Datos enviados:", datos);
 
 
-
-fetch(URL_APP_SCRIPT, {
+fetch(URL_APP_SCRIPT,{
 
 
 method:"POST",
@@ -38,7 +440,9 @@ method:"POST",
 
 headers:{
 
+
 "Content-Type":"application/json"
+
 
 },
 
@@ -49,32 +453,28 @@ body:JSON.stringify(datos)
 })
 
 
-.then(respuesta => respuesta.json())
+
+.then(res=>res.json())
 
 
-.then(resultado => {
-
-
-console.log("Respuesta:", resultado);
+.then(resultado=>{
 
 
 
-if(resultado.estado === "ok"){
+if(resultado.estado==="ok"){
 
 
 alert(
 
-"✅ Reporte recibido correctamente\n\n" +
-
-"Folio: " + resultado.folio + "\n\n" +
-
-"El comité dará seguimiento a tu solicitud."
+"✅ Reporte recibido\n\n"+
+"Folio: "+resultado.folio+
+"\n\nEl comité dará seguimiento."
 
 );
 
 
 
-document.querySelector("form").reset();
+document.getElementById("formReporte").reset();
 
 
 
@@ -82,11 +482,7 @@ document.querySelector("form").reset();
 
 
 alert(
-
-"⚠️ No se pudo registrar el reporte:\n" +
-
-resultado.mensaje
-
+"Error: "+resultado.mensaje
 );
 
 
@@ -97,23 +493,29 @@ resultado.mensaje
 })
 
 
-.catch(error => {
+
+.catch(error=>{
 
 
-console.error("Error:",error);
+console.error(error);
 
 
 alert(
-
-"❌ Error al enviar el reporte. Intenta nuevamente."
-
+"❌ No fue posible enviar el reporte."
 );
 
 
 });
 
 
+
 }
 
 
+
 </script>
+
+
+</body>
+
+</html>
