@@ -800,11 +800,13 @@ body:JSON.stringify(datos)
 .then(texto => {
 
 
+alert("Respuesta del servidor:\n\n" + texto);
+
+
 console.log("Respuesta cruda:", texto);
 
 
-
-let resultado = JSON.parse(texto);
+})
 
 
 
