@@ -748,7 +748,7 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 
 </div>
 
-    <script>
+  <script>
 
 const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
@@ -781,43 +781,44 @@ prioridad: prioridadSeleccionada
 
 
 
-console.log(datos);
+console.log("Enviando:", datos);
 
 
 
 fetch(URL_APP_SCRIPT, {
 
-
 method:"POST",
-
 
 body:JSON.stringify(datos)
 
-
 })
 
 
-
-.then(function(respuesta){
-
-return respuesta.json();
-
-})
+.then(respuesta => respuesta.text())
 
 
+.then(texto => {
 
-.then(function(resultado){
 
-
-console.log(resultado);
+console.log("Respuesta cruda:", texto);
 
 
 
-if(resultado.ok){
+let resultado = JSON.parse(texto);
+
+
+
+console.log("Resultado:", resultado);
+
+
+
+if(resultado.ok === true || resultado.estado === "ok"){
 
 
 alert(
-"✅ Reporte recibido\n\nFolio: "+resultado.folio
+"✅ Reporte recibido correctamente\n\n"+
+"📄 Folio: "+
+(resultado.folio || "Generado")
 );
 
 
@@ -830,25 +831,26 @@ else{
 
 
 alert(
-"Error: "+resultado.error
+"⚠️ Error:\n"+
+(resultado.error || resultado.mensaje || "Respuesta desconocida")
 );
 
 
 }
 
 
+
 })
 
 
-
-.catch(function(error){
+.catch(error=>{
 
 
 console.error(error);
 
 
 alert(
-"❌ Error enviando reporte"
+"❌ Error de conexión con el servidor"
 );
 
 
@@ -857,7 +859,6 @@ alert(
 
 
 }
-
 
 </script>
 
