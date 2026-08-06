@@ -799,9 +799,25 @@ prioridad: prioridadSeleccionada
 ? prioridadSeleccionada.value 
 : "Normal",
 
-imagen: imagenBase64,
+let datos = {
 
-nombreArchivo: nombreArchivo
+nombre: document.getElementById("nombre").value,
+
+correo: document.getElementById("correo").value,
+
+telefono: document.getElementById("telefono").value,
+
+tipo: document.getElementById("tipo").value,
+
+descripcion: document.getElementById("descripcion").value,
+
+ubicacion: document.getElementById("ubicacion").value,
+
+prioridad: prioridadSeleccionada 
+? prioridadSeleccionada.value 
+: "Normal"
+
+};
 
 };
 
