@@ -1181,3 +1181,23 @@ margin-bottom:10px;
 }
 
 }
+
+/* TARJETA CLIMA */
+
+.clima-card{
+    background:linear-gradient(135deg,#2E8B57,#5DBB63);
+    color:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.clima-card h3{
+    margin-top:0;
+}
+
+#climaActual{
+    font-size:18px;
+    line-height:1.8;
+    margin-top:15px;
+}
