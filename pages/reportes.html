@@ -743,15 +743,34 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 
 </div>
 
-  <script>
+<script>
 
 const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
 
+async function enviarReporte(){
+
+
+const boton = document.getElementById("btnEnviar");
+
+
+boton.disabled = true;
+boton.innerHTML = "⏳ Procesando reporte...";
+
+
+
+let prioridadSeleccionada = document.querySelector('input[name="prioridad"]:checked');
+
+
+
 const archivo = document.getElementById("foto").files[0];
 
+
 let imagenBase64 = "";
+
 let nombreArchivo = "";
+
+
 
 if(archivo){
 
@@ -762,7 +781,6 @@ nombreArchivo = archivo.name;
 }
 
 
-let prioridadSeleccionada = document.querySelector('input[name="prioridad"]:checked');
 
 
 let datos = {
@@ -791,30 +809,42 @@ nombreArchivo: nombreArchivo
 
 
 
-console.log("Enviando:", datos);
+console.log("Datos enviados:", datos);
+
+
 
 
 
 fetch(URL_APP_SCRIPT, {
 
+
 method:"POST",
 
+
 headers:{
+
+
 "Content-Type":"application/json"
+
+
 },
+
 
 body:JSON.stringify(datos)
 
+
 })
+
 
 
 .then(respuesta => respuesta.text())
 
 
+
 .then(texto => {
 
 
-console.log("Respuesta servidor:", texto);
+console.log("Respuesta Apps Script:", texto);
 
 
 
@@ -832,10 +862,32 @@ console.log("Respuesta no JSON");
 
 
 
+
+if(resultado.ok === true){
+
+
 alert(
-"✅ Reporte enviado correctamente.\n\n"+
-"El Comité dará seguimiento a tu solicitud."
+
+"✅ Reporte recibido correctamente\n\n"+
+"📄 Folio: "+resultado.folio+
+"\n\nEl Comité dará seguimiento a tu solicitud."
+
 );
+
+
+
+}else{
+
+
+alert(
+
+"✅ Reporte enviado correctamente."
+
+);
+
+
+}
+
 
 
 
@@ -851,6 +903,7 @@ boton.innerHTML = "📨 Enviar reporte";
 })
 
 
+
 .catch(error=>{
 
 
@@ -858,7 +911,9 @@ console.error("Error:",error);
 
 
 alert(
+
 "❌ Error al enviar el reporte."
+
 );
 
 
@@ -868,32 +923,47 @@ boton.disabled = false;
 boton.innerHTML = "📨 Enviar reporte";
 
 
+
 });
 
 
 }
 
+
+
+
+
 function convertirImagen(archivo){
 
+
 return new Promise((resolve)=>{
+
 
 const lector = new FileReader();
 
 
+
 lector.onload=function(){
+
 
 resolve(lector.result);
 
+
 };
+
 
 
 lector.readAsDataURL(archivo);
 
 
+
 });
 
+
 }
-      
+
+
+
 </script>
 
 
