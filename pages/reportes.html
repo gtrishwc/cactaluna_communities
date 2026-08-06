@@ -743,27 +743,15 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 
 const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
-
-async function enviarReporte(){
-
+function enviarReporte(){
 
 const boton = document.getElementById("btnEnviar");
-
 
 boton.disabled = true;
 boton.innerHTML = "⏳ Procesando reporte...";
 
-
-
 let prioridadSeleccionada = document.querySelector('input[name="prioridad"]:checked');
 
-
-
-
-
-
-
-
 let datos = {
 
 nombre: document.getElementById("nombre").value,
@@ -778,188 +766,59 @@ descripcion: document.getElementById("descripcion").value,
 
 ubicacion: document.getElementById("ubicacion").value,
 
-prioridad: prioridadSeleccionada 
-? prioridadSeleccionada.value 
-: "Normal",
-
-let datos = {
-
-nombre: document.getElementById("nombre").value,
-
-correo: document.getElementById("correo").value,
-
-telefono: document.getElementById("telefono").value,
-
-tipo: document.getElementById("tipo").value,
-
-descripcion: document.getElementById("descripcion").value,
-
-ubicacion: document.getElementById("ubicacion").value,
-
-prioridad: prioridadSeleccionada 
-? prioridadSeleccionada.value 
+prioridad: prioridadSeleccionada
+? prioridadSeleccionada.value
 : "Normal"
 
 };
 
-};
+console.log("Enviando:", datos);
 
-
-
-console.log("Datos enviados:", datos);
-
-
-
-
-
-fetch(URL_APP_SCRIPT, {
-
+fetch(URL_APP_SCRIPT,{
 
 method:"POST",
 
-
-headers:{
-
-
-"Content-Type":"application/json"
-
-
-},
-
-
 body:JSON.stringify(datos)
-
 
 })
 
+.then(respuesta=>respuesta.text())
 
+.then(texto=>{
 
-.then(respuesta => respuesta.text())
+console.log("Respuesta servidor:",texto);
 
-
-
-.then(texto => {
-
-
-console.log("Respuesta Apps Script:", texto);
-
-
-
-let resultado = {};
+let resultado={};
 
 try{
 
-resultado = JSON.parse(texto);
+resultado=JSON.parse(texto);
 
-}catch(e){
-
-console.log("Respuesta no JSON");
-
-}
-
-
-
-
-if(resultado.ok === true){
-
+}catch(e){}
 
 alert(
-
-"✅ Reporte recibido correctamente\n\n"+
-"📄 Folio: "+resultado.folio+
-"\n\nEl Comité dará seguimiento a tu solicitud."
-
-);
-
-
-
-}else{
-
-
-alert(
-
 "✅ Reporte enviado correctamente."
-
 );
-
-
-}
-
-
-
 
 document.getElementById("formReporte").reset();
 
-
-boton.disabled = false;
-
-boton.innerHTML = "📨 Enviar reporte";
-
-
+boton.disabled=false;
+boton.innerHTML="📨 Enviar reporte";
 
 })
 
-
-
 .catch(error=>{
 
+console.error(error);
 
-console.error("Error:",error);
+alert("❌ Error de conexión con el servidor");
 
-
-alert(
-
-"❌ Error al enviar el reporte."
-
-);
-
-
-
-boton.disabled = false;
-
-boton.innerHTML = "📨 Enviar reporte";
-
-
+boton.disabled=false;
+boton.innerHTML="📨 Enviar reporte";
 
 });
 
-
 }
-
-
-
-
-
-function convertirImagen(archivo){
-
-
-return new Promise((resolve)=>{
-
-
-const lector = new FileReader();
-
-
-
-lector.onload=function(){
-
-
-resolve(lector.result);
-
-
-};
-
-
-
-lector.readAsDataURL(archivo);
-
-
-
-});
-
-
-}
-
-
 
 </script>
 
