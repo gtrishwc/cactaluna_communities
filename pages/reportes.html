@@ -762,165 +762,78 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 
     <script>
 
-const URL_APP_SCRIPT = 
-"https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
+const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
 
-
-async function enviarReporte(){
-
-
-let prioridadSeleccionada = 
-document.querySelector('input[name="prioridad"]:checked');
+function enviarReporte(){
 
 
-
-const archivo = document.getElementById("foto").files[0];
-
-
-
-let imagenBase64 = "";
-
-let nombreArchivo = "";
-
-
-
-if(archivo){
-
-
-imagenBase64 = await convertirImagen(archivo);
-
-
-nombreArchivo = archivo.name;
-
-
-}
-
-
-
+let prioridadSeleccionada = document.querySelector('input[name="prioridad"]:checked');
 
 
 let datos = {
 
+nombre: document.getElementById("nombre").value,
 
-nombre:
-document.getElementById("nombre").value,
+correo: document.getElementById("correo").value,
 
+telefono: document.getElementById("telefono").value,
 
-correo:
-document.getElementById("correo").value,
+tipo: document.getElementById("tipo").value,
 
+descripcion: document.getElementById("descripcion").value,
 
-telefono:
-document.getElementById("telefono").value,
+ubicacion: document.getElementById("ubicacion").value,
 
-
-tipo:
-document.getElementById("tipo").value,
-
-
-descripcion:
-document.getElementById("descripcion").value,
-
-
-ubicacion:
-document.getElementById("ubicacion").value,
-
-
-prioridad:
-prioridadSeleccionada 
+prioridad: prioridadSeleccionada 
 ? prioridadSeleccionada.value 
-: "Normal",
-
-
-
-imagen:
-imagenBase64,
-
-
-nombreArchivo:
-nombreArchivo
-
+: "Normal"
 
 };
 
 
 
-
-
-console.log("Datos enviados:", datos);
-
-
-
+console.log(datos);
 
 
 
 fetch(URL_APP_SCRIPT, {
 
 
-
 method:"POST",
 
 
-
-headers:{
-
-
-"Content-Type":"application/json"
-
-
-},
-
-
-
 body:JSON.stringify(datos)
-
 
 
 })
 
 
 
+.then(function(respuesta){
+
+return respuesta.json();
+
+})
 
 
 
-.then(respuesta => respuesta.json())
+.then(function(resultado){
+
+
+console.log(resultado);
 
 
 
-
-
-
-.then(resultado => {
-
-
-
-console.log("Respuesta Apps Script:", resultado);
-
-
-
-
-
-if(resultado.ok === true){
-
+if(resultado.ok){
 
 
 alert(
-
-"✅ Reporte recibido correctamente\n\n"+
-
-"📄 Folio: "+resultado.folio+"\n\n"+
-
-"El Comité dará seguimiento a tu solicitud."
-
+"✅ Reporte recibido\n\nFolio: "+resultado.folio
 );
 
 
-
-
 document.getElementById("formReporte").reset();
-
-
 
 
 }
@@ -928,96 +841,34 @@ document.getElementById("formReporte").reset();
 else{
 
 
-
 alert(
-
-"⚠️ Error al registrar reporte:\n\n"+
-
-resultado.error
-
+"Error: "+resultado.error
 );
 
 
-
 }
-
 
 
 })
 
 
 
-
-
-.catch(error => {
-
+.catch(function(error){
 
 
 console.error(error);
 
 
-
 alert(
-
-"❌ No fue posible enviar el reporte."
-
+"❌ Error enviando reporte"
 );
 
 
-
-});
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function convertirImagen(archivo){
-
-
-
-return new Promise((resolve)=>{
-
-
-
-const lector = new FileReader();
-
-
-
-
-
-lector.onload=function(){
-
-
-
-resolve(lector.result);
-
-
-
-};
-
-
-
-
-lector.readAsDataURL(archivo);
-
-
-
 });
 
 
 
 }
-
 
 
 </script>
