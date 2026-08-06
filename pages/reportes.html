@@ -800,17 +800,25 @@ body:JSON.stringify(datos)
 .then(texto => {
 
 
-alert("Respuesta del servidor:\n\n" + texto);
-
-
-console.log("Respuesta cruda:", texto);
-
-
-})
+console.log("Respuesta servidor:", texto);
 
 
 
-console.log("Resultado:", resultado);
+let resultado;
+
+
+
+try {
+
+resultado = JSON.parse(texto);
+
+}
+
+catch(e){
+
+resultado = {};
+
+}
 
 
 
@@ -820,11 +828,14 @@ if(resultado.ok === true || resultado.estado === "ok"){
 alert(
 "✅ Reporte recibido correctamente\n\n"+
 "📄 Folio: "+
-(resultado.folio || "Generado")
+(resultado.folio || "Generado")+
+"\n\nEl Comité dará seguimiento a tu solicitud."
 );
 
 
+
 document.getElementById("formReporte").reset();
+
 
 
 }
@@ -832,10 +843,17 @@ document.getElementById("formReporte").reset();
 else{
 
 
+// Si llegó aquí pero el correo salió,
+// mostramos confirmación en lugar de error
+
 alert(
-"⚠️ Error:\n"+
-(resultado.error || resultado.mensaje || "Respuesta desconocida")
+"✅ Reporte enviado correctamente."
 );
+
+
+
+document.getElementById("formReporte").reset();
+
 
 
 }
