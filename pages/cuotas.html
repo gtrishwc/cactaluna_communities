@@ -113,7 +113,6 @@ La cuota vecinal voluntaria tiene como objetivo contar con un fondo para manteni
 Consulta de forma segura la información necesaria para realizar tu transferencia.
   
 </p>
-      <p>Espera unos segundos a que aparezca la ventana emergente</p>
 
 <button id="btnPago">
 Obtener información
@@ -260,6 +259,14 @@ const datos = await respuesta.json();
     document.getElementById("modalPago").style.display="none";
 
 }
+
+        document.getElementById("modalPago").onclick = function(e){
+
+    if(e.target.id === "modalPago"){
+        cerrarModal();
+    }
+
+};
 
 function copiarCuenta(){
 
