@@ -349,13 +349,89 @@ Una vez generado el folio, el Comité puede apoyar con seguimiento ante las auto
 
 
 </div>
+    
 <script>
 
-function toggleMenu(){
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("show");
+}
 
-document.getElementById("sidebar").classList.toggle("show");
+async function cargarClima() {
+
+    try {
+
+        const respuesta = await fetch("https://api.open-meteo.com/v1/forecast?latitude=29.123&longitude=-110.975&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code");
+
+        const datos = await respuesta.json();
+
+        let icono = "☀️";
+        let descripcion = "Soleado";
+
+        switch(datos.current.weather_code){
+
+            case 0:
+                icono = "☀️";
+                descripcion = "Despejado";
+                break;
+
+            case 1:
+            case 2:
+            case 3:
+                icono = "⛅";
+                descripcion = "Parcialmente nublado";
+                break;
+
+            case 45:
+            case 48:
+                icono = "🌫️";
+                descripcion = "Neblina";
+                break;
+
+            case 51:
+            case 53:
+            case 55:
+            case 61:
+            case 63:
+            case 65:
+                icono = "🌧️";
+                descripcion = "Lluvia";
+                break;
+
+            case 71:
+            case 73:
+            case 75:
+                icono = "❄️";
+                descripcion = "Nieve";
+                break;
+
+            case 95:
+                icono = "⛈️";
+                descripcion = "Tormenta";
+                break;
+        }
+
+        document.getElementById("climaActual").innerHTML = `
+            <div class="clima-temp">${icono} ${datos.current.temperature_2m}°C</div>
+            <div class="clima-desc">${descripcion}</div>
+
+            <div class="clima-extra">
+                <div>💧 ${datos.current.relative_humidity_2m}%</div>
+                <div>💨 ${datos.current.wind_speed_10m} km/h</div>
+            </div>
+        `;
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("climaActual").innerHTML =
+            "No fue posible obtener el clima.";
+
+    }
 
 }
+
+cargarClima();
 
 </script>
 
