@@ -748,12 +748,18 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
 
-async function enviarReporte(){
+const archivo = document.getElementById("foto").files[0];
 
-const boton = document.getElementById("btnEnviar");
+let imagenBase64 = "";
+let nombreArchivo = "";
 
-boton.disabled = true;
-boton.innerHTML = "⏳ Procesando reporte...";
+if(archivo){
+
+imagenBase64 = await convertirImagen(archivo);
+
+nombreArchivo = archivo.name;
+
+}
 
 
 let prioridadSeleccionada = document.querySelector('input[name="prioridad"]:checked');
