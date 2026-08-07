@@ -151,39 +151,38 @@ html{
 
 
 .logo-circle{
-    width:150px;
-    height:auto;
-    margin:0 auto 20px;
+
+    width:90px;
+
+    height:90px;
+
+    margin:0 auto 15px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
+    background:white;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
 }
 
 .logo-circle img{
-    width:100%;
-    height:auto;
-    display:block;
+
+    width:75px;
+
+    height:75px;
+
     object-fit:contain;
-}
 
-
-.logo h2{
-
-    margin-top:15px;
-
-    font-size:22px;
+    display:block;
 
 }
-
-
-.logo p{
-
-    opacity:.8;
-
-    font-size:14px;
-
-}
-
 
 
 /* MENU */
