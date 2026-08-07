@@ -151,27 +151,19 @@ html{
 
 
 .logo-circle{
-
-    width:70px;
-
-    height:70px;
-
-    margin:auto;
-
+    width:150px;
+    height:auto;
+    margin:0 auto 20px;
     display:flex;
-
     align-items:center;
-
     justify-content:center;
+}
 
-    background:white;
-
-    color:var(--verde-principal);
-
-    border-radius:50%;
-
-    font-size:35px;
-
+.logo-circle img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
 }
 
 
@@ -1200,16 +1192,4 @@ margin-bottom:10px;
     font-size:18px;
     line-height:1.8;
     margin-top:15px;
-}
-
-.logo-cacta {
-    text-align: center;
-    padding: 20px 10px 25px;
-}
-
-.logo-cacta img {
-    width: 150px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
 }
