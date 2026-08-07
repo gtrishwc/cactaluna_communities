@@ -151,39 +151,19 @@ html{
 
 
 .logo-circle{
+.logo-circle{
 
-    width:90px;
-
-    height:90px;
-
-    margin:0 auto 15px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:white;
-
-    border-radius:50%;
-
-    overflow:hidden;
+width:90px;
+height:90px;
+margin:0 auto 15px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:white;
+border-radius:15px;
+overflow:hidden;
 
 }
-
-.logo-circle img{
-
-    width:75px;
-
-    height:75px;
-
-    object-fit:contain;
-
-    display:block;
-
-}
-
 
 /* MENU */
 
