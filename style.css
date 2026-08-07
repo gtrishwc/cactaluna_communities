@@ -1201,3 +1201,15 @@ margin-bottom:10px;
     line-height:1.8;
     margin-top:15px;
 }
+
+.logo-cacta {
+    text-align: center;
+    padding: 20px 10px 25px;
+}
+
+.logo-cacta img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
