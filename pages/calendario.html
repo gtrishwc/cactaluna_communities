@@ -1,235 +1,610 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Agenda Comunitaria | Cacta Luna Communities</title>
+<title>Calendario | Cacta Luna Communities</title>
 
 <link rel="stylesheet" href="../style.css">
+
+<style>
+
+/* ========================= */
+/* CALENDARIO */
+/* ========================= */
+
+.calendario-contenedor{
+    max-width:900px;
+    margin:30px auto;
+    padding:20px;
+}
+
+.calendario-titulo{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.calendario-titulo h1{
+    margin-bottom:8px;
+}
+
+.selector-mes{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.selector-mes button{
+    border:none;
+    background:#4f6f52;
+    color:white;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.selector-mes button:hover{
+    opacity:.85;
+}
+
+#mesActual{
+    font-size:22px;
+    font-weight:bold;
+    min-width:180px;
+    text-align:center;
+}
+
+.calendario{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:6px;
+}
+
+.dia-semana{
+    text-align:center;
+    font-weight:bold;
+    padding:10px 4px;
+}
+
+.dia{
+    min-height:70px;
+    background:white;
+    border-radius:10px;
+    padding:8px;
+    cursor:pointer;
+    border:1px solid #e5e5e5;
+    transition:.2s;
+}
+
+.dia:hover{
+    transform:translateY(-2px);
+    box-shadow:0 3px 10px rgba(0,0,0,.10);
+}
+
+.dia.vacio{
+    background:transparent;
+    border:none;
+    cursor:default;
+}
+
+.dia.numero{
+    font-weight:bold;
+}
+
+.dia.evento{
+    background:#edf5ec;
+    border:2px solid #7b9b78;
+}
+
+.evento-pequeno{
+    display:block;
+    margin-top:5px;
+    font-size:11px;
+    line-height:1.2;
+}
+
+.evento-oficial{
+    color:#4f6f52;
+}
+
+.evento-comunidad{
+    color:#8a6d3b;
+}
+
+
+/* ========================= */
+/* DETALLE DEL EVENTO */
+/* ========================= */
+
+.detalle-evento{
+    margin-top:25px;
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.detalle-evento h3{
+    margin-top:0;
+}
+
+.sin-eventos{
+    color:#777;
+}
+
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width:600px){
+
+    .calendario-contenedor{
+        padding:10px;
+    }
+
+    .dia{
+        min-height:55px;
+        padding:5px;
+        font-size:13px;
+    }
+
+    .evento-pequeno{
+        font-size:9px;
+    }
+
+    #mesActual{
+        font-size:18px;
+    }
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<!-- NAVEGACIÓN -->
+<!-- ========================= -->
 
-<nav class="app-nav">
+<!-- MENÚ -->
+
+<!-- ========================= -->
+
+<div class="logo-circle">
+
+```
+<img src="../assets/logo-cacta-luna1.png"
+     alt="Cacta Luna Communities">
+```
+
+</div>
 
 <a href="../index.html">🏠 Inicio</a>
 
-<a href="novedades.html">📢 Avisos</a>
+<a href="#">👥 Residentes</a>
 
-<a href="reportes.html">📝 Reportes</a>
+<a href="reportes.html">
+    📝 Reportes
+</a>
 
-<a href="calendario.html" class="activo">📅 Agenda</a>
+<a href="cuotas.html">
+    💰 Cuotas
+</a>
 
-<a href="comunidad.html">👥 Comunidad</a>
+<a href="calendario.html">
+    📅 Calendario
+</a>
 
-</nav>
+<a href="#">
+    📢 Novedades
+</a>
 
+<a href="documentos.html">
+    📂 Documentos
+</a>
 
+<a href="https://wa.me/5216621665671?text=Hola,%20solicito%20apoyo%20de%20emergencia%20vecinal%20en%20Real%20de%20Palmas%20Etapa%201"
+target="_blank">
 
-<div class="main">
+```
+📲 Emergencias
+```
 
+</a>
 
-<header class="topbar">
+<!-- ========================= -->
 
-<div>
+<!-- CALENDARIO -->
 
-<h1>📅 Agenda Comunitaria</h1>
+<!-- ========================= -->
 
-<p>Eventos, actividades y fechas importantes</p>
+<main class="calendario-contenedor">
 
-</div>
+```
+<div class="calendario-titulo">
 
-<div class="profile">
+    <h1>📅 Calendario de Eventos</h1>
 
-<div class="avatar">
-G
-</div>
-
-<div>
-
-<strong>Giovanna</strong><br>
-
-Administradora
-
-</div>
-
-</div>
-
-</header>
-
-
-
-<!-- PRÓXIMO EVENTO -->
-
-<section class="evento-destacado">
-
-<div class="evento-badge">
-⭐ Próximo Evento
-</div>
-
-<h2>🧹 Campaña de Limpieza</h2>
-
-<p>
-
-📅 <strong>Sábado 15 de Agosto</strong><br>
-🕘 8:00 AM<br>
-📍 Parque Central<br>
-👥 Comité Vecinal
-
-</p>
-
-<button class="btn">
-Más información
-</button>
-
-</section>
-
-
-
-<h2 class="titulo-seccion">
-Próximos eventos
-</h2>
-
-
-
-<div class="lista-eventos">
-
-
-<div class="evento-card">
-
-<div class="evento-icono">
-🌸
-</div>
-
-<div>
-
-<h3>Día de la Madre</h3>
-
-<p>10 de Mayo</p>
-
-</div>
+    <p>
+    Fechas importantes y actividades
+    de Real de Palmas Etapa 1.
+    </p>
 
 </div>
 
 
+<!-- CAMBIO DE MES -->
 
-<div class="evento-card">
+<div class="selector-mes">
 
-<div class="evento-icono">
-👔
-</div>
+    <button onclick="mesAnterior()">‹</button>
 
-<div>
+    <div id="mesActual"></div>
 
-<h3>Día del Padre</h3>
-
-<p>Tercer domingo de Junio</p>
-
-</div>
+    <button onclick="mesSiguiente()">›</button>
 
 </div>
 
 
+<!-- CALENDARIO -->
 
-<div class="evento-card">
-
-<div class="evento-icono">
-🎈
-</div>
-
-<div>
-
-<h3>Día del Niño</h3>
-
-<p>30 de Abril</p>
-
-</div>
+<div class="calendario" id="calendario">
 
 </div>
 
 
+<!-- DETALLE -->
 
-<div class="evento-card">
+<div class="detalle-evento" id="detalleEvento">
 
-<div class="evento-icono">
-🩺
-</div>
+    <h3>📌 Eventos del día</h3>
 
-<div>
-
-<h3>Jornada de Salud</h3>
-
-<p>Próximamente</p>
+    <p class="sin-eventos">
+    Selecciona un día para consultar sus eventos.
+    </p>
 
 </div>
+```
 
-</div>
+</main>
 
+<script>
 
+/* ========================= */
+/* CONFIGURACIÓN */
+/* ========================= */
 
-<div class="evento-card">
+let fechaActual = new Date();
 
-<div class="evento-icono">
-🏛️
-</div>
-
-<div>
-
-<h3>Plática con Gobierno</h3>
-
-<p>Fecha por confirmar</p>
-
-</div>
-
-</div>
-
-
-
-<div class="evento-card">
-
-<div class="evento-icono">
-🎄
-</div>
-
-<div>
-
-<h3>Posada Navideña</h3>
-
-<p>Diciembre</p>
-
-</div>
-
-</div>
+const meses = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+];
 
 
+/* ========================= */
+/* EVENTOS */
+/* ========================= */
 
-<div class="evento-card">
+const eventos = [
 
-<div class="evento-icono">
-🇲🇽
-</div>
+    {
+        fecha:"2026-04-30",
+        titulo:"Día del Niño",
+        descripcion:"Celebración del Día del Niño.",
+        tipo:"oficial"
+    },
 
-<div>
+    {
+        fecha:"2026-05-10",
+        titulo:"Día de las Madres",
+        descripcion:"Celebración del Día de las Madres.",
+        tipo:"oficial"
+    },
 
-<h3>Día de la Independencia</h3>
+    {
+        fecha:"2026-06-21",
+        titulo:"Día del Padre",
+        descripcion:"Celebración del Día del Padre.",
+        tipo:"oficial"
+    },
 
-<p>16 de Septiembre</p>
+    {
+        fecha:"2026-09-16",
+        titulo:"Día de la Independencia de México",
+        descripcion:"Fecha oficial mexicana.",
+        tipo:"oficial"
+    },
 
-</div>
+    {
+        fecha:"2026-12-25",
+        titulo:"Navidad",
+        descripcion:"Celebración de Navidad.",
+        tipo:"oficial"
+    }
 
-</div>
+];
 
 
+/* ========================= */
+/* MOSTRAR CALENDARIO */
+/* ========================= */
 
-</div>
+function mostrarCalendario(){
 
-</div>
+    const calendario =
+        document.getElementById("calendario");
+
+    calendario.innerHTML = "";
+
+
+    const año =
+        fechaActual.getFullYear();
+
+    const mes =
+        fechaActual.getMonth();
+
+
+    document.getElementById("mesActual").textContent =
+        meses[mes] + " " + año;
+
+
+    const diasSemana = [
+        "Dom",
+        "Lun",
+        "Mar",
+        "Mié",
+        "Jue",
+        "Vie",
+        "Sáb"
+    ];
+
+
+    diasSemana.forEach(dia => {
+
+        const elemento =
+            document.createElement("div");
+
+        elemento.className =
+            "dia-semana";
+
+        elemento.textContent =
+            dia;
+
+        calendario.appendChild(elemento);
+
+    });
+
+
+    const primerDia =
+        new Date(año, mes, 1).getDay();
+
+
+    const diasMes =
+        new Date(año, mes + 1, 0).getDate();
+
+
+    /* ESPACIOS ANTES DEL PRIMER DÍA */
+
+    for(let i = 0; i < primerDia; i++){
+
+        const vacio =
+            document.createElement("div");
+
+        vacio.className =
+            "dia vacio";
+
+        calendario.appendChild(vacio);
+
+    }
+
+
+    /* DÍAS */
+
+    for(let dia = 1; dia <= diasMes; dia++){
+
+        const elemento =
+            document.createElement("div");
+
+        elemento.className =
+            "dia";
+
+
+        const numero =
+            document.createElement("div");
+
+        numero.className =
+            "numero";
+
+        numero.textContent =
+            dia;
+
+        elemento.appendChild(numero);
+
+
+        const fecha =
+            año + "-" +
+            String(mes + 1).padStart(2,"0") + "-" +
+            String(dia).padStart(2,"0");
+
+
+        const eventosDia =
+            eventos.filter(evento =>
+                evento.fecha === fecha
+            );
+
+
+        if(eventosDia.length > 0){
+
+            elemento.classList.add("evento");
+
+
+            eventosDia.forEach(evento => {
+
+                const pequeño =
+                    document.createElement("span");
+
+                pequeño.className =
+                    "evento-pequeno " +
+                    (evento.tipo === "oficial"
+                    ? "evento-oficial"
+                    : "evento-comunidad");
+
+                pequeño.textContent =
+                    "📌 " + evento.titulo;
+
+                elemento.appendChild(pequeño);
+
+            });
+
+        }
+
+
+        elemento.onclick = function(){
+
+            mostrarEventos(fecha);
+
+        };
+
+
+        calendario.appendChild(elemento);
+
+    }
+
+}
+
+
+/* ========================= */
+/* MOSTRAR EVENTOS DEL DÍA */
+/* ========================= */
+
+function mostrarEventos(fecha){
+
+    const detalle =
+        document.getElementById("detalleEvento");
+
+
+    const eventosDia =
+        eventos.filter(evento =>
+            evento.fecha === fecha
+        );
+
+
+    const fechaBonita =
+        new Date(fecha + "T00:00:00")
+        .toLocaleDateString(
+            "es-MX",
+            {
+                day:"numeric",
+                month:"long",
+                year:"numeric"
+            }
+        );
+
+
+    if(eventosDia.length === 0){
+
+        detalle.innerHTML = `
+
+            <h3>📌 ${fechaBonita}</h3>
+
+            <p class="sin-eventos">
+            No hay eventos registrados para este día.
+            </p>
+
+        `;
+
+        return;
+
+    }
+
+
+    let html = `
+        <h3>📌 ${fechaBonita}</h3>
+    `;
+
+
+    eventosDia.forEach(evento => {
+
+        html += `
+
+            <div style="margin-bottom:15px">
+
+                <strong>
+                    ${evento.tipo === "oficial"
+                    ? "🇲🇽"
+                    : "🌴"}
+                    ${evento.titulo}
+                </strong>
+
+                <p>
+                    ${evento.descripcion}
+                </p>
+
+            </div>
+
+        `;
+
+    });
+
+
+    detalle.innerHTML = html;
+
+}
+
+
+/* ========================= */
+/* CAMBIAR MES */
+/* ========================= */
+
+function mesAnterior(){
+
+    fechaActual.setMonth(
+        fechaActual.getMonth() - 1
+    );
+
+    mostrarCalendario();
+
+}
+
+
+function mesSiguiente(){
+
+    fechaActual.setMonth(
+        fechaActual.getMonth() + 1
+    );
+
+    mostrarCalendario();
+
+}
+
+
+/* ========================= */
+/* INICIAR */
+/* ========================= */
+
+mostrarCalendario();
+
+</script>
 
 </body>
 
