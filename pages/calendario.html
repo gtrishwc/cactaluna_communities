@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
-    
 
 <meta charset="UTF-8">
 
@@ -15,12 +13,12 @@
 
 <style>
 
-/* ========================= */
-/* CALENDARIO */
-/* ========================= */
+/* =========================================
+   CALENDARIO
+========================================= */
 
 .calendario-contenedor{
-    max-width:900px;
+    max-width:1000px;
     margin:30px auto;
     padding:20px;
 }
@@ -34,6 +32,39 @@
     margin-bottom:8px;
 }
 
+
+/* =========================================
+   FILTROS
+========================================= */
+
+.filtros{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+    margin:20px 0 25px;
+}
+
+.filtro{
+    border:1px solid #ddd;
+    background:white;
+    padding:8px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+.filtro.activo{
+    background:#4f6f52;
+    color:white;
+    border-color:#4f6f52;
+}
+
+
+/* =========================================
+   CAMBIO DE MES
+========================================= */
+
 .selector-mes{
     display:flex;
     justify-content:center;
@@ -46,22 +77,23 @@
     border:none;
     background:#4f6f52;
     color:white;
-    padding:8px 14px;
+    padding:8px 15px;
     border-radius:8px;
     cursor:pointer;
-    font-size:18px;
-}
-
-.selector-mes button:hover{
-    opacity:.85;
+    font-size:20px;
 }
 
 #mesActual{
     font-size:22px;
     font-weight:bold;
-    min-width:180px;
+    min-width:190px;
     text-align:center;
 }
+
+
+/* =========================================
+   GRID
+========================================= */
 
 .calendario{
     display:grid;
@@ -76,7 +108,7 @@
 }
 
 .dia{
-    min-height:70px;
+    min-height:75px;
     background:white;
     border-radius:10px;
     padding:8px;
@@ -96,34 +128,54 @@
     cursor:default;
 }
 
-.dia.numero{
+.numero{
     font-weight:bold;
 }
 
+
+/* =========================================
+   EVENTOS
+========================================= */
+
 .dia.evento{
-    background:#edf5ec;
     border:2px solid #7b9b78;
 }
 
 .evento-pequeno{
     display:block;
     margin-top:5px;
-    font-size:11px;
+    font-size:10px;
     line-height:1.2;
 }
 
-.evento-oficial{
-    color:#4f6f52;
-}
-
 .evento-comunidad{
-    color:#8a6d3b;
+    background:#eef6ec;
+}
+
+.evento-mexico{
+    background:#eef5ee;
+}
+
+.evento-usa{
+    background:#f2f2f8;
+}
+
+.evento-sep{
+    background:#fff7df;
+}
+
+.evento-laboral{
+    background:#f8eee7;
+}
+
+.evento-celebracion{
+    background:#f7edf7;
 }
 
 
-/* ========================= */
-/* DETALLE DEL EVENTO */
-/* ========================= */
+/* =========================================
+   DETALLE
+========================================= */
 
 .detalle-evento{
     margin-top:25px;
@@ -137,14 +189,50 @@
     margin-top:0;
 }
 
+.evento-detalle{
+    padding:12px;
+    margin:10px 0;
+    border-left:4px solid #7b9b78;
+    background:#f8f8f8;
+    border-radius:6px;
+}
+
+.evento-detalle strong{
+    font-size:16px;
+}
+
+.evento-detalle p{
+    margin:6px 0;
+}
+
 .sin-eventos{
     color:#777;
 }
 
 
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
+/* =========================================
+   LEYENDA
+========================================= */
+
+.leyenda{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin:20px 0;
+    font-size:13px;
+}
+
+.leyenda span{
+    padding:5px 9px;
+    border-radius:12px;
+    background:#f4f4f4;
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
 
 @media(max-width:600px){
 
@@ -153,17 +241,21 @@
     }
 
     .dia{
-        min-height:55px;
+        min-height:58px;
         padding:5px;
-        font-size:13px;
+        font-size:12px;
     }
 
     .evento-pequeno{
-        font-size:9px;
+        font-size:8px;
     }
 
     #mesActual{
         font-size:18px;
+    }
+
+    .dia-semana{
+        font-size:11px;
     }
 
 }
@@ -172,22 +264,21 @@
 
 </head>
 
+
 <body>
 
-<!-- ========================= -->
 
-<!-- MENÚ -->
-
-<!-- ========================= -->
+<!-- =========================================
+     MENÚ LATERAL
+========================================= -->
 
 <div class="logo-circle">
 
-```
-<img src="../assets/logo-cacta-luna1.png"
-     alt="Cacta Luna Communities">
-```
+    <img src="../assets/logo-cacta-luna1.png"
+         alt="Cacta Luna Communities">
 
 </div>
+
 
 <a href="../index.html">🏠 Inicio</a>
 
@@ -214,79 +305,563 @@
 </a>
 
 <a href="https://wa.me/5216621665671?text=Hola,%20solicito%20apoyo%20de%20emergencia%20vecinal%20en%20Real%20de%20Palmas%20Etapa%201"
-target="_blank">
+   target="_blank">
 
-```
-📲 Emergencias
-```
+    📲 Emergencias
 
 </a>
 
-<!-- ========================= -->
 
-<!-- CALENDARIO -->
-
-<!-- ========================= -->
+<!-- =========================================
+     CALENDARIO
+========================================= -->
 
 <main class="calendario-contenedor">
 
-```
-<div class="calendario-titulo">
 
-    <h1>📅 Calendario de Eventos</h1>
+    <div class="calendario-titulo">
 
-    <p>
-    Fechas importantes y actividades
-    de Real de Palmas Etapa 1.
-    </p>
+        <h1>📅 Calendario de Eventos</h1>
 
-</div>
+        <p>
+        Fechas importantes, celebraciones,
+        días escolares y eventos de Real de Palmas.
+        </p>
 
-
-<!-- CAMBIO DE MES -->
-
-<div class="selector-mes">
-
-    <button onclick="mesAnterior()">‹</button>
-
-    <div id="mesActual"></div>
-
-    <button onclick="mesSiguiente()">›</button>
-
-</div>
+    </div>
 
 
-<!-- CALENDARIO -->
+    <!-- =====================================
+         FILTROS
+    ====================================== -->
 
-<div class="calendario" id="calendario">
+    <div class="filtros">
 
-</div>
+        <button class="filtro activo" data-tipo="todos">
+            📅 Todos
+        </button>
+
+        <button class="filtro" data-tipo="mexico">
+            🇲🇽 México
+        </button>
+
+        <button class="filtro" data-tipo="usa">
+            🇺🇸 USA
+        </button>
+
+        <button class="filtro" data-tipo="sep">
+            🏫 SEP
+        </button>
+
+        <button class="filtro" data-tipo="laboral">
+            💼 Laboral
+        </button>
+
+        <button class="filtro" data-tipo="celebracion">
+            🎉 Celebraciones
+        </button>
+
+        <button class="filtro" data-tipo="comunidad">
+            🌴 Comunidad
+        </button>
+
+    </div>
 
 
-<!-- DETALLE -->
+    <!-- =====================================
+         CAMBIO DE MES
+    ====================================== -->
 
-<div class="detalle-evento" id="detalleEvento">
+    <div class="selector-mes">
 
-    <h3>📌 Eventos del día</h3>
+        <button onclick="mesAnterior()">‹</button>
 
-    <p class="sin-eventos">
-    Selecciona un día para consultar sus eventos.
-    </p>
+        <div id="mesActual"></div>
 
-</div>
-```
+        <button onclick="mesSiguiente()">›</button>
+
+    </div>
+
+
+    <!-- =====================================
+         LEYENDA
+    ====================================== -->
+
+    <div class="leyenda">
+
+        <span>🇲🇽 México</span>
+        <span>🇺🇸 USA</span>
+        <span>🏫 SEP</span>
+        <span>💼 Laboral</span>
+        <span>🎉 Celebración</span>
+        <span>🌴 Comunidad</span>
+
+    </div>
+
+
+    <!-- =====================================
+         CALENDARIO
+    ====================================== -->
+
+    <div class="calendario" id="calendario"></div>
+
+
+    <!-- =====================================
+         DETALLE DEL DÍA
+    ====================================== -->
+
+    <div class="detalle-evento" id="detalleEvento">
+
+        <h3>📌 Eventos del día</h3>
+
+        <p class="sin-eventos">
+            Selecciona un día para consultar sus eventos.
+        </p>
+
+    </div>
+
 
 </main>
 
+
 <script>
 
-/* ========================= */
-/* CONFIGURACIÓN */
-/* ========================= */
+
+/* =========================================================
+   🌴🌴🌴 EVENTOS DE REAL DE PALMAS 🌴🌴🌴
+
+   =========================================================
+
+   ESTA ES LA PARTE QUE TÚ PUEDES EDITAR FÁCILMENTE.
+
+   Para agregar un evento:
+
+   1. Copia uno de los ejemplos.
+   2. Cambia la fecha.
+   3. Cambia el título.
+   4. Cambia la descripción.
+   5. Cambia la hora.
+   6. Cambia el lugar.
+
+   FORMATO DE FECHA:
+
+   AAAA-MM-DD
+
+   Ejemplo:
+
+   15 de octubre de 2026
+   = 2026-10-15
+
+========================================================= */
+
+
+const eventosComunidad = [
+
+    {
+        fecha: "2026-10-15",
+        titulo: "Junta vecinal",
+        descripcion: "Reunión de vecinos de Real de Palmas Etapa 1.",
+        hora: "7:00 PM",
+        lugar: "Área común"
+    },
+
+
+    /*
+    =====================================================
+    EJEMPLO PARA COPIAR:
+
+    {
+        fecha: "2026-10-31",
+        titulo: "Halloween en la cerrada",
+        descripcion: "Actividad para niños de la comunidad.",
+        hora: "6:00 PM",
+        lugar: "Área común"
+    },
+
+    =====================================================
+    */
+
+
+    /*
+    AQUÍ PUEDES SEGUIR AGREGANDO EVENTOS
+    */
+
+];
+
+
+
+/* =========================================================
+   🇲🇽 FECHAS DE MÉXICO
+========================================================= */
+
+const eventosMexico = [
+
+    {
+        fecha: "2026-02-05",
+        titulo: "Día de la Constitución Mexicana",
+        descripcion: "Conmemoración de la Constitución de 1917.",
+        tipo: "mexico"
+    },
+
+    {
+        fecha: "2026-02-24",
+        titulo: "Día de la Bandera",
+        descripcion: "Conmemoración del Día de la Bandera de México.",
+        tipo: "mexico"
+    },
+
+    {
+        fecha: "2026-03-21",
+        titulo: "Natalicio de Benito Juárez",
+        descripcion: "Conmemoración del natalicio de Benito Juárez.",
+        tipo: "mexico"
+    },
+
+    {
+        fecha: "2026-05-05",
+        titulo: "Batalla de Puebla",
+        descripcion: "Conmemoración de la Batalla de Puebla.",
+        tipo: "mexico"
+    },
+
+    {
+        fecha: "2026-09-13",
+        titulo: "Día de los Niños Héroes",
+        descripcion: "Conmemoración histórica de México.",
+        tipo: "mexico"
+    },
+
+    {
+        fecha: "2026-09-16",
+        titulo: "Día de la Independencia de México",
+        descripcion: "Fiesta patria mexicana.",
+        tipo: "mexico"
+    },
+
+    {
+        fecha: "2026-10-12",
+        titulo: "Día de la Raza",
+        descripcion: "Conmemoración del 12 de octubre.",
+        tipo: "mexico"
+    },
+
+    {
+        fecha: "2026-11-20",
+        titulo: "Día de la Revolución Mexicana",
+        descripcion: "Conmemoración de la Revolución Mexicana.",
+        tipo: "mexico"
+    },
+
+    {
+        fecha: "2026-12-12",
+        titulo: "Día de la Virgen de Guadalupe",
+        descripcion: "Celebración tradicional mexicana.",
+        tipo: "mexico"
+    }
+
+];
+
+
+
+/* =========================================================
+   🇺🇸 FECHAS IMPORTANTES DE ESTADOS UNIDOS
+========================================================= */
+
+const eventosUSA = [
+
+    {
+        fecha: "2026-01-01",
+        titulo: "New Year's Day",
+        descripcion: "Año Nuevo en Estados Unidos.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-01-19",
+        titulo: "Martin Luther King Jr. Day",
+        descripcion: "Feriado federal de Estados Unidos.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-02-16",
+        titulo: "Presidents' Day",
+        descripcion: "Día de los Presidentes.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-05-25",
+        titulo: "Memorial Day",
+        descripcion: "Día de los Caídos.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-06-19",
+        titulo: "Juneteenth",
+        descripcion: "Feriado federal estadounidense.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-07-04",
+        titulo: "Independence Day",
+        descripcion: "Día de la Independencia de Estados Unidos.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-09-07",
+        titulo: "Labor Day",
+        descripcion: "Día del Trabajo en Estados Unidos.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-10-12",
+        titulo: "Columbus Day",
+        descripcion: "Feriado federal estadounidense.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-11-11",
+        titulo: "Veterans Day",
+        descripcion: "Día de los Veteranos.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-11-26",
+        titulo: "Thanksgiving",
+        descripcion: "Día de Acción de Gracias.",
+        tipo: "usa"
+    },
+
+    {
+        fecha: "2026-12-25",
+        titulo: "Christmas Day",
+        descripcion: "Navidad.",
+        tipo: "usa"
+    }
+
+];
+
+
+
+/* =========================================================
+   🏫 FECHAS SEP / ESCOLARES
+
+   Aquí podemos ampliar posteriormente con el calendario
+   escolar oficial completo 2026-2027.
+========================================================= */
+
+const eventosSEP = [
+
+    {
+        fecha: "2026-09-16",
+        titulo: "Suspensión de labores escolares",
+        descripcion: "Suspensión de labores docentes.",
+        tipo: "sep"
+    },
+
+    {
+        fecha: "2026-11-02",
+        titulo: "Día de Muertos",
+        descripcion: "Fecha tradicional mexicana.",
+        tipo: "sep"
+    },
+
+    {
+        fecha: "2026-11-16",
+        titulo: "Suspensión de labores escolares",
+        descripcion: "Suspensión de labores docentes.",
+        tipo: "sep"
+    },
+
+    {
+        fecha: "2026-12-25",
+        titulo: "Suspensión / periodo vacacional",
+        descripcion: "Periodo correspondiente al calendario escolar.",
+        tipo: "sep"
+    }
+
+];
+
+
+
+/* =========================================================
+   💼 DÍAS LABORALES / DESCANSO
+========================================================= */
+
+const eventosLaborales = [
+
+    {
+        fecha: "2026-02-02",
+        titulo: "Descanso obligatorio",
+        descripcion: "Día de descanso obligatorio por la conmemoración de la Constitución.",
+        tipo: "laboral"
+    },
+
+    {
+        fecha: "2026-03-16",
+        titulo: "Descanso obligatorio",
+        descripcion: "Conmemoración del natalicio de Benito Juárez.",
+        tipo: "laboral"
+    },
+
+    {
+        fecha: "2026-05-01",
+        titulo: "Día del Trabajo",
+        descripcion: "Día del Trabajo.",
+        tipo: "laboral"
+    },
+
+    {
+        fecha: "2026-09-16",
+        titulo: "Independencia de México",
+        descripcion: "Día de descanso obligatorio.",
+        tipo: "laboral"
+    },
+
+    {
+        fecha: "2026-11-16",
+        titulo: "Descanso obligatorio",
+        descripcion: "Conmemoración de la Revolución Mexicana.",
+        tipo: "laboral"
+    }
+
+];
+
+
+
+/* =========================================================
+   🎉 CELEBRACIONES
+========================================================= */
+
+const eventosCelebracion = [
+
+    {
+        fecha: "2026-01-06",
+        titulo: "Día de Reyes",
+        descripcion: "Celebración tradicional.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-02-14",
+        titulo: "San Valentín",
+        descripcion: "Día del Amor y la Amistad.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-04-05",
+        titulo: "Domingo de Pascua",
+        descripcion: "Celebración de Pascua.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-04-30",
+        titulo: "Día del Niño",
+        descripcion: "Celebración del Día del Niño.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-05-10",
+        titulo: "Día de las Madres",
+        descripcion: "Celebración del Día de las Madres.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-06-21",
+        titulo: "Día del Padre",
+        descripcion: "Celebración del Día del Padre.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-10-31",
+        titulo: "Halloween",
+        descripcion: "Celebración de Halloween.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-11-01",
+        titulo: "Día de Todos los Santos",
+        descripcion: "Celebración tradicional.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-11-02",
+        titulo: "Día de Muertos",
+        descripcion: "Tradición mexicana para recordar a nuestros seres queridos.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-12-24",
+        titulo: "Nochebuena",
+        descripcion: "Celebración de Nochebuena.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-12-25",
+        titulo: "Navidad",
+        descripcion: "Celebración de Navidad.",
+        tipo: "celebracion"
+    },
+
+    {
+        fecha: "2026-12-31",
+        titulo: "Fin de Año",
+        descripcion: "Celebración de Año Nuevo.",
+        tipo: "celebracion"
+    }
+
+];
+
+
+
+/* =========================================================
+   UNIR TODOS LOS EVENTOS
+========================================================= */
+
+const eventos = [
+
+    ...eventosMexico,
+    ...eventosUSA,
+    ...eventosSEP,
+    ...eventosLaborales,
+    ...eventosCelebracion,
+
+    ...eventosComunidad.map(evento => ({
+        ...evento,
+        tipo: "comunidad"
+    }))
+
+];
+
+
+
+/* =========================================================
+   CONFIGURACIÓN DEL CALENDARIO
+========================================================= */
 
 let fechaActual = new Date();
 
+let filtroActual = "todos";
+
+
 const meses = [
+
     "Enero",
     "Febrero",
     "Marzo",
@@ -299,56 +874,14 @@ const meses = [
     "Octubre",
     "Noviembre",
     "Diciembre"
-];
-
-
-/* ========================= */
-/* EVENTOS */
-/* ========================= */
-
-const eventos = [
-
-    {
-        fecha:"2026-04-30",
-        titulo:"Día del Niño",
-        descripcion:"Celebración del Día del Niño.",
-        tipo:"oficial"
-    },
-
-    {
-        fecha:"2026-05-10",
-        titulo:"Día de las Madres",
-        descripcion:"Celebración del Día de las Madres.",
-        tipo:"oficial"
-    },
-
-    {
-        fecha:"2026-06-21",
-        titulo:"Día del Padre",
-        descripcion:"Celebración del Día del Padre.",
-        tipo:"oficial"
-    },
-
-    {
-        fecha:"2026-09-16",
-        titulo:"Día de la Independencia de México",
-        descripcion:"Fecha oficial mexicana.",
-        tipo:"oficial"
-    },
-
-    {
-        fecha:"2026-12-25",
-        titulo:"Navidad",
-        descripcion:"Celebración de Navidad.",
-        tipo:"oficial"
-    }
 
 ];
 
 
-/* ========================= */
-/* MOSTRAR CALENDARIO */
-/* ========================= */
+
+/* =========================================================
+   MOSTRAR CALENDARIO
+========================================================= */
 
 function mostrarCalendario(){
 
@@ -370,6 +903,7 @@ function mostrarCalendario(){
 
 
     const diasSemana = [
+
         "Dom",
         "Lun",
         "Mar",
@@ -377,6 +911,7 @@ function mostrarCalendario(){
         "Jue",
         "Vie",
         "Sáb"
+
     ];
 
 
@@ -404,7 +939,7 @@ function mostrarCalendario(){
         new Date(año, mes + 1, 0).getDate();
 
 
-    /* ESPACIOS ANTES DEL PRIMER DÍA */
+    /* ESPACIOS */
 
     for(let i = 0; i < primerDia; i++){
 
@@ -448,10 +983,20 @@ function mostrarCalendario(){
             String(dia).padStart(2,"0");
 
 
-        const eventosDia =
+        let eventosDia =
             eventos.filter(evento =>
                 evento.fecha === fecha
             );
+
+
+        if(filtroActual !== "todos"){
+
+            eventosDia =
+                eventosDia.filter(evento =>
+                    evento.tipo === filtroActual
+                );
+
+        }
 
 
         if(eventosDia.length > 0){
@@ -465,13 +1010,13 @@ function mostrarCalendario(){
                     document.createElement("span");
 
                 pequeño.className =
-                    "evento-pequeno " +
-                    (evento.tipo === "oficial"
-                    ? "evento-oficial"
-                    : "evento-comunidad");
+                    "evento-pequeno evento-" +
+                    evento.tipo;
 
                 pequeño.textContent =
-                    "📌 " + evento.titulo;
+                    obtenerIcono(evento.tipo) +
+                    " " +
+                    evento.titulo;
 
                 elemento.appendChild(pequeño);
 
@@ -494,9 +1039,40 @@ function mostrarCalendario(){
 }
 
 
-/* ========================= */
-/* MOSTRAR EVENTOS DEL DÍA */
-/* ========================= */
+
+/* =========================================================
+   ICONOS
+========================================================= */
+
+function obtenerIcono(tipo){
+
+    if(tipo === "mexico")
+        return "🇲🇽";
+
+    if(tipo === "usa")
+        return "🇺🇸";
+
+    if(tipo === "sep")
+        return "🏫";
+
+    if(tipo === "laboral")
+        return "💼";
+
+    if(tipo === "celebracion")
+        return "🎉";
+
+    if(tipo === "comunidad")
+        return "🌴";
+
+    return "📌";
+
+}
+
+
+
+/* =========================================================
+   MOSTRAR EVENTOS
+========================================================= */
 
 function mostrarEventos(fecha){
 
@@ -504,10 +1080,20 @@ function mostrarEventos(fecha){
         document.getElementById("detalleEvento");
 
 
-    const eventosDia =
+    let eventosDia =
         eventos.filter(evento =>
             evento.fecha === fecha
         );
+
+
+    if(filtroActual !== "todos"){
+
+        eventosDia =
+            eventosDia.filter(evento =>
+                evento.tipo === filtroActual
+            );
+
+    }
 
 
     const fechaBonita =
@@ -515,6 +1101,7 @@ function mostrarEventos(fecha){
         .toLocaleDateString(
             "es-MX",
             {
+                weekday:"long",
                 day:"numeric",
                 month:"long",
                 year:"numeric"
@@ -529,7 +1116,7 @@ function mostrarEventos(fecha){
             <h3>📌 ${fechaBonita}</h3>
 
             <p class="sin-eventos">
-            No hay eventos registrados para este día.
+                No hay eventos registrados para este día.
             </p>
 
         `;
@@ -540,7 +1127,11 @@ function mostrarEventos(fecha){
 
 
     let html = `
-        <h3>📌 ${fechaBonita}</h3>
+
+        <h3>
+            📌 ${fechaBonita}
+        </h3>
+
     `;
 
 
@@ -548,18 +1139,28 @@ function mostrarEventos(fecha){
 
         html += `
 
-            <div style="margin-bottom:15px">
+            <div class="evento-detalle">
 
                 <strong>
-                    ${evento.tipo === "oficial"
-                    ? "🇲🇽"
-                    : "🌴"}
+                    ${obtenerIcono(evento.tipo)}
                     ${evento.titulo}
                 </strong>
 
                 <p>
                     ${evento.descripcion}
                 </p>
+
+                ${
+                    evento.hora
+                    ? `<p>⏰ <strong>Hora:</strong> ${evento.hora}</p>`
+                    : ""
+                }
+
+                ${
+                    evento.lugar
+                    ? `<p>📍 <strong>Lugar:</strong> ${evento.lugar}</p>`
+                    : ""
+                }
 
             </div>
 
@@ -573,9 +1174,10 @@ function mostrarEventos(fecha){
 }
 
 
-/* ========================= */
-/* CAMBIAR MES */
-/* ========================= */
+
+/* =========================================================
+   CAMBIAR MES
+========================================================= */
 
 function mesAnterior(){
 
@@ -599,13 +1201,44 @@ function mesSiguiente(){
 }
 
 
-/* ========================= */
-/* INICIAR */
-/* ========================= */
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+document.querySelectorAll(".filtro")
+.forEach(boton => {
+
+    boton.addEventListener("click", function(){
+
+        document
+        .querySelectorAll(".filtro")
+        .forEach(b => b.classList.remove("activo"));
+
+
+        this.classList.add("activo");
+
+
+        filtroActual =
+            this.dataset.tipo;
+
+
+        mostrarCalendario();
+
+    });
+
+});
+
+
+
+/* =========================================================
+   INICIAR
+========================================================= */
 
 mostrarCalendario();
 
 </script>
+
 
 </body>
 
