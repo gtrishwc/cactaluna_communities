@@ -112,6 +112,25 @@ body{
     padding:30px;
 }
 
+.boton-inicio{
+    display:inline-block;
+    margin-bottom:20px;
+    padding:10px 16px;
+    background:white;
+    color:var(--verde-principal);
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
+    transition:.25s;
+}
+
+.boton-inicio:hover{
+    background:var(--verde-principal);
+    color:white;
+    transform:translateX(-3px);
+}
+
 .topbar{
     display:flex;
     justify-content:space-between;
@@ -183,7 +202,7 @@ body{
 
 
 /* ==========================
-   CALENDARIO VISUAL
+   CALENDARIO
 ========================== */
 
 .calendar-card{
@@ -191,6 +210,7 @@ body{
     border-radius:18px;
     padding:25px;
     box-shadow:var(--sombra);
+    width:100%;
 }
 
 .calendar-header{
@@ -244,14 +264,11 @@ body{
     padding:8px;
     background:#fff;
     transition:.2s;
+    overflow:hidden;
 }
 
 .day:hover{
     box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
-
-.day.empty{
-    background:#fafafa;
 }
 
 .day-number{
@@ -272,28 +289,10 @@ body{
     margin-top:5px;
 }
 
-.event.mexico{
-    background:#e8f5ed;
-    color:#246b45;
-}
-
-.event.usa{
-    background:#eef1f8;
-    color:#3d527c;
-}
-
 .event.community{
     background:#fff4d8;
     color:#8a6516;
     font-weight:bold;
-}
-
-.event.laboral{
-    border-left:3px solid #777;
-}
-
-.event.celebracion{
-    border-left:3px solid #d18a00;
 }
 
 
@@ -310,7 +309,7 @@ body{
 
 
 /* ==========================
-   LISTA INFERIOR
+   EVENTO DE LA COMUNIDAD
 ========================== */
 
 .events-list{
@@ -327,7 +326,6 @@ body{
     border-left:5px solid var(--verde-principal);
     padding:18px;
     border-radius:12px;
-    margin-bottom:12px;
 }
 
 .event-card .date{
@@ -350,48 +348,177 @@ body{
 
 
 /* ==========================
-   RESPONSIVE
+   CELULAR
 ========================== */
 
 @media(max-width:800px){
+
+    body{
+        width:100%;
+        overflow-x:hidden;
+    }
 
     .sidebar{
         position:relative;
         width:100%;
         height:auto;
+        padding:15px 10px;
     }
 
-    .main{
-        margin-left:0;
-        padding:20px;
+    .logo-area{
+        margin-bottom:15px;
+    }
+
+    .logo-area img{
+        width:70px;
+        height:70px;
     }
 
     .menu{
         flex-direction:row;
         flex-wrap:wrap;
         justify-content:center;
+        gap:6px;
     }
 
     .menu a{
         font-size:13px;
+        padding:9px 10px;
+    }
+
+    .main{
+        margin-left:0;
+        padding:15px 10px;
+        width:100%;
+    }
+
+    .boton-inicio{
+        display:block;
+        width:100%;
+        text-align:center;
+        margin-bottom:15px;
     }
 
     .topbar{
         flex-direction:column;
         align-items:flex-start;
+        gap:12px;
+    }
+
+    .topbar h1{
+        font-size:25px;
     }
 
     .profile{
         align-self:flex-start;
     }
 
-    .calendar-card{
-        overflow-x:auto;
+    .filters{
+        gap:7px;
     }
 
-    .calendar-grid,
+    .filter{
+        padding:8px 10px;
+        font-size:12px;
+    }
+
+    .calendar-card{
+        width:100%;
+        padding:10px;
+        overflow:hidden;
+        border-radius:14px;
+    }
+
+    .calendar-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:5px;
+        margin-bottom:12px;
+    }
+
+    .calendar-header h2{
+        font-size:20px;
+    }
+
+    .month{
+        font-size:12px;
+    }
+
     .weekdays{
-        min-width:700px;
+        gap:2px;
+    }
+
+    .weekdays div{
+        font-size:10px;
+        padding:6px 1px;
+    }
+
+    .calendar-grid{
+        gap:2px;
+    }
+
+    .day{
+        min-height:65px;
+        padding:4px;
+        border-radius:6px;
+    }
+
+    .day-number{
+        font-size:11px;
+        margin-bottom:2px;
+    }
+
+    .event{
+        font-size:7px;
+        padding:3px;
+        margin-top:2px;
+        line-height:1.15;
+        border-radius:4px;
+    }
+
+    .events-list{
+        margin-top:18px;
+    }
+
+    .event-card{
+        padding:14px;
+    }
+
+    .event-card .title{
+        font-size:16px;
+    }
+
+}
+
+
+/* ==========================
+   CELULARES MUY PEQUEÑOS
+========================== */
+
+@media(max-width:400px){
+
+    .menu a{
+        font-size:11px;
+        padding:8px;
+    }
+
+    .filter{
+        font-size:11px;
+        padding:7px 8px;
+    }
+
+    .day{
+        min-height:58px;
+        padding:3px;
+    }
+
+    .day-number{
+        font-size:10px;
+    }
+
+    .event{
+        font-size:6.5px;
+        padding:2px;
     }
 
 }
@@ -452,12 +579,16 @@ body{
 </aside>
 
 
-
 <!-- ==========================
      CONTENIDO
 ========================== -->
 
 <main class="main">
+
+
+    <a href="index.html" class="boton-inicio">
+        ← Regresar a Inicio
+    </a>
 
 
     <div class="topbar">
@@ -486,7 +617,6 @@ body{
         </div>
 
     </div>
-
 
 
     <!-- ==========================
@@ -528,13 +658,11 @@ body{
     </div>
 
 
-
     <!-- ==========================
-         CALENDARIO
+         CALENDARIO VISUAL
     ========================== -->
 
     <section class="calendar-card">
-
 
         <div class="calendar-header">
 
@@ -546,8 +674,6 @@ body{
 
         </div>
 
-
-        <!-- DÍAS -->
 
         <div class="weekdays">
 
@@ -562,124 +688,66 @@ body{
         </div>
 
 
-        <!-- CUADRÍCULA -->
-
         <div class="calendar-grid">
 
 
-            <!-- 1 AGOSTO -->
-
             <div class="day">
-
                 <div class="day-number">1</div>
-
             </div>
 
-
-            <!-- 2 -->
-
             <div class="day">
-
                 <div class="day-number">2</div>
-
             </div>
 
-
-            <!-- 3 -->
-
             <div class="day">
-
                 <div class="day-number">3</div>
-
             </div>
 
-
-            <!-- 4 -->
-
             <div class="day">
-
                 <div class="day-number">4</div>
-
             </div>
 
-
-            <!-- 5 -->
-
             <div class="day">
-
                 <div class="day-number">5</div>
-
             </div>
 
-
-            <!-- 6 -->
-
             <div class="day">
-
                 <div class="day-number">6</div>
-
             </div>
 
-
-            <!-- 7 -->
-
             <div class="day">
-
                 <div class="day-number">7</div>
-
             </div>
 
 
-            <!-- 8 -->
-
             <div class="day">
-
                 <div class="day-number">8</div>
-
             </div>
 
-
-            <!-- 9 -->
-
             <div class="day">
-
                 <div class="day-number">9</div>
-
             </div>
 
-
-            <!-- 10 -->
-
             <div class="day">
-
                 <div class="day-number">10</div>
-
             </div>
 
-
-            <!-- 11 -->
-
             <div class="day">
-
                 <div class="day-number">11</div>
-
             </div>
-
-
-            <!-- 12 -->
 
             <div class="day">
-
                 <div class="day-number">12</div>
-
             </div>
 
 
-            <!-- 13 -->
+            <!-- EVENTO CONFIRMADO -->
 
             <div class="day highlight">
 
-                <div class="day-number">13</div>
+                <div class="day-number">
+                    13
+                </div>
 
                 <div class="event community"
                      data-tipo="comunidad">
@@ -693,165 +761,76 @@ body{
             </div>
 
 
-            <!-- 14 -->
-
             <div class="day">
-
                 <div class="day-number">14</div>
-
             </div>
 
-
-            <!-- 15 -->
-
             <div class="day">
-
                 <div class="day-number">15</div>
-
             </div>
 
-
-            <!-- 16 -->
-
             <div class="day">
-
                 <div class="day-number">16</div>
-
             </div>
 
-
-            <!-- 17 -->
-
             <div class="day">
-
                 <div class="day-number">17</div>
-
             </div>
 
-
-            <!-- 18 -->
-
             <div class="day">
-
                 <div class="day-number">18</div>
-
             </div>
 
-
-            <!-- 19 -->
-
             <div class="day">
-
                 <div class="day-number">19</div>
-
             </div>
 
-
-            <!-- 20 -->
-
             <div class="day">
-
                 <div class="day-number">20</div>
-
             </div>
 
-
-            <!-- 21 -->
-
             <div class="day">
-
                 <div class="day-number">21</div>
-
             </div>
 
-
-            <!-- 22 -->
-
             <div class="day">
-
                 <div class="day-number">22</div>
-
             </div>
 
-
-            <!-- 23 -->
-
             <div class="day">
-
                 <div class="day-number">23</div>
-
             </div>
 
-
-            <!-- 24 -->
-
             <div class="day">
-
                 <div class="day-number">24</div>
-
             </div>
 
-
-            <!-- 25 -->
-
             <div class="day">
-
                 <div class="day-number">25</div>
-
             </div>
 
-
-            <!-- 26 -->
-
             <div class="day">
-
                 <div class="day-number">26</div>
-
             </div>
 
-
-            <!-- 27 -->
-
             <div class="day">
-
                 <div class="day-number">27</div>
-
             </div>
 
-
-            <!-- 28 -->
-
             <div class="day">
-
                 <div class="day-number">28</div>
-
             </div>
 
-
-            <!-- 29 -->
-
             <div class="day">
-
                 <div class="day-number">29</div>
-
             </div>
 
-
-            <!-- 30 -->
-
             <div class="day">
-
                 <div class="day-number">30</div>
-
             </div>
 
-
-            <!-- 31 -->
-
             <div class="day">
-
                 <div class="day-number">31</div>
-
             </div>
 
 
@@ -859,15 +838,14 @@ body{
 
 
         <!-- ==========================
-             EVENTO COMUNITARIO
+             EVENTO
         ========================== -->
 
         <div class="events-list">
 
             <h3>🌴 Eventos de la comunidad</h3>
 
-            <div class="event-card"
-                 data-tipo="comunidad">
+            <div class="event-card">
 
                 <div class="date">
                     Jueves 13 de agosto de 2026 • 7:00 PM
@@ -893,7 +871,6 @@ body{
 </main>
 
 
-
 <script>
 
 function filtrar(tipo, boton){
@@ -906,34 +883,6 @@ function filtrar(tipo, boton){
     });
 
     boton.classList.add("active");
-
-
-    const eventos =
-        document.querySelectorAll("[data-tipo]");
-
-
-    eventos.forEach(function(evento){
-
-        if(tipo === "todos"){
-
-            evento.style.display = "";
-
-            return;
-
-        }
-
-
-        if(evento.dataset.tipo === tipo){
-
-            evento.style.display = "";
-
-        }else{
-
-            evento.style.display = "none";
-
-        }
-
-    });
 
 }
 
