@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,11 +31,12 @@ body{
     font-family:Arial,Helvetica,sans-serif;
     background:var(--gris);
     color:var(--texto);
+    overflow-x:hidden;
 }
 
 
 /* ==========================
-   MENÚ LATERAL
+   MENÚ
 ========================== */
 
 .sidebar{
@@ -202,7 +204,7 @@ body{
 
 
 /* ==========================
-   CALENDARIO
+   TARJETA CALENDARIO
 ========================== */
 
 .calendar-card{
@@ -218,6 +220,7 @@ body{
     justify-content:space-between;
     align-items:center;
     margin-bottom:20px;
+    gap:15px;
 }
 
 .calendar-header h2{
@@ -231,44 +234,80 @@ body{
 }
 
 
-/* DÍAS DE LA SEMANA */
+/* ==========================
+   CONTROLES DE MES
+========================== */
+
+.month-controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    gap:10px;
+}
+
+.month-button{
+    border:none;
+    background:var(--verde-principal);
+    color:white;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+    transition:.2s;
+}
+
+.month-button:hover{
+    background:var(--verde-oscuro);
+    transform:scale(1.05);
+}
+
+.month-label{
+    font-size:20px;
+    font-weight:bold;
+    color:var(--verde-principal);
+    text-align:center;
+}
+
+
+/* ==========================
+   DÍAS
+========================== */
 
 .weekdays{
     display:grid;
     grid-template-columns:repeat(7,1fr);
-    gap:6px;
-    margin-bottom:6px;
+    gap:5px;
+    margin-bottom:5px;
 }
 
 .weekdays div{
     text-align:center;
     font-weight:bold;
     color:var(--verde-principal);
-    padding:10px 4px;
+    padding:9px 3px;
     font-size:13px;
 }
-
-
-/* CUADRÍCULA */
 
 .calendar-grid{
     display:grid;
     grid-template-columns:repeat(7,1fr);
-    gap:6px;
+    gap:5px;
 }
 
 .day{
     min-height:105px;
     border:1px solid #e3ebe6;
-    border-radius:10px;
-    padding:8px;
+    border-radius:9px;
+    padding:7px;
     background:#fff;
-    transition:.2s;
     overflow:hidden;
+    position:relative;
 }
 
-.day:hover{
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
+.day.empty{
+    background:#fafcfb;
 }
 
 .day-number{
@@ -277,39 +316,111 @@ body{
     margin-bottom:5px;
 }
 
+.today{
+    border:2px solid var(--verde-principal);
+}
 
-/* EVENTOS */
+.today .day-number{
+    color:var(--verde-principal);
+}
+
+
+/* ==========================
+   EVENTOS
+========================== */
 
 .event{
     display:block;
-    font-size:11px;
-    line-height:1.3;
-    padding:5px;
-    border-radius:6px;
-    margin-top:5px;
+    font-size:10px;
+    line-height:1.25;
+    padding:4px;
+    border-radius:5px;
+    margin-top:4px;
+    cursor:default;
 }
 
-.event.community{
+.event.mexico{
+    background:#e8f5e9;
+    color:#246B45;
+}
+
+.event.usa{
+    background:#e9f0fb;
+    color:#315a91;
+}
+
+.event.laboral{
     background:#fff4d8;
-    color:#8a6516;
+    color:#80651c;
+}
+
+.event.celebracion{
+    background:#f7eafa;
+    color:#744784;
+}
+
+.event.comunidad{
+    background:#fff0cf;
+    color:#85631c;
     font-weight:bold;
 }
-
-
-/* EVENTO DESTACADO */
 
 .day.highlight{
     border:2px solid var(--verde-principal);
     background:var(--verde-claro);
 }
 
-.day.highlight .day-number{
-    color:var(--verde-principal);
+
+/* ==========================
+   LEYENDA
+========================== */
+
+.legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+    padding-top:15px;
+    border-top:1px solid #e5ebe7;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:12px;
+    color:#59655e;
+}
+
+.legend-dot{
+    width:12px;
+    height:12px;
+    border-radius:4px;
+}
+
+.dot-mexico{
+    background:#e8f5e9;
+}
+
+.dot-usa{
+    background:#e9f0fb;
+}
+
+.dot-laboral{
+    background:#fff4d8;
+}
+
+.dot-celebracion{
+    background:#f7eafa;
+}
+
+.dot-comunidad{
+    background:#fff0cf;
 }
 
 
 /* ==========================
-   EVENTO DE LA COMUNIDAD
+   EVENTOS DE LA COMUNIDAD
 ========================== */
 
 .events-list{
@@ -353,11 +464,6 @@ body{
 
 @media(max-width:800px){
 
-    body{
-        width:100%;
-        overflow-x:hidden;
-    }
-
     .sidebar{
         position:relative;
         width:100%;
@@ -370,19 +476,19 @@ body{
     }
 
     .logo-area img{
-        width:70px;
-        height:70px;
+        width:75px;
+        height:75px;
     }
 
     .menu{
         flex-direction:row;
         flex-wrap:wrap;
         justify-content:center;
-        gap:6px;
+        gap:5px;
     }
 
     .menu a{
-        font-size:13px;
+        font-size:12px;
         padding:9px 10px;
     }
 
@@ -414,26 +520,23 @@ body{
     }
 
     .filters{
-        gap:7px;
+        gap:6px;
     }
 
     .filter{
-        padding:8px 10px;
-        font-size:12px;
+        padding:8px 9px;
+        font-size:11px;
     }
 
     .calendar-card{
-        width:100%;
         padding:10px;
-        overflow:hidden;
         border-radius:14px;
     }
 
     .calendar-header{
         flex-direction:column;
         align-items:flex-start;
-        gap:5px;
-        margin-bottom:12px;
+        margin-bottom:10px;
     }
 
     .calendar-header h2{
@@ -444,12 +547,26 @@ body{
         font-size:12px;
     }
 
+    .month-controls{
+        margin-bottom:10px;
+    }
+
+    .month-button{
+        width:34px;
+        height:34px;
+        font-size:17px;
+    }
+
+    .month-label{
+        font-size:16px;
+    }
+
     .weekdays{
         gap:2px;
     }
 
     .weekdays div{
-        font-size:10px;
+        font-size:9px;
         padding:6px 1px;
     }
 
@@ -458,8 +575,8 @@ body{
     }
 
     .day{
-        min-height:65px;
-        padding:4px;
+        min-height:70px;
+        padding:4px 3px;
         border-radius:6px;
     }
 
@@ -470,14 +587,18 @@ body{
 
     .event{
         font-size:7px;
-        padding:3px;
+        padding:2px;
         margin-top:2px;
         line-height:1.15;
-        border-radius:4px;
+        border-radius:3px;
     }
 
-    .events-list{
-        margin-top:18px;
+    .legend{
+        gap:8px;
+    }
+
+    .legend-item{
+        font-size:10px;
     }
 
     .event-card{
@@ -492,24 +613,24 @@ body{
 
 
 /* ==========================
-   CELULARES MUY PEQUEÑOS
+   CELULARES PEQUEÑOS
 ========================== */
 
 @media(max-width:400px){
 
     .menu a{
-        font-size:11px;
-        padding:8px;
-    }
-
-    .filter{
-        font-size:11px;
+        font-size:10px;
         padding:7px 8px;
     }
 
+    .filter{
+        font-size:10px;
+        padding:7px 7px;
+    }
+
     .day{
-        min-height:58px;
-        padding:3px;
+        min-height:60px;
+        padding:3px 2px;
     }
 
     .day-number{
@@ -517,13 +638,13 @@ body{
     }
 
     .event{
-        font-size:6.5px;
-        padding:2px;
+        font-size:6px;
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -536,47 +657,48 @@ body{
 
 <aside class="sidebar">
 
-<div class="logo-area">
+    <div class="logo-area">
 
-    <img src="assets/logo-cacta-luna1.png"
-         alt="Cacta Luna Communities">
+        <img src="../assets/logo-cacta-luna1.png"
+             alt="Cacta Luna Communities">
 
-    <h2>Real de Palmas</h2>
+        <h2>Real de Palmas</h2>
 
-    <p>Comunidad</p>
+        <p>Comunidad</p>
 
-</div>
+    </div>
 
 
     <nav class="menu">
 
-    <a href="../index.html">
-        🏠 Inicio
-    </a>
+        <a href="../index.html">
+            🏠 Inicio
+        </a>
 
-    <a href="#">
-        👥 Residentes
-    </a>
+        <a href="#">
+            👥 Residentes
+        </a>
 
-    <a href="calendario.html" class="active">
-        📅 Calendario
-    </a>
+        <a href="calendario.html" class="active">
+            📅 Calendario
+        </a>
 
-    <a href="#">
-        📢 Novedades
-    </a>
+        <a href="#">
+            📢 Novedades
+        </a>
 
-    <a href="documentos.html">
-        📂 Documentos
-    </a>
+        <a href="documentos.html">
+            📂 Documentos
+        </a>
 
-    <a href="https://wa.me/5216621665671?text=Hola,%20solicito%20apoyo%20de%20emergencia%20vecinal%20en%20Real%20de%20Palmas%20Etapa%201"
-       target="_blank"
-       rel="noopener">
-        📲 Emergencias
-    </a>
+        <a href="https://wa.me/5216621665671?text=Hola,%20solicito%20apoyo%20de%20emergencia%20vecinal%20en%20Real%20de%20Palmas%20Etapa%201"
+           target="_blank"
+           rel="noopener">
+            📲 Emergencias
+        </a>
 
-</nav>
+    </nav>
+
 </aside>
 
 
@@ -587,7 +709,7 @@ body{
 <main class="main">
 
 
-    <a href="index.html" class="boton-inicio">
+    <a href="../index.html" class="boton-inicio">
         ← Regresar a Inicio
     </a>
 
@@ -627,32 +749,32 @@ body{
     <div class="filters">
 
         <button class="filter active"
-                onclick="filtrar('todos',this)">
+                onclick="filtrarEventos('todos',this)">
             📅 Todos
         </button>
 
         <button class="filter"
-                onclick="filtrar('mexico',this)">
+                onclick="filtrarEventos('mexico',this)">
             🇲🇽 México
         </button>
 
         <button class="filter"
-                onclick="filtrar('usa',this)">
+                onclick="filtrarEventos('usa',this)">
             🇺🇸 USA
         </button>
 
         <button class="filter"
-                onclick="filtrar('laboral',this)">
+                onclick="filtrarEventos('laboral',this)">
             💼 Laboral
         </button>
 
         <button class="filter"
-                onclick="filtrar('celebracion',this)">
+                onclick="filtrarEventos('celebracion',this)">
             🎉 Celebraciones
         </button>
 
         <button class="filter"
-                onclick="filtrar('comunidad',this)">
+                onclick="filtrarEventos('comunidad',this)">
             🌴 Comunidad
         </button>
 
@@ -660,18 +782,39 @@ body{
 
 
     <!-- ==========================
-         CALENDARIO VISUAL
+         CALENDARIO
     ========================== -->
 
     <section class="calendar-card">
 
+
         <div class="calendar-header">
 
-            <h2>Agosto 2026</h2>
+            <h2>📅 Calendario</h2>
 
             <span class="month">
-                Real de Palmas
+                Real de Palmas • 2026–2027
             </span>
+
+        </div>
+
+
+        <div class="month-controls">
+
+            <button class="month-button"
+                    onclick="mesAnterior()">
+                ‹
+            </button>
+
+            <div id="monthLabel"
+                 class="month-label">
+                Agosto 2026
+            </div>
+
+            <button class="month-button"
+                    onclick="mesSiguiente()">
+                ›
+            </button>
 
         </div>
 
@@ -689,157 +832,43 @@ body{
         </div>
 
 
-        <div class="calendar-grid">
+        <div id="calendarGrid"
+             class="calendar-grid">
+        </div>
 
 
-            <div class="day">
-                <div class="day-number">1</div>
+        <div class="legend">
+
+            <div class="legend-item">
+                <span class="legend-dot dot-mexico"></span>
+                México
             </div>
 
-            <div class="day">
-                <div class="day-number">2</div>
+            <div class="legend-item">
+                <span class="legend-dot dot-usa"></span>
+                USA
             </div>
 
-            <div class="day">
-                <div class="day-number">3</div>
+            <div class="legend-item">
+                <span class="legend-dot dot-laboral"></span>
+                Laboral
             </div>
 
-            <div class="day">
-                <div class="day-number">4</div>
+            <div class="legend-item">
+                <span class="legend-dot dot-celebracion"></span>
+                Celebración
             </div>
 
-            <div class="day">
-                <div class="day-number">5</div>
+            <div class="legend-item">
+                <span class="legend-dot dot-comunidad"></span>
+                Comunidad
             </div>
-
-            <div class="day">
-                <div class="day-number">6</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">7</div>
-            </div>
-
-
-            <div class="day">
-                <div class="day-number">8</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">9</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">10</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">11</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">12</div>
-            </div>
-
-
-            <!-- EVENTO CONFIRMADO -->
-
-            <div class="day highlight">
-
-                <div class="day-number">
-                    13
-                </div>
-
-                <div class="event community"
-                     data-tipo="comunidad">
-
-                    🏛️ 7:00 PM<br>
-                    Ayuntamiento +<br>
-                    Comandante de Zona
-
-                </div>
-
-            </div>
-
-
-            <div class="day">
-                <div class="day-number">14</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">15</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">16</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">17</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">18</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">19</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">20</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">21</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">22</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">23</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">24</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">25</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">26</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">27</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">28</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">29</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">30</div>
-            </div>
-
-            <div class="day">
-                <div class="day-number">31</div>
-            </div>
-
 
         </div>
 
 
         <!-- ==========================
-             EVENTO
+             EVENTO COMUNITARIO
         ========================== -->
 
         <div class="events-list">
@@ -874,18 +903,479 @@ body{
 
 <script>
 
-function filtrar(tipo, boton){
+/* ==================================================
+   CALENDARIO
+================================================== */
+
+const meses = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre"
+];
+
+
+/*
+   Se empieza en agosto de 2026
+   y termina en diciembre de 2027.
+*/
+
+let fechaActual = new Date(2026,7,1);
+
+
+/* ==================================================
+   EVENTOS
+================================================== */
+
+const eventos = {
+
+
+/* ==========================
+   MÉXICO
+========================== */
+
+"2026-01-01":{
+    titulo:"🇲🇽 Año Nuevo",
+    tipo:"mexico"
+},
+
+"2026-02-02":{
+    titulo:"🇲🇽 Constitución",
+    tipo:"mexico"
+},
+
+"2026-03-16":{
+    titulo:"🇲🇽 Natalicio de Benito Juárez",
+    tipo:"mexico"
+},
+
+"2026-05-01":{
+    titulo:"🇲🇽 Día del Trabajo",
+    tipo:"mexico"
+},
+
+"2026-09-16":{
+    titulo:"🇲🇽 Independencia de México",
+    tipo:"mexico"
+},
+
+"2026-11-16":{
+    titulo:"🇲🇽 Revolución Mexicana",
+    tipo:"mexico"
+},
+
+"2027-01-01":{
+    titulo:"🇲🇽 Año Nuevo",
+    tipo:"mexico"
+},
+
+"2027-02-01":{
+    titulo:"🇲🇽 Constitución",
+    tipo:"mexico"
+},
+
+"2027-03-15":{
+    titulo:"🇲🇽 Natalicio de Benito Juárez",
+    tipo:"mexico"
+},
+
+"2027-05-01":{
+    titulo:"🇲🇽 Día del Trabajo",
+    tipo:"mexico"
+},
+
+"2027-09-16":{
+    titulo:"🇲🇽 Independencia de México",
+    tipo:"mexico"
+},
+
+"2027-11-15":{
+    titulo:"🇲🇽 Revolución Mexicana",
+    tipo:"mexico"
+},
+
+
+/* ==========================
+   USA
+========================== */
+
+"2026-08-01":{
+    titulo:"🇺🇸 Independence Day observado",
+    tipo:"usa"
+},
+
+"2026-09-07":{
+    titulo:"🇺🇸 Labor Day",
+    tipo:"usa"
+},
+
+"2026-10-12":{
+    titulo:"🇺🇸 Columbus Day",
+    tipo:"usa"
+},
+
+"2026-11-11":{
+    titulo:"🇺🇸 Veterans Day",
+    tipo:"usa"
+},
+
+"2026-11-26":{
+    titulo:"🇺🇸 Thanksgiving",
+    tipo:"usa"
+},
+
+"2026-12-25":{
+    titulo:"🇺🇸 Christmas Day",
+    tipo:"usa"
+},
+
+"2027-01-01":{
+    titulo:"🇺🇸 New Year's Day",
+    tipo:"usa"
+},
+
+"2027-01-18":{
+    titulo:"🇺🇸 Martin Luther King Jr. Day",
+    tipo:"usa"
+},
+
+"2027-02-15":{
+    titulo:"🇺🇸 Washington's Birthday",
+    tipo:"usa"
+},
+
+"2027-05-31":{
+    titulo:"🇺🇸 Memorial Day",
+    tipo:"usa"
+},
+
+"2027-06-18":{
+    titulo:"🇺🇸 Juneteenth observado",
+    tipo:"usa"
+},
+
+"2027-07-05":{
+    titulo:"🇺🇸 Independence Day observado",
+    tipo:"usa"
+},
+
+"2027-09-06":{
+    titulo:"🇺🇸 Labor Day",
+    tipo:"usa"
+},
+
+"2027-10-11":{
+    titulo:"🇺🇸 Columbus Day",
+    tipo:"usa"
+},
+
+"2027-11-11":{
+    titulo:"🇺🇸 Veterans Day",
+    tipo:"usa"
+},
+
+"2027-11-25":{
+    titulo:"🇺🇸 Thanksgiving",
+    tipo:"usa"
+},
+
+"2027-12-24":{
+    titulo:"🇺🇸 Christmas Day observado",
+    tipo:"usa"
+},
+
+
+/* ==========================
+   CELEBRACIONES
+========================== */
+
+"2026-09-15":{
+    titulo:"🎉 Grito de Independencia",
+    tipo:"celebracion"
+},
+
+"2026-10-31":{
+    titulo:"🎃 Halloween",
+    tipo:"celebracion"
+},
+
+"2026-12-24":{
+    titulo:"🎄 Nochebuena",
+    tipo:"celebracion"
+},
+
+"2026-12-31":{
+    titulo:"🎆 Fin de año",
+    tipo:"celebracion"
+},
+
+"2027-02-14":{
+    titulo:"❤️ Día del Amor y la Amistad",
+    tipo:"celebracion"
+},
+
+"2027-05-10":{
+    titulo:"💐 Día de las Madres",
+    tipo:"celebracion"
+},
+
+"2027-06-20":{
+    titulo:"👔 Día del Padre",
+    tipo:"celebracion"
+},
+
+"2027-09-15":{
+    titulo:"🎉 Grito de Independencia",
+    tipo:"celebracion"
+},
+
+"2027-10-31":{
+    titulo:"🎃 Halloween",
+    tipo:"celebracion"
+},
+
+"2027-12-24":{
+    titulo:"🎄 Nochebuena",
+    tipo:"celebracion"
+},
+
+"2027-12-31":{
+    titulo:"🎆 Fin de año",
+    tipo:"celebracion"
+},
+
+
+/* ==========================
+   EVENTO COMUNIDAD
+========================== */
+
+"2026-08-13":{
+    titulo:"🏛️ Ayuntamiento + Comandante",
+    tipo:"comunidad"
+}
+
+};
+
+
+/* ==================================================
+   GENERAR CALENDARIO
+================================================== */
+
+function generarCalendario(){
+
+    const grid =
+        document.getElementById("calendarGrid");
+
+    const label =
+        document.getElementById("monthLabel");
+
+    grid.innerHTML = "";
+
+
+    const year =
+        fechaActual.getFullYear();
+
+    const month =
+        fechaActual.getMonth();
+
+
+    label.textContent =
+        meses[month] + " " + year;
+
+
+    const primerDia =
+        new Date(year,month,1).getDay();
+
+    const diasMes =
+        new Date(year,month + 1,0).getDate();
+
+
+    /* Espacios antes del primer día */
+
+    for(let i = 0; i < primerDia; i++){
+
+        const vacio =
+            document.createElement("div");
+
+        vacio.className =
+            "day empty";
+
+        grid.appendChild(vacio);
+
+    }
+
+
+    /* Días */
+
+    for(let dia = 1; dia <= diasMes; dia++){
+
+        const celda =
+            document.createElement("div");
+
+        celda.className =
+            "day";
+
+
+        const numero =
+            document.createElement("div");
+
+        numero.className =
+            "day-number";
+
+        numero.textContent =
+            dia;
+
+
+        celda.appendChild(numero);
+
+
+        const clave =
+            year + "-" +
+            String(month + 1).padStart(2,"0") + "-" +
+            String(dia).padStart(2,"0");
+
+
+        if(eventos[clave]){
+
+            const evento =
+                document.createElement("div");
+
+            evento.className =
+                "event " + eventos[clave].tipo;
+
+            evento.dataset.tipo =
+                eventos[clave].tipo;
+
+            evento.textContent =
+                eventos[clave].titulo;
+
+            celda.appendChild(evento);
+
+
+            if(eventos[clave].tipo === "comunidad"){
+
+                celda.classList.add("highlight");
+
+            }
+
+        }
+
+
+        grid.appendChild(celda);
+
+    }
+
+}
+
+
+/* ==================================================
+   CAMBIAR MES
+================================================== */
+
+function mesAnterior(){
+
+    const minimo =
+        new Date(2026,7,1);
+
+    if(
+        fechaActual.getFullYear() === minimo.getFullYear() &&
+        fechaActual.getMonth() === minimo.getMonth()
+    ){
+        return;
+    }
+
+    fechaActual.setMonth(
+        fechaActual.getMonth() - 1
+    );
+
+    generarCalendario();
+
+}
+
+
+function mesSiguiente(){
+
+    const maximo =
+        new Date(2027,11,1);
+
+    if(
+        fechaActual.getFullYear() === maximo.getFullYear() &&
+        fechaActual.getMonth() === maximo.getMonth()
+    ){
+        return;
+    }
+
+    fechaActual.setMonth(
+        fechaActual.getMonth() + 1
+    );
+
+    generarCalendario();
+
+}
+
+
+/* ==================================================
+   FILTROS
+================================================== */
+
+function filtrarEventos(tipo, boton){
 
     const botones =
         document.querySelectorAll(".filter");
 
-    botones.forEach(function(b){
-        b.classList.remove("active");
+    botones.forEach(function(btn){
+
+        btn.classList.remove("active");
+
     });
 
     boton.classList.add("active");
 
+
+    const eventosCalendario =
+        document.querySelectorAll(".event");
+
+
+    eventosCalendario.forEach(function(evento){
+
+        const tipoEvento =
+            evento.dataset.tipo;
+
+
+        if(tipo === "todos"){
+
+            evento.style.display = "block";
+
+        }
+        else if(tipoEvento === tipo){
+
+            evento.style.display = "block";
+
+        }
+        else{
+
+            evento.style.display = "none";
+
+        }
+
+    });
+
 }
+
+
+/* ==================================================
+   INICIAR
+================================================== */
+
+generarCalendario();
 
 </script>
 
