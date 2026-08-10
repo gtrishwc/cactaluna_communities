@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -36,7 +37,7 @@ body{
 
 
 /* ==========================
-   MENÚ
+   MENÚ LATERAL
 ========================== */
 
 .sidebar{
@@ -204,7 +205,7 @@ body{
 
 
 /* ==========================
-   TARJETA CALENDARIO
+   CALENDARIO
 ========================== */
 
 .calendar-card{
@@ -272,7 +273,7 @@ body{
 
 
 /* ==========================
-   DÍAS
+   DÍAS DE LA SEMANA
 ========================== */
 
 .weekdays{
@@ -303,7 +304,6 @@ body{
     padding:7px;
     background:#fff;
     overflow:hidden;
-    position:relative;
 }
 
 .day.empty{
@@ -314,14 +314,6 @@ body{
     font-weight:bold;
     font-size:14px;
     margin-bottom:5px;
-}
-
-.today{
-    border:2px solid var(--verde-principal);
-}
-
-.today .day-number{
-    color:var(--verde-principal);
 }
 
 
@@ -336,7 +328,6 @@ body{
     padding:4px;
     border-radius:5px;
     margin-top:4px;
-    cursor:default;
 }
 
 .event.mexico{
@@ -437,6 +428,7 @@ body{
     border-left:5px solid var(--verde-principal);
     padding:18px;
     border-radius:12px;
+    margin-bottom:12px;
 }
 
 .event-card .date{
@@ -590,7 +582,6 @@ body{
         padding:2px;
         margin-top:2px;
         line-height:1.15;
-        border-radius:3px;
     }
 
     .legend{
@@ -868,12 +859,13 @@ body{
 
 
         <!-- ==========================
-             EVENTO COMUNITARIO
+             EVENTOS DE LA COMUNIDAD
         ========================== -->
 
         <div class="events-list">
 
             <h3>🌴 Eventos de la comunidad</h3>
+
 
             <div class="event-card">
 
@@ -892,22 +884,25 @@ body{
 
             </div>
 
+
             <div class="event-card">
 
                 <div class="date">
-                    Jueves 13 de agosto de 2026 • 7:00 PM
+                    Jueves 13 de agosto de 2026
                 </div>
 
                 <div class="title">
-            🧹 Recolección de Cachibaches
+                    🧹 Recolección de Cachibaches
                 </div>
 
                 <p>
-                  Recolección de Cachibaches (No escombro o basura) - Punto (Escaleta y Calafat) Donde se encuentra la estufa.
+                    Recolección de Cachibaches
+                    (No escombro o basura).
+                    Punto: Escaleta y Calafat,
+                    donde se encuentra la estufa.
                 </p>
 
             </div>
-
 
         </div>
 
@@ -920,11 +915,13 @@ body{
 
 <script>
 
+
 /* ==================================================
-   CALENDARIO
+   MESES
 ================================================== */
 
 const meses = [
+
     "Enero",
     "Febrero",
     "Marzo",
@@ -937,30 +934,29 @@ const meses = [
     "Octubre",
     "Noviembre",
     "Diciembre"
+
 ];
 
 
-/*
-   Se empieza en agosto de 2026
-   y termina en diciembre de 2027.
-*/
+/* ==================================================
+   FECHA ACTUAL DEL CALENDARIO
+   Agosto 2026
+================================================== */
 
-let fechaActual = new Date(2026,7,1);
+let fechaActual =
+    new Date(2026,7,1);
 
 
 /* ==================================================
-   EVENTOS
+   ⭐ AQUÍ SE AGREGAN LOS EVENTOS ⭐
+
+   IMPORTANTE:
+
+   Una fecha puede tener UNO o VARIOS eventos.
+
 ================================================== */
 
 const eventos = {
-
-
-    "2026-08-20":{
-        titulo:"🌴 Nuevo evento",
-        tipo:"comunidad"
-    }
-
-};
 
 
 /* ==========================
@@ -968,63 +964,87 @@ const eventos = {
 ========================== */
 
 "2026-01-01":{
+
     titulo:"🇲🇽 Año Nuevo",
     tipo:"mexico"
+
 },
 
 "2026-02-02":{
+
     titulo:"🇲🇽 Constitución",
     tipo:"mexico"
+
 },
 
 "2026-03-16":{
+
     titulo:"🇲🇽 Natalicio de Benito Juárez",
     tipo:"mexico"
+
 },
 
 "2026-05-01":{
+
     titulo:"🇲🇽 Día del Trabajo",
     tipo:"mexico"
+
 },
 
 "2026-09-16":{
+
     titulo:"🇲🇽 Independencia de México",
     tipo:"mexico"
+
 },
 
 "2026-11-16":{
+
     titulo:"🇲🇽 Revolución Mexicana",
     tipo:"mexico"
+
 },
 
 "2027-01-01":{
+
     titulo:"🇲🇽 Año Nuevo",
     tipo:"mexico"
+
 },
 
 "2027-02-01":{
+
     titulo:"🇲🇽 Constitución",
     tipo:"mexico"
+
 },
 
 "2027-03-15":{
+
     titulo:"🇲🇽 Natalicio de Benito Juárez",
     tipo:"mexico"
+
 },
 
 "2027-05-01":{
+
     titulo:"🇲🇽 Día del Trabajo",
     tipo:"mexico"
+
 },
 
 "2027-09-16":{
+
     titulo:"🇲🇽 Independencia de México",
     tipo:"mexico"
+
 },
 
 "2027-11-15":{
+
     titulo:"🇲🇽 Revolución Mexicana",
     tipo:"mexico"
+
 },
 
 
@@ -1179,13 +1199,121 @@ const eventos = {
 
 
 /* ==========================
-   EVENTO COMUNIDAD
+   CELEBRACIONES
 ========================== */
+
+"2026-09-15":{
+
+    titulo:"🎉 Grito de Independencia",
+    tipo:"celebracion"
+
+},
+
+"2026-10-31":{
+
+    titulo:"🎃 Halloween",
+    tipo:"celebracion"
+
+},
+
+"2026-12-24":{
+
+    titulo:"🎄 Nochebuena",
+    tipo:"celebracion"
+
+},
+
+"2026-12-31":{
+
+    titulo:"🎆 Fin de año",
+    tipo:"celebracion"
+
+},
+
+"2027-02-14":{
+
+    titulo:"❤️ Día del Amor y la Amistad",
+    tipo:"celebracion"
+
+},
+
+"2027-05-10":{
+
+    titulo:"💐 Día de las Madres",
+    tipo:"celebracion"
+
+},
+
+"2027-06-20":{
+
+    titulo:"👔 Día del Padre",
+    tipo:"celebracion"
+
+},
+
+"2027-09-15":{
+
+    titulo:"🎉 Grito de Independencia",
+    tipo:"celebracion"
+
+},
+
+"2027-10-31":{
+
+    titulo:"🎃 Halloween",
+    tipo:"celebracion"
+
+},
+
+"2027-12-24":{
+
+    titulo:"🎄 Nochebuena",
+    tipo:"celebracion"
+
+},
+
+"2027-12-31":{
+
+    titulo:"🎆 Fin de año",
+    tipo:"celebracion"
+
+},
+
+
+/* ==================================================
+   🌴 EVENTOS DE LA COMUNIDAD
+================================================== */
+
+
+/*
+   SI SOLO HAY UN EVENTO EN UNA FECHA:
+
+   "2026-08-20":{
+       titulo:"🌴 Nombre del evento",
+       tipo:"comunidad"
+   },
+
+*/
+
+
+/*
+   SI HAY DOS EVENTOS EL MISMO DÍA:
+
+   SE UTILIZA [ ]
+
+*/
 
 "2026-08-13":{
     titulo:"🏛️ Ayuntamiento + Comandante",
     tipo:"comunidad"
+},
+
+"2026-08-14":{
+    titulo:"🧹 Recolección de Cachibaches",
+    tipo:"comunidad"
 }
+
+]
 
 };
 
@@ -1202,6 +1330,7 @@ function generarCalendario(){
     const label =
         document.getElementById("monthLabel");
 
+
     grid.innerHTML = "";
 
 
@@ -1217,15 +1346,30 @@ function generarCalendario(){
 
 
     const primerDia =
-        new Date(year,month,1).getDay();
+        new Date(
+            year,
+            month,
+            1
+        ).getDay();
+
 
     const diasMes =
-        new Date(year,month + 1,0).getDate();
+        new Date(
+            year,
+            month + 1,
+            0
+        ).getDate();
 
 
-    /* Espacios antes del primer día */
+    /* ==========================
+       ESPACIOS ANTES DEL PRIMER DÍA
+    ========================== */
 
-    for(let i = 0; i < primerDia; i++){
+    for(
+        let i = 0;
+        i < primerDia;
+        i++
+    ){
 
         const vacio =
             document.createElement("div");
@@ -1238,9 +1382,15 @@ function generarCalendario(){
     }
 
 
-    /* Días */
+    /* ==========================
+       DÍAS
+    ========================== */
 
-    for(let dia = 1; dia <= diasMes; dia++){
+    for(
+        let dia = 1;
+        dia <= diasMes;
+        dia++
+    ){
 
         const celda =
             document.createElement("div");
@@ -1264,32 +1414,68 @@ function generarCalendario(){
 
         const clave =
             year + "-" +
-            String(month + 1).padStart(2,"0") + "-" +
+            String(month + 1).padStart(2,"0") +
+            "-" +
             String(dia).padStart(2,"0");
 
 
+        /* ==========================
+           EVENTOS DEL DÍA
+        ========================== */
+
         if(eventos[clave]){
 
-            const evento =
-                document.createElement("div");
 
-            evento.className =
-                "event " + eventos[clave].tipo;
+            /*
+               Si hay varios eventos,
+               los convertimos en una lista.
 
-            evento.dataset.tipo =
-                eventos[clave].tipo;
+               Si solo hay uno,
+               también funciona.
+            */
 
-            evento.textContent =
-                eventos[clave].titulo;
+            const eventosDelDia =
+                Array.isArray(eventos[clave])
+                ? eventos[clave]
+                : [eventos[clave]];
 
-            celda.appendChild(evento);
+
+            eventosDelDia.forEach(
+                function(datosEvento){
+
+                    const evento =
+                        document.createElement("div");
 
 
-            if(eventos[clave].tipo === "comunidad"){
+                    evento.className =
+                        "event " +
+                        datosEvento.tipo;
 
-                celda.classList.add("highlight");
 
-            }
+                    evento.dataset.tipo =
+                        datosEvento.tipo;
+
+
+                    evento.textContent =
+                        datosEvento.titulo;
+
+
+                    celda.appendChild(evento);
+
+
+                    if(
+                        datosEvento.tipo ===
+                        "comunidad"
+                    ){
+
+                        celda.classList.add(
+                            "highlight"
+                        );
+
+                    }
+
+                }
+            );
 
         }
 
@@ -1302,7 +1488,7 @@ function generarCalendario(){
 
 
 /* ==================================================
-   CAMBIAR MES
+   MES ANTERIOR
 ================================================== */
 
 function mesAnterior(){
@@ -1310,37 +1496,65 @@ function mesAnterior(){
     const minimo =
         new Date(2026,7,1);
 
+
     if(
-        fechaActual.getFullYear() === minimo.getFullYear() &&
-        fechaActual.getMonth() === minimo.getMonth()
+
+        fechaActual.getFullYear() ===
+        minimo.getFullYear()
+
+        &&
+
+        fechaActual.getMonth() ===
+        minimo.getMonth()
+
     ){
+
         return;
+
     }
+
 
     fechaActual.setMonth(
         fechaActual.getMonth() - 1
     );
+
 
     generarCalendario();
 
 }
 
 
+/* ==================================================
+   MES SIGUIENTE
+================================================== */
+
 function mesSiguiente(){
 
     const maximo =
         new Date(2027,11,1);
 
+
     if(
-        fechaActual.getFullYear() === maximo.getFullYear() &&
-        fechaActual.getMonth() === maximo.getMonth()
+
+        fechaActual.getFullYear() ===
+        maximo.getFullYear()
+
+        &&
+
+        fechaActual.getMonth() ===
+        maximo.getMonth()
+
     ){
+
         return;
+
     }
+
 
     fechaActual.setMonth(
         fechaActual.getMonth() + 1
     );
+
 
     generarCalendario();
 
@@ -1351,47 +1565,71 @@ function mesSiguiente(){
    FILTROS
 ================================================== */
 
-function filtrarEventos(tipo, boton){
+function filtrarEventos(
+    tipo,
+    boton
+){
 
     const botones =
-        document.querySelectorAll(".filter");
+        document.querySelectorAll(
+            ".filter"
+        );
 
-    botones.forEach(function(btn){
 
-        btn.classList.remove("active");
+    botones.forEach(
+        function(btn){
 
-    });
+            btn.classList.remove(
+                "active"
+            );
 
-    boton.classList.add("active");
+        }
+    );
+
+
+    boton.classList.add(
+        "active"
+    );
 
 
     const eventosCalendario =
-        document.querySelectorAll(".event");
+        document.querySelectorAll(
+            ".event"
+        );
 
 
-    eventosCalendario.forEach(function(evento){
+    eventosCalendario.forEach(
+        function(evento){
 
-        const tipoEvento =
-            evento.dataset.tipo;
+            const tipoEvento =
+                evento.dataset.tipo;
 
 
-        if(tipo === "todos"){
+            if(tipo === "todos"){
 
-            evento.style.display = "block";
+                evento.style.display =
+                    "block";
+
+            }
+
+            else if(
+                tipoEvento === tipo
+            ){
+
+                evento.style.display =
+                    "block";
+
+            }
+
+            else{
+
+                evento.style.display =
+                    "none";
+
+            }
 
         }
-        else if(tipoEvento === tipo){
-
-            evento.style.display = "block";
-
-        }
-        else{
-
-            evento.style.display = "none";
-
-        }
-
-    });
+    );
 
 }
 
@@ -1403,7 +1641,6 @@ function filtrarEventos(tipo, boton){
 generarCalendario();
 
 </script>
-
 
 </body>
 
