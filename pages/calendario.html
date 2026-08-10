@@ -810,14 +810,12 @@ body{
              EVENTOS DE LA COMUNIDAD
         ================================================== -->
 
-        <div class="events-list">
+     <div class="events-list">
 
-            <h3>🌴 Eventos de la comunidad</h3>
+    <div id="eventsContainer">
+    </div>
 
-            <div id="eventsContainer">
-            </div>
-
-        </div>
+</div>
 
     </section>
 
@@ -1237,7 +1235,7 @@ function mostrarCalendario(){
 
 
 /* ==================================================
-   MOSTRAR LISTA DE EVENTOS
+   MOSTRAR LISTA DE EVENTOS DEL MES ACTUAL
 ================================================== */
 
 function mostrarListaEventos(){
@@ -1246,41 +1244,90 @@ function mostrarListaEventos(){
         document.getElementById("eventsContainer");
 
 
-    /*
-        Limpiamos solamente la lista
-        de eventos.
-
-        JAMÁS tocamos calendarGrid.
-    */
+    /* Limpiar solamente la lista de eventos */
 
     container.innerHTML = "";
 
 
-    const eventosFiltrados =
+    /* Año y mes que estamos viendo */
+
+    const añoActual =
+        fechaActual.getFullYear();
+
+    const mesActual =
+        fechaActual.getMonth() + 1;
+
+
+    /* Convertir mes a 01, 02, 03... */
+
+    const mesFormato =
+        String(mesActual).padStart(2, "0");
+
+
+    /*
+        Buscar solamente los eventos
+        del mes que estamos viendo
+    */
+
+    const eventosDelMes =
         eventos
         .filter(evento => {
 
-            return filtroActual === "todos" ||
-                   evento.categoria === filtroActual;
+            const perteneceAlMes =
+                evento.fecha.startsWith(
+                    añoActual + "-" + mesFormato
+                );
+
+            const perteneceAlFiltro =
+                filtroActual === "todos" ||
+                evento.categoria === filtroActual;
+
+            return perteneceAlMes &&
+                   perteneceAlFiltro;
 
         })
-        .sort((a,b) =>
+        .sort((a, b) =>
             a.fecha.localeCompare(b.fecha)
         );
 
 
-    if(eventosFiltrados.length === 0){
+    /* Título del mes */
 
-        container.innerHTML =
-            '<div class="no-events">' +
-            'No hay eventos en esta categoría.' +
-            '</div>';
+    const titulo =
+        document.createElement("h3");
+
+    titulo.textContent =
+        "🌴 Eventos de " +
+        nombresMeses[fechaActual.getMonth()] +
+        " " +
+        añoActual;
+
+    container.appendChild(titulo);
+
+
+    /* Si no hay eventos */
+
+    if(eventosDelMes.length === 0){
+
+        const mensaje =
+            document.createElement("div");
+
+        mensaje.className =
+            "no-events";
+
+        mensaje.textContent =
+            "No hay eventos programados para este mes.";
+
+        container.appendChild(mensaje);
 
         return;
+
     }
 
 
-    eventosFiltrados.forEach(evento => {
+    /* Mostrar solamente los eventos del mes */
+
+    eventosDelMes.forEach(evento => {
 
         const tarjeta =
             document.createElement("div");
