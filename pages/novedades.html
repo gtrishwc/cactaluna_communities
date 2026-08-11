@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -15,23 +14,31 @@
 
 /* ==================================================
    NOVEDADES
-   Cacta Luna Communities
    ================================================== */
 
-.novedades-container{
+.novedades-contenedor{
     max-width:1100px;
     margin:0 auto;
 }
 
-/* ENCABEZADO */
+/* Encabezado */
 
 .encabezado-novedades{
-    background:linear-gradient(135deg,#2E8B57,#43A047);
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #43A047
+    );
+
     color:white;
+    padding:28px;
+
     border-radius:20px;
-    padding:30px 25px;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.10);
+
     margin-bottom:25px;
-    box-shadow:0 8px 25px rgba(46,139,87,.18);
 }
 
 .encabezado-novedades h1{
@@ -41,144 +48,260 @@
 
 .encabezado-novedades p{
     margin:0;
-    font-size:15px;
     opacity:.95;
+    font-size:16px;
 }
 
-/* INTRO */
+
+/* Introducción */
 
 .intro-novedades{
+
     background:white;
-    border-radius:18px;
+
     padding:22px;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.07);
+
     margin-bottom:25px;
-    box-shadow:0 5px 18px rgba(0,0,0,.06);
-    border:1px solid #e8eee9;
-}
 
-.intro-novedades p{
-    margin:0;
     line-height:1.7;
-    color:#555;
 }
 
-/* TARJETAS */
+.intro-novedades strong{
+    color:#2E8B57;
+}
+
+
+/* Título de sección */
+
+.titulo-seccion{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:30px 0 18px;
+
+}
+
+.titulo-seccion h2{
+
+    margin:0;
+
+    color:#2E8B57;
+
+    font-size:23px;
+
+}
+
+
+/* Tarjetas */
 
 .novedad-card{
+
     background:white;
-    border-radius:20px;
-    padding:25px;
-    margin-bottom:22px;
-    box-shadow:0 5px 18px rgba(0,0,0,.06);
-    border-left:6px solid #43A047;
-    transition:.25s ease;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    margin-bottom:18px;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.07);
+
+    border-left:5px solid #43A047;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
 }
 
 .novedad-card:hover{
+
     transform:translateY(-3px);
-    box-shadow:0 10px 28px rgba(0,0,0,.10);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.10);
+
 }
 
-.novedad-categoria{
+
+/* Fecha */
+
+.fecha-novedad{
+
     display:inline-block;
-    background:#e8f5e9;
-    color:#2e7d32;
+
+    background:#E8F5E9;
+
+    color:#2E7D32;
+
+    padding:5px 11px;
+
     border-radius:20px;
-    padding:6px 12px;
+
     font-size:12px;
-    font-weight:600;
+
+    font-weight:bold;
+
     margin-bottom:10px;
+
 }
 
-.novedad-card h2{
-    margin:0 0 12px;
-    color:#1b5e20;
-    font-size:21px;
+
+/* Categoría */
+
+.categoria{
+
+    display:inline-block;
+
+    margin-left:6px;
+
+    background:#F1F8E9;
+
+    color:#558B2F;
+
+    padding:5px 11px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
 }
+
+
+/* Título */
+
+.novedad-card h3{
+
+    margin:8px 0 10px;
+
+    color:#1B5E20;
+
+    font-size:20px;
+
+}
+
+
+/* Texto */
+
+.novedad-card p{
+
+    margin:0;
+
+    color:#555;
+
+    line-height:1.7;
+
+}
+
+
+/* Lista */
 
 .novedad-card ul{
-    margin:0;
+
+    margin-top:12px;
+
     padding-left:22px;
-}
 
-.novedad-card li{
-    margin-bottom:8px;
+    line-height:1.7;
+
     color:#555;
-    line-height:1.55;
+
 }
 
-/* GALERÍA */
 
-.galeria{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:14px;
-    margin-top:20px;
-}
+/* Imagen */
 
-.galeria a{
-    display:block;
-    overflow:hidden;
-    border-radius:14px;
-    background:#f4f7f5;
-}
+.novedad-imagen{
 
-.galeria img{
     width:100%;
-    height:190px;
+
+    max-height:420px;
+
     object-fit:cover;
+
+    border-radius:14px;
+
+    margin-top:15px;
+
     display:block;
-    transition:.3s ease;
+
 }
 
-.galeria a:hover img{
-    transform:scale(1.04);
+
+/* Separador */
+
+.separador{
+
+    height:1px;
+
+    background:#E8E8E8;
+
+    margin:28px 0;
+
 }
 
-/* PIE */
 
-.novedades-footer{
+/* Pie */
+
+.footer-novedades{
+
     text-align:center;
-    margin:30px 0 10px;
-    color:#666;
+
+    color:#777;
+
     font-size:13px;
+
+    padding:25px 10px 10px;
+
 }
 
-.novedades-footer hr{
-    border:0;
-    border-top:1px solid #ddd;
-    margin:20px 0;
+.footer-novedades strong{
+
+    color:#2E8B57;
+
 }
 
-/* MÓVIL */
+
+/* ==================================================
+   MÓVIL
+   ================================================== */
 
 @media(max-width:700px){
 
     .encabezado-novedades{
-        padding:24px 18px;
+
+        padding:22px;
+
         border-radius:16px;
+
     }
 
     .encabezado-novedades h1{
-        font-size:24px;
+
+        font-size:25px;
+
     }
 
     .novedad-card{
-        padding:20px 17px;
-        border-radius:16px;
+
+        padding:18px;
+
     }
 
-    .novedad-card h2{
-        font-size:19px;
-    }
+    .novedad-card h3{
 
-    .galeria{
-        grid-template-columns:repeat(2,1fr);
-        gap:10px;
-    }
+        font-size:18px;
 
-    .galeria img{
-        height:150px;
     }
 
 }
@@ -187,7 +310,9 @@
 
 </head>
 
+
 <body>
+
 
 <!-- ==================================================
      LOGO
@@ -195,14 +320,13 @@
 
 <div class="logo-circle">
 
-```
-<img
-    src="../assets/logo-cacta-luna1.png"
-    alt="Cacta Luna Communities"
->
-```
+    <img
+        src="../assets/logo-cacta-luna1.png"
+        alt="Cacta Luna Communities"
+    >
 
 </div>
+
 
 <!-- ==================================================
      MENÚ
@@ -210,51 +334,63 @@
 
 <nav class="top-menu">
 
-```
-<a href="../index.html">🏠 Inicio</a>
+    <a href="../index.html">
+        🏠 Inicio
+    </a>
 
-<a href="avisos.html">📢 Avisos</a>
+    <a href="avisos.html">
+        📢 Avisos
+    </a>
 
-<a href="novedades.html">✨ Novedades</a>
+    <!-- REPORTES -->
+    <a
+        href="https://script.google.com/macros/s/AKfycbyH1v6hRKVmyxnGlgnq6wjiOe6lOalaCJdrVO6LPg7WdtAc8-EUjJ0vKtGUuF36H8lYAA/exec"
+        target="_blank"
+    >
+        📑 Reportes
+    </a>
 
-<a href="https://script.google.com/macros/s/AKfycbyH1v6hRKVmyxnGlgnq6wjiOe6lOalaCJdrVO6LPg7WdtAc8-EUjJ0vKtGUuF36H8lYAA/exec"
-   target="_blank">
-   📑 Reportes
-</a>
-
-<a href="comunidad.html">👥 Comunidad</a>
-```
+    <a href="comunidad.html">
+        👥 Comunidad
+    </a>
 
 </nav>
 
+
+
 <!-- ==================================================
-     ENCABEZADO DE PÁGINA
+     ENCABEZADO
      ================================================== -->
 
 <div class="page-header">
 
-```
-<div>
+    <div>
 
-    <h1>✨ Novedades</h1>
+        <h1>📢 Novedades</h1>
 
-    <p>
-        Logros, avances y actividades de nuestra comunidad
-    </p>
+        <p>
+            Noticias, avances y actividades
+            de Real de Palmas Etapa 1
+        </p>
+
+    </div>
+
+
+    <div class="profile">
+
+        <div class="avatar">
+            G
+        </div>
+
+        <span>
+            Residente
+        </span>
+
+    </div>
 
 </div>
 
 
-<div class="profile">
-
-    <div class="avatar">G</div>
-
-    <span>Residente</span>
-
-</div>
-```
-
-</div>
 
 <!-- ==================================================
      CONTENIDO
@@ -262,469 +398,415 @@
 
 <main class="contenido">
 
-<div class="novedades-container">
 
-```
-<!-- ENCABEZADO -->
-
-<section class="encabezado-novedades">
-
-    <h1>📢 Logros y Avances del Comité Vecinal</h1>
-
-    <p>
-        Comité de Vecinos Real de Palmas
-    </p>
-
-</section>
+<div class="novedades-contenedor">
 
 
-<!-- INTRO -->
+    <!-- ENCABEZADO -->
 
-<section class="intro-novedades">
+    <section class="encabezado-novedades">
 
-    <p>
-        Gracias al esfuerzo, unidad e insistencia de los vecinos
-        y al acompañamiento del comité, se han logrado avances
-        importantes en conjunto con Millennium y el Ayuntamiento.
-    </p>
+        <h1>
+            📢 Novedades de la Comunidad
+        </h1>
 
-</section>
+        <p>
+            Mantente al día con las noticias,
+            avances, eventos y acciones realizadas
+            en Real de Palmas Etapa 1.
+        </p>
+
+    </section>
 
 
-<!-- ==================================================
-     1 SEGURIDAD
-     ================================================== -->
 
-<section class="novedad-card">
+    <!-- INTRO -->
 
-    <span class="novedad-categoria">
-        🛡️ Seguridad
-    </span>
+    <section class="intro-novedades">
 
-    <h2>
-        1. Control de acceso y plumas automáticas
-    </h2>
+        <p>
 
-    <ul>
+            Este espacio será utilizado para compartir
+            <strong>nuevas noticias, avisos importantes,
+            avances, actividades y logros</strong>
+            de nuestra comunidad.
 
-        <li>
-            Instalación de plumas de entrada y salida en 2025.
-        </li>
+        </p>
 
-        <li>
-            Mejora en el control vehicular y seguridad.
-            Se continúa dando seguimiento constante con los
-            guardias para mejorar su desempeño.
-        </li>
+        <p>
 
-        <li>
-            Instalación de cámaras por parte de la constructora
-            durante 2025.
-        </li>
+            Aquí iremos agregando las novedades conforme
+            vayan sucediendo, para que todos los residentes
+            puedan mantenerse informados.
 
-        <li>
-            Gestión para la instalación de cámaras propias,
-            instaladas en diferentes puntos de la cerrada durante 2026.
-        </li>
+        </p>
 
-    </ul>
+    </section>
 
-    <div class="galeria">
 
-        <a href="https://blogger.googleusercontent.com/img/a/AVvXsEixDVxjR-__aw7gHYssuizeyaFV0m-ER-5dEFpgDVP0AGm-t_DUXSXeLEOsrEWNLnfxufyaxx_Ox54Yx_v5HiR-ykiRG9A6VVzsJ3w2xvxkyj20BK4nWcL1uo6Cow5b4Zacw-BpKbtmVwxkKJuZLW9TZsaDSwdXW7XzwlawVXTGqCgsHRe09Upd19zbHg"
-           target="_blank">
 
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEixDVxjR-__aw7gHYssuizeyaFV0m-ER-5dEFpgDVP0AGm-t_DUXSXeLEOsrEWNLnfxufyaxx_Ox54Yx_v5HiR-ykiRG9A6VVzsJ3w2xvxkyj20BK4nWcL1uo6Cow5b4Zacw-BpKbtmVwxkKJuZLW9TZsaDSwdXW7XzwlawVXTGqCgsHRe09Upd19zbHg=w237-h272"
-                 alt="Cámaras de seguridad">
+    <!-- ==================================================
+         NOVEDADES RECIENTES
+         ================================================== -->
 
-        </a>
+    <div class="titulo-seccion">
+
+        <h2>
+            📰 Novedades recientes
+        </h2>
 
     </div>
 
-</section>
 
 
-<!-- ==================================================
-     2 AGUA
-     ================================================== -->
+    <!-- NOVEDAD -->
 
-<section class="novedad-card">
+    <article class="novedad-card">
 
-    <span class="novedad-categoria">
-        💧 Servicios
-    </span>
+        <span class="fecha-novedad">
+            2026
+        </span>
 
-    <h2>
-        2. Agua
-    </h2>
+        <span class="categoria">
+            🛡️ Seguridad
+        </span>
 
-    <ul>
+        <h3>
+            Cámaras de vigilancia en diferentes puntos
+        </h3>
 
-        <li>
-            Reconocimiento del residencial ante el municipio
-            como Comité Vecinal.
-        </li>
+        <p>
 
-        <li>
-            Se logró, en conjunto con la constructora,
-            el cambio de todas las válvulas check durante 2025.
-        </li>
+            Como parte de las acciones para mejorar
+            la seguridad de nuestra comunidad,
+            se gestionó la instalación de cámaras
+            en diferentes puntos de la cerrada.
 
-        <li>
-            Apoyo con pipas de agua durante el verano de 2025.
-        </li>
+        </p>
 
-        <li>
-            Gestión para mejorar el servicio continuo
-            durante 2025 y actualmente.
-        </li>
+    </article>
 
-    </ul>
 
-    <div class="galeria">
 
-        <a href="https://blogger.googleusercontent.com/img/a/AVvXsEivc6wb4ahL7vOQubepTwDhKyd8u7hfBLARvtY7hKAFMyP6ZdxA-ZGjFU8zqbPsrTo8PiyHXmNyOjo5T81c6IwWgA_KQuvY7fdoFz7fn1hL9mSyFAkCwYqM5KIh13dm-i09JQN8mP_iPirtmiRtfSsFvP8AKwKmWHWhzxk5GAaXVOqMWdGCuh0e4REas_Y"
-           target="_blank">
+    <!-- NOVEDAD -->
 
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEivc6wb4ahL7vOQubepTwDhKyd8u7hfBLARvtY7hKAFMyP6ZdxA-ZGjFU8zqbPsrTo8PiyHXmNyOjo5T81c6IwWgA_KQuvY7fdoFz7fn1hL9mSyFAkCwYqM5KIh13dm-i09JQN8mP_iPirtmiRtfSsFvP8AKwKmWHWhzxk5GAaXVOqMWdGCuh0e4REas_Y"
-                 alt="Apoyo con agua">
+    <article class="novedad-card">
 
-        </a>
+        <span class="fecha-novedad">
+            2026
+        </span>
 
-        <a href="https://blogger.googleusercontent.com/img/a/AVvXsEjjQxzxiPzeStxaVeE7GguHO7FQux-UkcfADKWiyigeSQ4Ly3G9nmHlB6PBP2yl1VHMIPgPTYZQIAKvixNZ7DbkpCjwiw3PN63H8tICMa36gi7C8dyWzpO6WvEP312l6QbuAg03WeqeFzWJWAEl1TzudTRqwuBHtSXKjo38a2IBqKo1tvJ-zHzDeNVuKes"
-           target="_blank">
+        <span class="categoria">
+            🌳 Comunidad
+        </span>
 
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjjQxzxiPzeStxaVeE7GguHO7FQux-UkcfADKWiyigeSQ4Ly3G9nmHlB6PBP2yl1VHMIPgPTYZQIAKvixNZ7DbkpCjwiw3PN63H8tICMa36gi7C8dyWzpO6WvEP312l6QbuAg03WeqeFzWJWAEl1TzudTRqwuBHtSXKjo38a2IBqKo1tvJ-zHzDeNVuKes"
-                 alt="Servicio de agua">
+        <h3>
+            Mejoras en el parque y áreas comunes
+        </h3>
 
-        </a>
+        <p>
+
+            Se consiguió la mejora y expansión
+            de nuestro parque, buscando contar
+            con mejores espacios para la convivencia
+            de las familias.
+
+        </p>
+
+    </article>
+
+
+
+    <!-- NOVEDAD -->
+
+    <article class="novedad-card">
+
+        <span class="fecha-novedad">
+            2026
+        </span>
+
+        <span class="categoria">
+            🚛 Servicios
+        </span>
+
+        <h3>
+            Seguimiento a servicios públicos
+        </h3>
+
+        <p>
+
+            El comité continúa dando seguimiento
+            a temas relacionados con agua,
+            recolección de basura, limpieza
+            y otros servicios que afectan
+            directamente a nuestra comunidad.
+
+        </p>
+
+    </article>
+
+
+
+    <!-- ==================================================
+         LOGROS
+         ================================================== -->
+
+    <div class="separador"></div>
+
+
+    <div class="titulo-seccion">
+
+        <h2>
+            🏆 Logros de nuestra comunidad
+        </h2>
 
     </div>
 
-</section>
 
 
-<!-- ==================================================
-     3 PONCHA LLANTAS
-     ================================================== -->
+    <!-- SEGURIDAD -->
 
-<section class="novedad-card">
+    <article class="novedad-card">
 
-    <span class="novedad-categoria">
-        🚗 Seguridad vial
-    </span>
+        <span class="categoria">
+            🛡️ Seguridad
+        </span>
 
-    <h2>
-        3. Poncha-llantas en acceso principal
-    </h2>
+        <h3>
+            Control de acceso y seguridad
+        </h3>
 
-    <ul>
+        <ul>
 
-        <li>
-            Instalación como medida de control vehicular
-            en el acceso principal.
-        </li>
+            <li>
+                Instalación de plumas de entrada
+                y salida.
+            </li>
 
-    </ul>
+            <li>
+                Mejoras en el control vehicular.
+            </li>
 
-</section>
+            <li>
+                Instalación de cámaras por parte
+                de la constructora.
+            </li>
 
+            <li>
+                Gestión e instalación de cámaras
+                propias en diferentes puntos
+                de la cerrada.
+            </li>
 
-<!-- ==================================================
-     4 SEGURIDAD CASETA
-     ================================================== -->
+        </ul>
 
-<section class="novedad-card">
+    </article>
 
-    <span class="novedad-categoria">
-        👮 Gestión comunitaria
-    </span>
 
-    <h2>
-        4. Seguridad en caseta y cambios de empresa
-    </h2>
 
-    <ul>
+    <!-- AGUA -->
 
-        <li>
-            Mejora en la supervisión del acceso.
-        </li>
+    <article class="novedad-card">
 
-        <li>
-            Se está buscando reemplazar la empresa de seguridad
-            en conjunto con la constructora.
-        </li>
+        <span class="categoria">
+            💧 Servicios
+        </span>
 
-        <li>
-            Apoyo constante del comité y Ayuntamiento en asuntos
-            personales y vecinales, incluyendo policía,
-            Patrulla Verde y Agua de Hermosillo.
-        </li>
+        <h3>
+            Mejoras relacionadas con el agua
+        </h3>
 
-    </ul>
+        <ul>
 
-</section>
+            <li>
+                Reconocimiento del residencial
+                ante el municipio como Comité Vecinal.
+            </li>
 
+            <li>
+                Cambio de válvulas check.
+            </li>
 
-<!-- ==================================================
-     5 CIERRE
-     ================================================== -->
+            <li>
+                Apoyo con pipas de agua durante
+                el verano de 2025.
+            </li>
 
-<section class="novedad-card">
+            <li>
+                Gestión para mejorar la continuidad
+                del servicio.
+            </li>
 
-    <span class="novedad-categoria">
-        🧱 Infraestructura
-    </span>
+        </ul>
 
-    <h2>
-        5. Cierre de calle Escaleta
-    </h2>
+    </article>
 
-    <ul>
 
-        <li>
-            Bloqueo perimetral con barda para mayor seguridad
-            del fraccionamiento.
-        </li>
 
-        <li>
-            En un inicio, la otra etapa estaba en unión
-            y continuidad con esta etapa.
-        </li>
+    <!-- INFRAESTRUCTURA -->
 
-    </ul>
+    <article class="novedad-card">
 
-</section>
+        <span class="categoria">
+            🏗️ Infraestructura
+        </span>
 
+        <h3>
+            Mejoras y seguridad perimetral
+        </h3>
 
-<!-- ==================================================
-     6 ÁREAS COMUNES
-     ================================================== -->
+        <ul>
 
-<section class="novedad-card">
+            <li>
+                Cierre de calle Escaleta.
+            </li>
 
-    <span class="novedad-categoria">
-        🌳 Entorno
-    </span>
+            <li>
+                Refuerzo de malla en zonas vulnerables.
+            </li>
 
-    <h2>
-        6. Malla ciclónica y áreas comunes
-    </h2>
+            <li>
+                Revisión de terrenos y áreas
+                sin desarrollar.
+            </li>
 
-    <ul>
+            <li>
+                Gestión para instalación de
+                malla eléctrica perimetral.
+            </li>
 
-        <li>
-            Refuerzo de malla en zonas vulnerables.
-        </li>
+        </ul>
 
-        <li>
-            Se consiguió la mejora y expansión de nuestro parque.
-        </li>
+    </article>
 
-        <li>
-            Revisión de terrenos y áreas sin desarrollar.
-        </li>
 
-        <li>
-            Está en proceso con la constructora la instalación
-            de malla eléctrica perimetral.
-        </li>
 
-    </ul>
+    <!-- LIMPIEZA -->
 
-    <div class="galeria">
+    <article class="novedad-card">
 
-        <a href="https://blogger.googleusercontent.com/img/a/AVvXsEgvGzn8MpN-heVwmF0Wk1-LtTDlJzpsEWtlOtVDvO7hCZ-aH0A-PpNY-uThwMESgvmIcANe80_x_5Ta6OogOHnRUmOMwlTHzcZ3pD40UkqxHz5l6xbiocNyevqAl4WuLxlmDgFt3D_H-Jyt70x3JzIho3LsJfkdLFITSWkZSb08UK8Tag4tDaCNO-RWLxI"
-           target="_blank">
+        <span class="categoria">
+            🧹 Entorno
+        </span>
 
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgvGzn8MpN-heVwmF0Wk1-LtTDlJzpsEWtlOtVDvO7hCZ-aH0A-PpNY-uThwMESgvmIcANe80_x_5Ta6OogOHnRUmOMwlTHzcZ3pD40UkqxHz5l6xbiocNyevqAl4WuLxlmDgFt3D_H-Jyt70x3JzIho3LsJfkdLFITSWkZSb08UK8Tag4tDaCNO-RWLxI"
-                 alt="Gazebo y áreas comunes">
+        <h3>
+            Limpieza y recolección de basura
+        </h3>
 
-        </a>
+        <ul>
 
-    </div>
+            <li>
+                Se logró el recorrido del camión
+                de basura dentro de nuestra comunidad.
+            </li>
 
-</section>
+            <li>
+                Se realizaron campañas de limpieza
+                y retiro de escombro.
+            </li>
 
+        </ul>
 
-<!-- ==================================================
-     7 BASURA
-     ================================================== -->
+    </article>
 
-<section class="novedad-card">
 
-    <span class="novedad-categoria">
-        🗑️ Servicios públicos
-    </span>
 
-    <h2>
-        7. Recolección de basura
-    </h2>
+    <!-- COMUNIDAD -->
 
-    <ul>
+    <article class="novedad-card">
 
-        <li>
-            Se logró, con apoyo de la constructora y el Gobierno
-            de Hermosillo, el recorrido del camión de basura
-            dentro de nuestra comunidad.
-        </li>
+        <span class="categoria">
+            🎉 Comunidad
+        </span>
 
-        <li>
-            Anteriormente este servicio era atendido
-            por personal de la constructora.
-        </li>
+        <h3>
+            Eventos y convivencia vecinal
+        </h3>
 
-        <li>
-            Se realizó campaña de limpieza y retiro de escombro
-            en la cerrada.
-        </li>
+        <ul>
 
-    </ul>
+            <li>
+                Reuniones con el Ayuntamiento
+                para asesoría vecinal.
+            </li>
 
-    <div class="galeria">
+            <li>
+                Celebración del Día del Niño.
+            </li>
 
-        <a href="https://blogger.googleusercontent.com/img/a/AVvXsEih0VRlkECJiv-kWAbLj-MAeAyXD_aqiD6zpyHrEp0Ks1t3CufsQFI-Q2_EysO4eJpsFbnftaiy14f1cB3GDYudA4s6eGI8eqRcwbasJkaLnlrPsUqHgsY7o08HRcBW3UNUmgEfs6EvBOY8-SAMRW6NmN0o9y39M8ta48revRXrztruxxeJciK_yRTT8mY"
-           target="_blank">
+            <li>
+                Actividades de convivencia comunitaria.
+            </li>
 
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEih0VRlkECJiv-kWAbLj-MAeAyXD_aqiD6zpyHrEp0Ks1t3CufsQFI-Q2_EysO4eJpsFbnftaiy14f1cB3GDYudA4s6eGI8eqRcwbasJkaLnlrPsUqHgsY7o08HRcBW3UNUmgEfs6EvBOY8-SAMRW6NmN0o9y39M8ta48revRXrztruxxeJciK_yRTT8mY"
-                 alt="Campaña de limpieza">
+            <li>
+                Celebración Navideña 2025.
+            </li>
 
-        </a>
+            <li>
+                Halloween comunitario 2025.
+            </li>
 
-    </div>
+        </ul>
 
-</section>
+    </article>
 
 
-<!-- ==================================================
-     8 FUMIGACIÓN
-     ================================================== -->
 
-<section class="novedad-card">
+    <!-- ==================================================
+         RECORDATORIO
+         ================================================== -->
 
-    <span class="novedad-categoria">
-        🦟 Salud
-    </span>
+    <div class="separador"></div>
 
-    <h2>
-        8. Fumigación general
-    </h2>
 
-    <ul>
+    <section class="intro-novedades">
 
-        <li>
-            Fumigación realizada con apoyo vecinal durante 2025.
-        </li>
+        <p>
 
-        <li>
-            Nueva fumigación correspondiente a 2026,
-            actualmente en proceso.
-        </li>
+            💚 <strong>La comunidad la construimos
+            entre todos.</strong>
 
-    </ul>
+        </p>
 
-</section>
+        <p>
 
+            Si tienes información sobre alguna actividad,
+            avance o situación importante que deba
+            compartirse con los vecinos, puedes
+            comunicarla al Comité.
 
-<!-- ==================================================
-     9 COMUNIDAD
-     ================================================== -->
+        </p>
 
-<section class="novedad-card">
+    </section>
 
-    <span class="novedad-categoria">
-        🎉 Comunidad
-    </span>
 
-    <h2>
-        9. Eventos vecinales y juntas
-    </h2>
 
-    <ul>
+    <!-- FOOTER -->
 
-        <li>
-            Reunión con Ayuntamiento para asesoría vecinal.
-        </li>
+    <footer class="footer-novedades">
 
-        <li>
-            Celebración del Día del Niño 🎈 durante abril de 2025 y 2026.
-        </li>
+        <p>
+            <strong>
+                Comité de Vecinos Real de Palmas
+            </strong>
+        </p>
 
-        <li>
-            Actividades de convivencia comunitaria.
-        </li>
+        <p>
+            Cacta Luna Communities
+        </p>
 
-        <li>
-            Celebración Navideña 2025.
-        </li>
+        <p>
+            La participación vecinal es clave
+            para seguir mejorando nuestra comunidad.
+        </p>
 
-        <li>
-            Invitación a Halloween comunitario 🎃 en octubre de 2025.
-        </li>
+    </footer>
 
-    </ul>
-
-    <div class="galeria">
-
-        <a href="https://blogger.googleusercontent.com/img/a/AVvXsEjA3fEgroAHkn10lynzXCry4WSTmYeSkYGxXAYzv95cuEQoybOr3cb8s_64_5-00PdxUqXwdwmTYOydmVcqyeDEARpA1toqkYrDJHXestD-7MAMTYpKbxkyhLiAgoLqob0UmyoAEqjIOf2ItnBlh2xO-Exbyf8PsxnY1R_ajL-3Kdjxxl73nNTWPlcLoiQ"
-           target="_blank">
-
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEjA3fEgroAHkn10lynzXCry4WSTmYeSkYGxXAYzv95cuEQoybOr3cb8s_64_5-00PdxUqXwdwmTYOydmVcqyeDEARpA1toqkYrDJHXestD-7MAMTYpKbxkyhLiAgoLqob0UmyoAEqjIOf2ItnBlh2xO-Exbyf8PsxnY1R_ajL-3Kdjxxl73nNTWPlcLoiQ"
-                 alt="Reunión vecinal">
-
-        </a>
-
-        <a href="https://blogger.googleusercontent.com/img/a/AVvXsEgPWY0T4ewBqMiR0_PgzqWvjJMNYm5CgDpACiHm5W8c9r_VMyQujLwV2lIln9wdLbr-C01JvsmYjMHfsnzsjjItWAmr0e37rpc_QN0HedlsKD3fcjT8XxjN7xN1QgLsPwArxIycGhK6NKGFMWW9lUnPuORJThL5QLcYHrkVFzhZXvCsmduV2ld35OqNASA"
-           target="_blank">
-
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgPWY0T4ewBqMiR0_PgzqWvjJMNYm5CgDpACiHm5W8c9r_VMyQujLwV2lIln9wdLbr-C01JvsmYjMHfsnzsjjItWAmr0e37rpc_QN0HedlsKD3fcjT8XxjN7xN1QgLsPwArxIycGhK6NKGFMWW9lUnPuORJThL5QLcYHrkVFzhZXvCsmduV2ld35OqNASA"
-                 alt="Día del Niño">
-
-        </a>
-
-        <a href="https://blogger.googleusercontent.com/img/a/AVvXsEhSvg7pJhfGRJtvCBp08RJ6LwZgeDsIiy8XRKD3D5nVlcXuAmmybrD8kz_gzAZSEQ-A-rZEJ4ShpUH8NdG0lFejBad9KFZIiywcEhovGv6yVi_safmf-aRkVS4xPHjnXbzCH8D9LgVqhM3oqNoidYaaermAo5tAG5xzK35Id3E4UibM6_jTdD3ykfv2iCc"
-           target="_blank">
-
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhSvg7pJhfGRJtvCBp08RJ6LwZgeDsIiy8XRKD3D5nVlcXuAmmybrD8kz_gzAZSEQ-A-rZEJ4ShpUH8NdG0lFejBad9KFZIiywcEhovGv6yVi_safmf-aRkVS4xPHjnXbzCH8D9LgVqhM3oqNoidYaaermAo5tAG5xzK35Id3E4UibM6_jTdD3ykfv2iCc"
-                 alt="Halloween comunitario">
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     FOOTER
-     ================================================== -->
-
-<div class="novedades-footer">
-
-    <p>
-        <strong>Recordatorio:</strong>
-        Reporta incidencias al comité y autoridades correspondientes.
-    </p>
-
-    <p>
-        La participación vecinal es clave para seguir mejorando nuestra comunidad.
-    </p>
-
-    <hr>
-
-    <p>
-        <strong>Comité de Vecinos Real de Palmas</strong>
-    </p>
-
-    <p>
-        Cacta Luna Communities
-    </p>
-
-</div>
 
 </div>
 
 </main>
+
 
 </body>
 
