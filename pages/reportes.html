@@ -744,82 +744,252 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 
 const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
+```js
 function enviarReporte(){
 
-const boton = document.getElementById("btnEnviar");
+    const boton =
+        document.getElementById("btnEnviar");
 
-boton.disabled = true;
-boton.innerHTML = "⏳ Procesando reporte...";
+    boton.disabled = true;
+    boton.innerHTML =
+        "⏳ Procesando reporte...";
 
-let prioridadSeleccionada = document.querySelector('input[name="prioridad"]:checked');
 
-let datos = {
+    const prioridadSeleccionada =
+        document.querySelector(
+            'input[name="prioridad"]:checked'
+        );
 
-nombre: document.getElementById("nombre").value,
 
-correo: document.getElementById("correo").value,
+    /* ==========================================
+       OBTENER FOTO
+    ========================================== */
 
-telefono: document.getElementById("telefono").value,
+    const campoFoto =
+        document.getElementById("foto");
 
-tipo: document.getElementById("tipo").value,
+    const archivo =
+        campoFoto &&
+        campoFoto.files.length > 0
+            ? campoFoto.files[0]
+            : null;
 
-descripcion: document.getElementById("descripcion").value,
 
-ubicacion: document.getElementById("ubicacion").value,
+    /* ==========================================
+       FUNCIÓN PARA ENVIAR EL REPORTE
+    ========================================== */
 
-prioridad: prioridadSeleccionada
-? prioridadSeleccionada.value
-: "Normal"
+    function enviarDatos(imagenBase64){
 
-};
+        const datos = {
 
-console.log("Enviando:", datos);
+            nombre:
+                document.getElementById("nombre").value,
 
-fetch(URL_APP_SCRIPT,{
+            correo:
+                document.getElementById("correo").value,
 
-method:"POST",
+            telefono:
+                document.getElementById("telefono").value,
 
-body:JSON.stringify(datos)
+            tipo:
+                document.getElementById("tipo").value,
 
-})
+            descripcion:
+                document.getElementById("descripcion").value,
 
-.then(respuesta=>respuesta.text())
+            ubicacion:
+                document.getElementById("ubicacion").value,
 
-.then(texto=>{
+            prioridad:
+                prioridadSeleccionada
+                    ? prioridadSeleccionada.value
+                    : "Normal",
 
-console.log("Respuesta servidor:",texto);
+            imagen:
+                imagenBase64,
 
-let resultado={};
+            nombreArchivo:
+                archivo
+                    ? archivo.name
+                    : ""
 
-try{
+        };
 
-resultado=JSON.parse(texto);
 
-}catch(e){}
+        console.log(
+            "Enviando:",
+            datos
+        );
 
-alert(
-"✅ Reporte enviado correctamente."
-);
 
-document.getElementById("formReporte").reset();
+        fetch(
+            URL_APP_SCRIPT,
+            {
 
-boton.disabled=false;
-boton.innerHTML="📨 Enviar reporte";
+                method: "POST",
 
-})
+                body:
+                    JSON.stringify(datos)
 
-.catch(error=>{
+            }
+        )
 
-console.error(error);
+        .then(
+            respuesta =>
+                respuesta.text()
+        )
 
-alert("❌ Error de conexión con el servidor");
+        .then(texto => {
 
-boton.disabled=false;
-boton.innerHTML="📨 Enviar reporte";
+            console.log(
+                "Respuesta servidor:",
+                texto
+            );
 
-});
+
+            let resultado = {};
+
+            try{
+
+                resultado =
+                    JSON.parse(texto);
+
+            }catch(e){
+
+                console.error(
+                    "No se pudo interpretar la respuesta:",
+                    texto
+                );
+
+            }
+
+
+            if(resultado.ok){
+
+                alert(
+                    "✅ Reporte enviado correctamente.\n\n" +
+                    "Folio: " +
+                    resultado.folio
+                );
+
+                document
+                    .getElementById("formReporte")
+                    .reset();
+
+            }else{
+
+                alert(
+                    "❌ No se pudo guardar el reporte.\n\n" +
+                    (resultado.error ||
+                     "Error desconocido.")
+                );
+
+            }
+
+
+            boton.disabled = false;
+
+            boton.innerHTML =
+                "📨 Enviar reporte";
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+            alert(
+                "❌ Error de conexión con el servidor"
+            );
+
+            boton.disabled = false;
+
+            boton.innerHTML =
+                "📨 Enviar reporte";
+
+        });
+
+    }
+
+
+    /* ==========================================
+       SI NO HAY FOTO
+    ========================================== */
+
+    if(!archivo){
+
+        enviarDatos("");
+
+        return;
+
+    }
+
+
+    /* ==========================================
+       VALIDAR TAMAÑO
+    ========================================== */
+
+    if(
+        archivo.size >
+        5 * 1024 * 1024
+    ){
+
+        alert(
+            "📸 La foto es demasiado grande.\n\n" +
+            "Selecciona una imagen menor a 5 MB."
+        );
+
+        boton.disabled = false;
+
+        boton.innerHTML =
+            "📨 Enviar reporte";
+
+        return;
+
+    }
+
+
+    /* ==========================================
+       LEER FOTO
+    ========================================== */
+
+    const lector =
+        new FileReader();
+
+
+    lector.onload =
+        function(){
+
+            enviarDatos(
+                lector.result
+            );
+
+        };
+
+
+    lector.onerror =
+        function(){
+
+            alert(
+                "❌ No se pudo leer la fotografía."
+            );
+
+            boton.disabled = false;
+
+            boton.innerHTML =
+                "📨 Enviar reporte";
+
+        };
+
+
+    lector.readAsDataURL(
+        archivo
+    );
 
 }
+```
+
 
 </script>
 
