@@ -750,19 +750,18 @@ const URL_APP_SCRIPT =
 "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
 
-/* ==================================================
-   ENVIAR REPORTE
-================================================== */
-
 function enviarReporte(){
 
     const boton =
         document.getElementById("btnEnviar");
 
     if(!boton){
+
         alert("❌ No se encontró el botón de envío.");
+
         return;
     }
+
 
     boton.disabled = true;
 
@@ -770,19 +769,9 @@ function enviarReporte(){
         "⏳ Procesando reporte...";
 
 
-    /* ==================================================
-       PRIORIDAD
-    ================================================== */
-
-    const prioridadSeleccionada =
-        document.querySelector(
-            'input[name="prioridad"]:checked'
-        );
-
-
-    /* ==================================================
-       DATOS DEL FORMULARIO
-    ================================================== */
+    // ==================================================
+    // DATOS DEL FORMULARIO
+    // ==================================================
 
     const nombre =
         document.getElementById("nombre").value.trim();
@@ -802,18 +791,26 @@ function enviarReporte(){
     const ubicacion =
         document.getElementById("ubicacion").value.trim();
 
+
+    const prioridadSeleccionada =
+        document.querySelector(
+            'input[name="prioridad"]:checked'
+        );
+
+
     const prioridad =
         prioridadSeleccionada
             ? prioridadSeleccionada.value
             : "Normal";
 
 
-    /* ==================================================
-       FOTO
-    ================================================== */
+    // ==================================================
+    // FOTO
+    // ==================================================
 
     const campoFoto =
         document.getElementById("foto");
+
 
     const archivo =
         campoFoto &&
@@ -829,9 +826,9 @@ function enviarReporte(){
     );
 
 
-    /* ==================================================
-       FUNCIÓN PARA RESTAURAR BOTÓN
-    ================================================== */
+    // ==================================================
+    // RESTAURAR BOTÓN
+    // ==================================================
 
     function restaurarBoton(){
 
@@ -843,29 +840,40 @@ function enviarReporte(){
     }
 
 
-    /* ==================================================
-       ENVIAR AL APPS SCRIPT
-    ================================================== */
+    // ==================================================
+    // ENVIAR DATOS AL APPS SCRIPT
+    // ==================================================
 
-    function enviarDatos(imagenBase64, nombreArchivo){
+    function enviarDatos(
+        imagenBase64,
+        nombreArchivo
+    ){
 
         const datos = {
 
-            nombre: nombre,
+            nombre:
+                nombre,
 
-            correo: correo,
+            correo:
+                correo,
 
-            telefono: telefono,
+            telefono:
+                telefono,
 
-            tipo: tipo,
+            tipo:
+                tipo,
 
-            descripcion: descripcion,
+            descripcion:
+                descripcion,
 
-            ubicacion: ubicacion,
+            ubicacion:
+                ubicacion,
 
-            prioridad: prioridad,
+            prioridad:
+                prioridad,
 
-            imagen: imagenBase64 || "",
+            imagen:
+                imagenBase64 || "",
 
             nombreArchivo:
                 nombreArchivo || ""
@@ -874,7 +882,11 @@ function enviarReporte(){
 
 
         console.log(
-            "Enviando reporte..."
+            "================================"
+        );
+
+        console.log(
+            "ENVIANDO REPORTE"
         );
 
         console.log(
@@ -889,6 +901,10 @@ function enviarReporte(){
             nombreArchivo
         );
 
+        console.log(
+            "================================"
+        );
+
 
         fetch(
             URL_APP_SCRIPT,
@@ -897,8 +913,10 @@ function enviarReporte(){
                 method: "POST",
 
                 headers: {
+
                     "Content-Type":
                         "text/plain;charset=utf-8"
+
                 },
 
                 body:
@@ -912,112 +930,147 @@ function enviarReporte(){
                 respuesta.text()
         )
 
-        .then(texto => {
+        .then(
+            texto => {
 
-            console.log(
-                "Respuesta Apps Script:",
-                texto
-            );
-
-
-            let resultado;
-
-
-            try{
-
-                resultado =
-                    JSON.parse(texto);
-
-            }
-
-            catch(error){
-
-                console.error(
-                    "Respuesta inválida:",
+                console.log(
+                    "Respuesta Apps Script:",
                     texto
                 );
 
-                throw new Error(
-                    "El servidor no devolvió una respuesta válida."
-                );
 
-            }
+                let resultado;
 
 
-            /* ==========================================
-               ÉXITO
-            ========================================== */
+                try{
 
-            if(resultado.ok){
-
-                alert(
-                    "✅ Reporte enviado correctamente.\n\n" +
-                    "📄 Folio: " +
-                    resultado.folio
-                );
-
-
-                const formulario =
-                    document.getElementById(
-                        "formReporte"
-                    );
-
-
-                if(formulario){
-
-                    formulario.reset();
+                    resultado =
+                        JSON.parse(texto);
 
                 }
 
+                catch(error){
+
+                    console.error(
+                        "Respuesta inválida:",
+                        texto
+                    );
+
+                    throw new Error(
+                        "El servidor no devolvió una respuesta válida."
+                    );
+
+                }
+
+
+                // ==================================================
+                // REPORTE CORRECTO
+                // ==================================================
+
+                if(
+                    resultado.ok === true ||
+                    resultado.estado === "ok"
+                ){
+
+                    alert(
+
+                        "✅ REPORTE ENVIADO CORRECTAMENTE\n\n" +
+
+                        "📄 Folio: " +
+
+                        (
+                            resultado.folio ||
+                            "No disponible"
+                        ) +
+
+                        "\n\n" +
+
+                        "El Comité dará seguimiento a tu reporte."
+
+                    );
+
+
+                    const formulario =
+                        document.getElementById(
+                            "formReporte"
+                        );
+
+
+                    if(formulario){
+
+                        formulario.reset();
+
+                    }
+
+                }
+
+
+                // ==================================================
+                // ERROR
+                // ==================================================
+
+                else{
+
+                    alert(
+
+                        "⚠️ El reporte fue procesado, " +
+                        "pero se recibió una respuesta de error.\n\n" +
+
+                        "Folio: " +
+
+                        (
+                            resultado.folio ||
+                            "No disponible"
+                        ) +
+
+                        "\n\n" +
+
+                        "Detalle: " +
+
+                        (
+                            resultado.error ||
+                            "Error desconocido."
+                        )
+
+                    );
+
+                }
+
+
+                restaurarBoton();
+
             }
+        )
+
+        .catch(
+            error => {
+
+                console.error(
+                    "Error al enviar:",
+                    error
+                );
 
 
-            /* ==========================================
-               ERROR
-            ========================================== */
+                alert(
 
-          else{
+                    "❌ No se pudo enviar el reporte.\n\n" +
 
-    alert(
-        "⚠️ El reporte fue procesado, pero el servidor respondió con error.\n\n" +
-        "Folio: " +
-        (resultado.folio || "No disponible") +
-        "\n\n" +
-        "Detalle: " +
-        (resultado.error || "Error desconocido.")
-    );
+                    error.message
 
-}
+                );
 
 
-            restaurarBoton();
+                restaurarBoton();
 
-        })
-
-        .catch(error => {
-
-            console.error(
-                "Error al enviar:",
-                error
-            );
-
-
-            alert(
-                "❌ No se pudo enviar el reporte.\n\n" +
-                error.message
-            );
-
-
-            restaurarBoton();
-
-        });
+            }
+        );
 
     }
 
 
-    /* ==================================================
-       SI NO HAY FOTO
-    ================================================== */
+    // ==================================================
+    // SIN FOTO
+    // ==================================================
 
     if(!archivo){
 
@@ -1025,19 +1078,21 @@ function enviarReporte(){
             "Reporte sin fotografía."
         );
 
+
         enviarDatos(
             "",
             ""
         );
+
 
         return;
 
     }
 
 
-    /* ==================================================
-       VALIDAR TIPO DE ARCHIVO
-    ================================================== */
+    // ==================================================
+    // VALIDAR QUE SEA IMAGEN
+    // ==================================================
 
     if(
         !archivo.type.startsWith("image/")
@@ -1047,6 +1102,7 @@ function enviarReporte(){
             "❌ El archivo seleccionado no es una imagen."
         );
 
+
         restaurarBoton();
 
         return;
@@ -1054,9 +1110,9 @@ function enviarReporte(){
     }
 
 
-    /* ==================================================
-       VALIDAR TAMAÑO ORIGINAL
-    ================================================== */
+    // ==================================================
+    // VALIDAR TAMAÑO
+    // ==================================================
 
     if(
         archivo.size >
@@ -1064,9 +1120,13 @@ function enviarReporte(){
     ){
 
         alert(
+
             "📸 La fotografía es demasiado grande.\n\n" +
+
             "Selecciona una imagen menor a 10 MB."
+
         );
+
 
         restaurarBoton();
 
@@ -1075,9 +1135,9 @@ function enviarReporte(){
     }
 
 
-    /* ==================================================
-       LEER IMAGEN
-    ================================================== */
+    // ==================================================
+    // LEER FOTO
+    // ==================================================
 
     const lector =
         new FileReader();
@@ -1093,38 +1153,48 @@ function enviarReporte(){
             imagen.onload =
                 function(){
 
-                    /* ==================================
-                       REDUCIR IMAGEN
-                    ================================== */
+                    // ==========================================
+                    // REDUCIR IMAGEN
+                    // ==========================================
 
-                    const MAX_ANCHO = 1600;
+                    const MAX_ANCHO =
+                        1600;
+
 
                     let ancho =
                         imagen.width;
+
 
                     let alto =
                         imagen.height;
 
 
-                    if(ancho > MAX_ANCHO){
+                    if(
+                        ancho >
+                        MAX_ANCHO
+                    ){
 
                         const proporcion =
-                            MAX_ANCHO / ancho;
+                            MAX_ANCHO /
+                            ancho;
+
 
                         ancho =
                             MAX_ANCHO;
 
+
                         alto =
                             Math.round(
-                                alto * proporcion
+                                alto *
+                                proporcion
                             );
 
                     }
 
 
-                    /* ==================================
-                       CANVAS
-                    ================================== */
+                    // ==========================================
+                    // CANVAS
+                    // ==========================================
 
                     const canvas =
                         document.createElement(
@@ -1134,6 +1204,7 @@ function enviarReporte(){
 
                     canvas.width =
                         ancho;
+
 
                     canvas.height =
                         alto;
@@ -1146,17 +1217,23 @@ function enviarReporte(){
 
 
                     contexto.drawImage(
+
                         imagen,
+
                         0,
+
                         0,
+
                         ancho,
+
                         alto
+
                     );
 
 
-                    /* ==================================
-                       CONVERTIR A JPEG
-                    ================================== */
+                    // ==========================================
+                    // CONVERTIR A JPEG
+                    // ==========================================
 
                     const imagenComprimida =
                         canvas.toDataURL(
@@ -1171,18 +1248,24 @@ function enviarReporte(){
 
 
                     console.log(
+
                         "Tamaño aproximado:",
+
                         Math.round(
+
                             imagenComprimida.length /
                             1024
+
                         ) +
+
                         " KB"
+
                     );
 
 
-                    /* ==================================
-                       ENVIAR
-                    ================================== */
+                    // ==========================================
+                    // ENVIAR
+                    // ==========================================
 
                     enviarDatos(
 
@@ -1202,6 +1285,7 @@ function enviarReporte(){
                         "❌ No se pudo procesar la fotografía."
                     );
 
+
                     restaurarBoton();
 
                 };
@@ -1220,6 +1304,7 @@ function enviarReporte(){
                 "❌ No se pudo leer la fotografía."
             );
 
+
             restaurarBoton();
 
         };
@@ -1232,6 +1317,7 @@ function enviarReporte(){
 }
 
 </script>
+
 
 
 
