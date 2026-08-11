@@ -743,16 +743,21 @@ Una vez obtenido el folio, el Comité puede apoyar con seguimiento ante las auto
 
 const URL_APP_SCRIPT = "https://script.google.com/macros/s/AKfycbyE0cjTI0KaBss_Cnk7BXGD4SQhsGretJhRQc4qfBuaTTFteGGtTy-xmDboAZObcZRqIw/exec";
 
-```js
+
 function enviarReporte(){
 
     const boton =
         document.getElementById("btnEnviar");
 
     boton.disabled = true;
+
     boton.innerHTML =
         "⏳ Procesando reporte...";
 
+
+    // ==========================================
+    // OBTENER PRIORIDAD
+    // ==========================================
 
     const prioridadSeleccionada =
         document.querySelector(
@@ -760,9 +765,9 @@ function enviarReporte(){
         );
 
 
-    /* ==========================================
-       OBTENER FOTO
-    ========================================== */
+    // ==========================================
+    // OBTENER FOTO
+    // ==========================================
 
     const campoFoto =
         document.getElementById("foto");
@@ -774,31 +779,31 @@ function enviarReporte(){
             : null;
 
 
-    /* ==========================================
-       FUNCIÓN PARA ENVIAR EL REPORTE
-    ========================================== */
+    // ==========================================
+    // ENVIAR DATOS
+    // ==========================================
 
     function enviarDatos(imagenBase64){
 
         const datos = {
 
             nombre:
-                document.getElementById("nombre").value,
+                document.getElementById("nombre").value.trim(),
 
             correo:
-                document.getElementById("correo").value,
+                document.getElementById("correo").value.trim(),
 
             telefono:
-                document.getElementById("telefono").value,
+                document.getElementById("telefono").value.trim(),
 
             tipo:
                 document.getElementById("tipo").value,
 
             descripcion:
-                document.getElementById("descripcion").value,
+                document.getElementById("descripcion").value.trim(),
 
             ubicacion:
-                document.getElementById("ubicacion").value,
+                document.getElementById("ubicacion").value.trim(),
 
             prioridad:
                 prioridadSeleccionada
@@ -817,7 +822,7 @@ function enviarReporte(){
 
 
         console.log(
-            "Enviando:",
+            "Enviando reporte:",
             datos
         );
 
@@ -828,41 +833,58 @@ function enviarReporte(){
 
                 method: "POST",
 
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+
                 body:
                     JSON.stringify(datos)
 
             }
         )
 
+
         .then(
             respuesta =>
                 respuesta.text()
         )
 
+
         .then(texto => {
 
             console.log(
-                "Respuesta servidor:",
+                "Respuesta del servidor:",
                 texto
             );
 
 
-            let resultado = {};
+            let resultado;
+
 
             try{
 
                 resultado =
                     JSON.parse(texto);
 
-            }catch(e){
+            }
+
+            catch(error){
 
                 console.error(
-                    "No se pudo interpretar la respuesta:",
+                    "Respuesta no válida:",
                     texto
+                );
+
+                throw new Error(
+                    "El servidor no devolvió una respuesta válida."
                 );
 
             }
 
+
+            // ==================================
+            // REPORTE CORRECTO
+            // ==================================
 
             if(resultado.ok){
 
@@ -872,16 +894,32 @@ function enviarReporte(){
                     resultado.folio
                 );
 
-                document
-                    .getElementById("formReporte")
-                    .reset();
 
-            }else{
+                const formulario =
+                    document.getElementById("formReporte");
+
+
+                if(formulario){
+
+                    formulario.reset();
+
+                }
+
+            }
+
+
+            // ==================================
+            // ERROR DEL SERVIDOR
+            // ==================================
+
+            else{
 
                 alert(
                     "❌ No se pudo guardar el reporte.\n\n" +
-                    (resultado.error ||
-                     "Error desconocido.")
+                    (
+                        resultado.error ||
+                        "Error desconocido."
+                    )
                 );
 
             }
@@ -894,13 +932,20 @@ function enviarReporte(){
 
         })
 
+
         .catch(error => {
 
-            console.error(error);
+            console.error(
+                "Error:",
+                error
+            );
+
 
             alert(
-                "❌ Error de conexión con el servidor"
+                "❌ No se pudo enviar el reporte.\n\n" +
+                error.message
             );
+
 
             boton.disabled = false;
 
@@ -912,9 +957,9 @@ function enviarReporte(){
     }
 
 
-    /* ==========================================
-       SI NO HAY FOTO
-    ========================================== */
+    // ==========================================
+    // SIN FOTO
+    // ==========================================
 
     if(!archivo){
 
@@ -925,9 +970,9 @@ function enviarReporte(){
     }
 
 
-    /* ==========================================
-       VALIDAR TAMAÑO
-    ========================================== */
+    // ==========================================
+    // VALIDAR TAMAÑO
+    // ==========================================
 
     if(
         archivo.size >
@@ -939,6 +984,7 @@ function enviarReporte(){
             "Selecciona una imagen menor a 5 MB."
         );
 
+
         boton.disabled = false;
 
         boton.innerHTML =
@@ -949,9 +995,9 @@ function enviarReporte(){
     }
 
 
-    /* ==========================================
-       LEER FOTO
-    ========================================== */
+    // ==========================================
+    // LEER FOTO
+    // ==========================================
 
     const lector =
         new FileReader();
@@ -974,6 +1020,7 @@ function enviarReporte(){
                 "❌ No se pudo leer la fotografía."
             );
 
+
             boton.disabled = false;
 
             boton.innerHTML =
@@ -987,11 +1034,8 @@ function enviarReporte(){
     );
 
 }
-```
-
 
 </script>
-
 
 </body>
 
