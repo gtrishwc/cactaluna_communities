@@ -4,26 +4,30 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Novedades | Cacta Luna Communities</title>
 
 <link rel="stylesheet" href="../style.css">
 
+
 <style>
 
-/* ==================================================
+/* =====================================================
    NOVEDADES
-   ================================================== */
+===================================================== */
 
 .novedades-contenedor{
     max-width:1100px;
-    margin:0 auto;
+    margin:auto;
 }
 
-/* Encabezado */
 
-.encabezado-novedades{
+/* ENCABEZADO */
+
+.novedades-header{
+
     background:linear-gradient(
         135deg,
         #2E8B57,
@@ -31,31 +35,39 @@
     );
 
     color:white;
+
     padding:28px;
 
     border-radius:20px;
 
-    box-shadow:
-        0 8px 25px rgba(0,0,0,.10);
-
     margin-bottom:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.10);
+
 }
 
-.encabezado-novedades h1{
+.novedades-header h2{
+
     margin:0 0 8px;
-    font-size:30px;
+
+    font-size:28px;
+
 }
 
-.encabezado-novedades p{
+.novedades-header p{
+
     margin:0;
+
+    font-size:15px;
+
     opacity:.95;
-    font-size:16px;
+
 }
 
 
-/* Introducción */
+/* INTRO */
 
-.intro-novedades{
+.novedades-intro{
 
     background:white;
 
@@ -63,47 +75,37 @@
 
     border-radius:18px;
 
-    box-shadow:
-        0 5px 18px rgba(0,0,0,.07);
+    margin-bottom:28px;
 
-    margin-bottom:25px;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
 
     line-height:1.7;
+
 }
 
-.intro-novedades strong{
+.novedades-intro strong{
+
     color:#2E8B57;
+
 }
 
 
-/* Título de sección */
+/* TITULOS */
 
-.titulo-seccion{
+.titulo-novedades{
 
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
+    color:#2E8B57;
 
     margin:30px 0 18px;
-
-}
-
-.titulo-seccion h2{
-
-    margin:0;
-
-    color:#2E8B57;
 
     font-size:23px;
 
 }
 
 
-/* Tarjetas */
+/* TARJETAS */
 
-.novedad-card{
+.noticia{
 
     background:white;
 
@@ -113,30 +115,26 @@
 
     margin-bottom:18px;
 
-    box-shadow:
-        0 5px 18px rgba(0,0,0,.07);
-
     border-left:5px solid #43A047;
 
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+
+    transition:.2s ease;
 
 }
 
-.novedad-card:hover{
+.noticia:hover{
 
     transform:translateY(-3px);
 
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.10);
+    box-shadow:0 10px 25px rgba(0,0,0,.10);
 
 }
 
 
-/* Fecha */
+/* FECHA */
 
-.fecha-novedad{
+.fecha{
 
     display:inline-block;
 
@@ -157,13 +155,11 @@
 }
 
 
-/* Categoría */
+/* CATEGORIA */
 
 .categoria{
 
     display:inline-block;
-
-    margin-left:6px;
 
     background:#F1F8E9;
 
@@ -175,14 +171,16 @@
 
     font-size:12px;
 
+    margin-left:5px;
+
 }
 
 
-/* Título */
+/* TITULO NOTICIA */
 
-.novedad-card h3{
+.noticia h3{
 
-    margin:8px 0 10px;
+    margin:9px 0 10px;
 
     color:#1B5E20;
 
@@ -191,9 +189,9 @@
 }
 
 
-/* Texto */
+/* TEXTO */
 
-.novedad-card p{
+.noticia p{
 
     margin:0;
 
@@ -204,56 +202,54 @@
 }
 
 
-/* Lista */
+/* LISTA */
 
-.novedad-card ul{
+.noticia ul{
 
     margin-top:12px;
 
     padding-left:22px;
 
-    line-height:1.7;
-
     color:#555;
+
+    line-height:1.7;
 
 }
 
 
-/* Imagen */
+/* IMAGEN */
 
-.novedad-imagen{
+.noticia img{
 
     width:100%;
 
-    max-height:420px;
+    max-height:400px;
 
     object-fit:cover;
 
     border-radius:14px;
 
-    margin-top:15px;
-
-    display:block;
+    margin-top:16px;
 
 }
 
 
-/* Separador */
+/* SEPARADOR */
 
 .separador{
 
     height:1px;
 
-    background:#E8E8E8;
+    background:#e5e5e5;
 
-    margin:28px 0;
+    margin:35px 0;
 
 }
 
 
-/* Pie */
+/* FOOTER */
 
-.footer-novedades{
+.novedades-footer{
 
     text-align:center;
 
@@ -261,24 +257,16 @@
 
     font-size:13px;
 
-    padding:25px 10px 10px;
-
-}
-
-.footer-novedades strong{
-
-    color:#2E8B57;
+    padding:25px 10px;
 
 }
 
 
-/* ==================================================
-   MÓVIL
-   ================================================== */
+/* MOVIL */
 
 @media(max-width:700px){
 
-    .encabezado-novedades{
+    .novedades-header{
 
         padding:22px;
 
@@ -286,21 +274,15 @@
 
     }
 
-    .encabezado-novedades h1{
+    .novedades-header h2{
 
-        font-size:25px;
+        font-size:24px;
 
     }
 
-    .novedad-card{
+    .noticia{
 
         padding:18px;
-
-    }
-
-    .novedad-card h3{
-
-        font-size:18px;
 
     }
 
@@ -314,63 +296,112 @@
 <body>
 
 
-<!-- ==================================================
-     LOGO
-     ================================================== -->
+<!-- =====================================================
+     BOTÓN MENÚ
+===================================================== -->
 
-<div class="logo-circle">
-
-    <img
-        src="../assets/logo-cacta-luna1.png"
-        alt="Cacta Luna Communities"
-    >
-
-</div>
+<button
+    class="menu-btn"
+    onclick="toggleMenu()"
+>
+    ☰
+</button>
 
 
-<!-- ==================================================
-     MENÚ
-     ================================================== -->
 
-<nav class="top-menu">
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<div
+    class="sidebar"
+    id="sidebar"
+>
+
+
+    <div class="logo-circle">
+
+        <img
+            src="../assets/logo-cacta-luna1.png"
+            alt="Cacta Luna Communities"
+        >
+
+    </div>
+
 
     <a href="../index.html">
         🏠 Inicio
     </a>
 
-    <a href="avisos.html">
-        📢 Avisos
+
+    <a href="#">
+        👥 Residentes
     </a>
 
+
     <!-- REPORTES -->
+
     <a
         href="https://script.google.com/macros/s/AKfycbyH1v6hRKVmyxnGlgnq6wjiOe6lOalaCJdrVO6LPg7WdtAc8-EUjJ0vKtGUuF36H8lYAA/exec"
         target="_blank"
     >
-        📑 Reportes
+        📝 Reportes
     </a>
 
-    <a href="comunidad.html">
-        👥 Comunidad
+
+    <a href="cuotas.html">
+        💰 Cuotas
     </a>
 
-</nav>
+
+    <a href="calendario.html">
+        📅 Calendario
+    </a>
+
+
+    <a
+        href="novedades.html"
+        class="activo"
+    >
+        📢 Novedades
+    </a>
+
+
+    <a href="documentos.html">
+        📂 Documentos
+    </a>
+
+
+    <a
+        href="https://wa.me/5216621665671?text=Hola,%20solicito%20apoyo%20de%20emergencia%20vecinal%20en%20Real%20de%20Palmas%20Etapa%201"
+        target="_blank"
+    >
+        📲 Emergencias
+    </a>
+
+
+</div>
 
 
 
-<!-- ==================================================
-     ENCABEZADO
-     ================================================== -->
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+===================================================== -->
 
-<div class="page-header">
+<div class="main">
+
+
+<header class="topbar">
+
 
     <div>
 
-        <h1>📢 Novedades</h1>
+        <h1>
+            Portal Vecinal 🏡
+        </h1>
 
         <p>
-            Noticias, avances y actividades
-            de Real de Palmas Etapa 1
+            Real de Palmas Etapa 1 • Novedades
         </p>
 
     </div>
@@ -378,42 +409,51 @@
 
     <div class="profile">
 
+
         <div class="avatar">
-            G
+            🏡
         </div>
 
-        <span>
-            Residente
-        </span>
+
+        <div>
+
+            <strong>
+                Real de Palmas
+            </strong>
+
+            <br>
+
+            Comunidad
+
+        </div>
+
 
     </div>
 
-</div>
+
+</header>
 
 
 
-<!-- ==================================================
+<!-- =====================================================
      CONTENIDO
-     ================================================== -->
+===================================================== -->
 
-<main class="contenido">
-
-
-<div class="novedades-contenedor">
+<main class="novedades-contenedor">
 
 
     <!-- ENCABEZADO -->
 
-    <section class="encabezado-novedades">
+    <section class="novedades-header">
 
-        <h1>
+        <h2>
             📢 Novedades de la Comunidad
-        </h1>
+        </h2>
 
         <p>
-            Mantente al día con las noticias,
-            avances, eventos y acciones realizadas
-            en Real de Palmas Etapa 1.
+            Noticias, avances, actividades y
+            acontecimientos importantes de
+            Real de Palmas Etapa 1.
         </p>
 
     </section>
@@ -422,22 +462,24 @@
 
     <!-- INTRO -->
 
-    <section class="intro-novedades">
+    <section class="novedades-intro">
 
         <p>
 
-            Este espacio será utilizado para compartir
-            <strong>nuevas noticias, avisos importantes,
-            avances, actividades y logros</strong>
-            de nuestra comunidad.
+            Este espacio será nuestra sección de
+            <strong>noticias de la comunidad</strong>.
+
+            Aquí podremos publicar nuevos avances,
+            avisos, actividades, reuniones,
+            gestiones y acontecimientos importantes.
 
         </p>
 
         <p>
 
-            Aquí iremos agregando las novedades conforme
-            vayan sucediendo, para que todos los residentes
-            puedan mantenerse informados.
+            Las novedades más recientes aparecerán
+            primero para que los residentes puedan
+            mantenerse informados.
 
         </p>
 
@@ -445,25 +487,21 @@
 
 
 
-    <!-- ==================================================
-         NOVEDADES RECIENTES
-         ================================================== -->
+    <!-- =================================================
+         NOTICIAS RECIENTES
+    ================================================== -->
 
-    <div class="titulo-seccion">
-
-        <h2>
-            📰 Novedades recientes
-        </h2>
-
-    </div>
+    <h2 class="titulo-novedades">
+        📰 Noticias recientes
+    </h2>
 
 
 
-    <!-- NOVEDAD -->
+    <!-- NOTICIA 1 -->
 
-    <article class="novedad-card">
+    <article class="noticia">
 
-        <span class="fecha-novedad">
+        <span class="fecha">
             2026
         </span>
 
@@ -471,9 +509,11 @@
             🛡️ Seguridad
         </span>
 
+
         <h3>
-            Cámaras de vigilancia en diferentes puntos
+            Instalación de cámaras de vigilancia
         </h3>
+
 
         <p>
 
@@ -488,11 +528,11 @@
 
 
 
-    <!-- NOVEDAD -->
+    <!-- NOTICIA 2 -->
 
-    <article class="novedad-card">
+    <article class="noticia">
 
-        <span class="fecha-novedad">
+        <span class="fecha">
             2026
         </span>
 
@@ -500,9 +540,11 @@
             🌳 Comunidad
         </span>
 
+
         <h3>
             Mejoras en el parque y áreas comunes
         </h3>
+
 
         <p>
 
@@ -517,29 +559,30 @@
 
 
 
-    <!-- NOVEDAD -->
+    <!-- NOTICIA 3 -->
 
-    <article class="novedad-card">
+    <article class="noticia">
 
-        <span class="fecha-novedad">
+        <span class="fecha">
             2026
         </span>
 
         <span class="categoria">
-            🚛 Servicios
+            💧 Servicios
         </span>
+
 
         <h3>
             Seguimiento a servicios públicos
         </h3>
 
+
         <p>
 
-            El comité continúa dando seguimiento
+            El Comité continúa dando seguimiento
             a temas relacionados con agua,
-            recolección de basura, limpieza
-            y otros servicios que afectan
-            directamente a nuestra comunidad.
+            recolección de basura, limpieza y
+            otros servicios de nuestra comunidad.
 
         </p>
 
@@ -547,34 +590,37 @@
 
 
 
-    <!-- ==================================================
-         LOGROS
-         ================================================== -->
+    <!-- =================================================
+         SEPARADOR
+    ================================================== -->
 
     <div class="separador"></div>
 
 
-    <div class="titulo-seccion">
 
-        <h2>
-            🏆 Logros de nuestra comunidad
-        </h2>
+    <!-- =================================================
+         LOGROS
+    ================================================== -->
 
-    </div>
+    <h2 class="titulo-novedades">
+        🏆 Logros de nuestra comunidad
+    </h2>
 
 
 
     <!-- SEGURIDAD -->
 
-    <article class="novedad-card">
+    <article class="noticia">
 
         <span class="categoria">
             🛡️ Seguridad
         </span>
 
+
         <h3>
             Control de acceso y seguridad
         </h3>
+
 
         <ul>
 
@@ -606,15 +652,17 @@
 
     <!-- AGUA -->
 
-    <article class="novedad-card">
+    <article class="noticia">
 
         <span class="categoria">
             💧 Servicios
         </span>
 
+
         <h3>
             Mejoras relacionadas con el agua
         </h3>
+
 
         <ul>
 
@@ -645,15 +693,17 @@
 
     <!-- INFRAESTRUCTURA -->
 
-    <article class="novedad-card">
+    <article class="noticia">
 
         <span class="categoria">
             🏗️ Infraestructura
         </span>
 
+
         <h3>
             Mejoras y seguridad perimetral
         </h3>
+
 
         <ul>
 
@@ -683,15 +733,17 @@
 
     <!-- LIMPIEZA -->
 
-    <article class="novedad-card">
+    <article class="noticia">
 
         <span class="categoria">
             🧹 Entorno
         </span>
 
+
         <h3>
             Limpieza y recolección de basura
         </h3>
+
 
         <ul>
 
@@ -713,15 +765,17 @@
 
     <!-- COMUNIDAD -->
 
-    <article class="novedad-card">
+    <article class="noticia">
 
         <span class="categoria">
             🎉 Comunidad
         </span>
 
+
         <h3>
             Eventos y convivencia vecinal
         </h3>
+
 
         <ul>
 
@@ -752,28 +806,30 @@
 
 
 
-    <!-- ==================================================
-         RECORDATORIO
-         ================================================== -->
+    <!-- =================================================
+         FUTURAS NOVEDADES
+    ================================================== -->
 
     <div class="separador"></div>
 
 
-    <section class="intro-novedades">
+    <section class="novedades-intro">
 
         <p>
 
-            💚 <strong>La comunidad la construimos
-            entre todos.</strong>
+            📢 <strong>Próximamente:</strong>
+
+            aquí podremos ir agregando nuevas noticias,
+            reuniones, gestiones, campañas, eventos
+            y avances de la comunidad.
 
         </p>
 
         <p>
 
-            Si tienes información sobre alguna actividad,
-            avance o situación importante que deba
-            compartirse con los vecinos, puedes
-            comunicarla al Comité.
+            💚 La participación de todos los vecinos
+            es fundamental para seguir mejorando
+            Real de Palmas.
 
         </p>
 
@@ -783,7 +839,7 @@
 
     <!-- FOOTER -->
 
-    <footer class="footer-novedades">
+    <footer class="novedades-footer">
 
         <p>
             <strong>
@@ -803,9 +859,29 @@
     </footer>
 
 
+</main>
+
+
 </div>
 
-</main>
+
+
+<!-- =====================================================
+     JAVASCRIPT DEL MENÚ
+===================================================== -->
+
+<script>
+
+function toggleMenu(){
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("show");
+
+}
+
+</script>
 
 
 </body>
