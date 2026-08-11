@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -42,15 +41,12 @@ body{
     font-family:Arial, Helvetica, sans-serif;
     background:var(--fondo);
     color:var(--texto);
+    min-height:100vh;
 }
 
 /* ==================================================
-   ESTRUCTURA
+   LOGO
 ================================================== */
-
-body{
-    min-height:100vh;
-}
 
 .logo-area{
     text-align:center;
@@ -292,7 +288,7 @@ body{
 
 .weekdays{
     display:grid;
-    grid-template-columns:repeat(7,1fr);
+    grid-template-columns:repeat(7,minmax(0,1fr));
     gap:6px;
     margin-bottom:6px;
 }
@@ -311,11 +307,12 @@ body{
 
 .calendar-grid{
     display:grid;
-    grid-template-columns:repeat(7,1fr);
+    grid-template-columns:repeat(7,minmax(0,1fr));
     gap:6px;
 }
 
 .day{
+    min-width:0;
     min-height:90px;
     border:1px solid var(--borde);
     border-radius:10px;
@@ -324,6 +321,7 @@ body{
     position:relative;
     cursor:default;
     transition:.15s;
+    overflow:hidden;
 }
 
 .day.empty{
@@ -351,7 +349,7 @@ body{
 }
 
 /* ==================================================
-   EVENTOS DENTRO DEL DIA
+   EVENTOS
 ================================================== */
 
 .day-event{
@@ -363,6 +361,7 @@ body{
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
+    max-width:100%;
 }
 
 .event-mexico{
@@ -484,94 +483,259 @@ body{
 }
 
 /* ==================================================
-   RESPONSIVE
+   RESPONSIVE — CELULAR
 ================================================== */
 
 @media(max-width:700px){
 
-    .main-content{
-        padding:10px 12px 35px;
+    body{
+        overflow-x:hidden;
     }
 
+    .main-content{
+        width:100%;
+        max-width:100%;
+        padding:10px 8px 35px;
+    }
+
+    /* LOGO */
+
+    .logo-area{
+        padding:18px 10px 12px;
+    }
+
+    .logo-area img{
+        width:72px;
+        height:72px;
+    }
+
+    .logo-area h2{
+        font-size:19px;
+    }
+
+    .logo-area p{
+        font-size:13px;
+    }
+
+    /* MENU */
+
     .menu{
-        padding:8px 10px 15px;
+        width:100%;
+        padding:8px 8px 15px;
+        gap:6px;
     }
 
     .menu a{
-        font-size:13px;
-        padding:9px 11px;
+        font-size:12px;
+        padding:8px 9px;
     }
 
+    /* BOTON INICIO */
+
+    .boton-inicio{
+        font-size:13px;
+        padding:9px 13px;
+        margin-bottom:14px;
+    }
+
+    /* TOPBAR */
+
     .topbar{
-        padding:18px;
+        width:100%;
+        padding:16px;
+        border-radius:15px;
         align-items:flex-start;
     }
 
     .topbar h1{
-        font-size:23px;
+        font-size:21px;
+    }
+
+    .topbar p{
+        font-size:13px;
     }
 
     .profile{
         display:none;
     }
 
+    /* FILTROS */
+
+    .filters{
+        width:100%;
+        gap:6px;
+        margin-bottom:14px;
+    }
+
+    .filter{
+        padding:8px 10px;
+        font-size:12px;
+    }
+
+    /* CALENDARIO */
+
     .calendar-card{
-        padding:14px;
+        width:100%;
+        padding:10px;
         border-radius:15px;
+        overflow:hidden;
     }
 
     .calendar-header{
         display:block;
+        margin-bottom:14px;
     }
 
     .calendar-header h2{
+        font-size:19px;
         margin-bottom:5px;
     }
 
-    .month-controls{
-        gap:10px;
-    }
-
-    .month-label{
-        min-width:150px;
-        font-size:17px;
-    }
-
-    .weekdays{
-        gap:3px;
-    }
-
-    .weekdays div{
-        font-size:10px;
-        padding:7px 2px;
-    }
-
-    .calendar-grid{
-        gap:3px;
-    }
-
-    .day{
-        min-height:62px;
-        padding:5px;
-        border-radius:7px;
-    }
-
-    .day-number{
+    .month{
         font-size:12px;
     }
 
-    .day-event{
-        font-size:9px;
-        padding:3px;
+    /* CAMBIO DE MES */
+
+    .month-controls{
+        width:100%;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:6px;
+        margin-bottom:12px;
     }
 
+    .month-button{
+        width:36px;
+        height:36px;
+        min-width:36px;
+        font-size:23px;
+    }
+
+    .month-label{
+        min-width:0;
+        flex:1;
+        font-size:16px;
+        white-space:nowrap;
+    }
+
+    /* DÍAS DE SEMANA */
+
+    .weekdays{
+        width:100%;
+        display:grid;
+        grid-template-columns:repeat(7,minmax(0,1fr));
+        gap:2px;
+        margin-bottom:3px;
+    }
+
+    .weekdays div{
+        min-width:0;
+        padding:6px 1px;
+        font-size:9px;
+        text-align:center;
+        overflow:hidden;
+    }
+
+    /* GRID */
+
+    .calendar-grid{
+        width:100%;
+        display:grid;
+        grid-template-columns:repeat(7,minmax(0,1fr));
+        gap:2px;
+    }
+
+    /* DÍAS */
+
+    .day{
+        width:100%;
+        min-width:0;
+        min-height:58px;
+        height:58px;
+        padding:4px;
+        border-radius:6px;
+        overflow:hidden;
+    }
+
+    .day.empty{
+        min-width:0;
+    }
+
+    .day-number{
+        font-size:11px;
+        line-height:14px;
+        margin-bottom:3px;
+    }
+
+    .day.today{
+        border-width:2px;
+    }
+
+    /* EVENTOS */
+
+    .day-event{
+        width:100%;
+        min-width:0;
+        max-width:100%;
+        font-size:8px;
+        line-height:10px;
+        padding:2px 3px;
+        margin-top:2px;
+        border-radius:4px;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+    }
+
+    /* LEYENDA */
+
     .legend{
-        gap:10px;
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px 12px;
+        margin-top:16px;
+        padding-top:14px;
     }
 
     .legend-item{
-        font-size:11px;
+        font-size:10px;
     }
+
+    .legend-dot{
+        width:9px;
+        height:9px;
+    }
+
+    /* LISTA DE EVENTOS */
+
+    .events-list{
+        margin-top:22px;
+    }
+
+    .events-list h3{
+        font-size:17px;
+        margin-bottom:12px;
+    }
+
+    .event-card{
+        padding:13px;
+        border-radius:10px;
+    }
+
+    .event-card .date{
+        font-size:12px;
+    }
+
+    .event-card .title{
+        font-size:15px;
+    }
+
+    .event-card p{
+        font-size:13px;
+    }
+
 }
 
 </style>
@@ -614,7 +778,7 @@ body{
         📅 Calendario
     </a>
 
-    <a href="#">
+    <a href="novedades.html">
         📢 Novedades
     </a>
 
@@ -622,9 +786,10 @@ body{
         📂 Documentos
     </a>
 
-    <a href="https://wa.me/5216621665671?text=Hola,%20solicito%20apoyo%20de%20emergencia%20vecinal%20en%20Real%20de%20Palmas%20Etapa%201"
-       target="_blank"
-       rel="noopener">
+    <a
+        href="https://wa.me/5216621665671?text=Hola,%20solicito%20apoyo%20de%20emergencia%20vecinal%20en%20Real%20de%20Palmas%20Etapa%201"
+        target="_blank"
+        rel="noopener">
         📲 Emergencias
     </a>
 
@@ -672,9 +837,7 @@ body{
     </div>
 
 
-    <!-- ==================================================
-         FILTROS
-    ================================================== -->
+    <!-- FILTROS -->
 
     <div class="filters">
 
@@ -761,14 +924,6 @@ body{
         </div>
 
 
-        <!--
-            IMPORTANTE:
-            ESTA DIV NUNCA SE REEMPLAZA POR LA LISTA
-            DE EVENTOS.
-
-            JavaScript solamente genera aquí los días.
-        -->
-
         <div id="calendarGrid"
              class="calendar-grid">
         </div>
@@ -810,12 +965,12 @@ body{
              EVENTOS DE LA COMUNIDAD
         ================================================== -->
 
-     <div class="events-list">
+        <div class="events-list">
 
-    <div id="eventsContainer">
-    </div>
+            <div id="eventsContainer">
+            </div>
 
-</div>
+        </div>
 
     </section>
 
@@ -832,16 +987,6 @@ body{
    CONFIGURACIÓN DEL CALENDARIO
 ================================================== */
 
-/*
-    El calendario comienza en agosto de 2026
-    y termina en diciembre de 2027.
-
-    Los días se generan automáticamente.
-
-    NO SE DEBEN AGREGAR LOS DÍAS MANUALMENTE.
-*/
-
-
 const fechaInicio = new Date(2026, 7, 1);
 const fechaFin = new Date(2027, 11, 1);
 
@@ -854,24 +999,7 @@ let filtroActual = "todos";
    EVENTOS
 ================================================== */
 
-/*
-    ==================================================
-    AQUÍ ES DONDE PODRÁS AGREGAR O MODIFICAR EVENTOS
-    ==================================================
-
-    IMPORTANTE:
-
-    Para agregar un evento NO TOQUES el calendario.
-
-    Solo agrega otro bloque dentro de esta lista.
-
-*/
-
 const eventos = [
-
-    /* ----------------------------------------------
-       EVENTO 1
-    ---------------------------------------------- */
 
     {
         fecha: "2026-08-13",
@@ -882,11 +1010,6 @@ const eventos = [
         categoria: "comunidad"
     },
 
-
-    /* ----------------------------------------------
-       EVENTO 2
-    ---------------------------------------------- */
-
     {
         fecha: "2026-08-14",
         hora: "SIN HORARIO",
@@ -895,29 +1018,6 @@ const eventos = [
             "Recolección de cachibaches (no escombro o basura). Punto: Escaleta y Calafat, donde se encuentra la estufa.",
         categoria: "comunidad"
     },
-
-
-    /* ==================================================
-       EJEMPLO PARA FUTUROS EVENTOS
-
-       Puedes copiar este bloque:
-
-    {
-        fecha: "2026-08-20",
-        hora: "7:00 PM",
-        titulo: "🌴 Reunión vecinal",
-        descripcion:
-            "Reunión general de vecinos de Real de Palmas.",
-        categoria: "comunidad"
-    }
-
-       Y cambiar solamente los datos.
-    ================================================== */
-
-
-    /* ==================================================
-       DÍAS FESTIVOS Y CELEBRACIONES
-    ================================================== */
 
     {
         fecha: "2026-09-16",
@@ -1070,11 +1170,7 @@ function mostrarCalendario(){
     const label =
         document.getElementById("monthLabel");
 
-
-    /* Limpiamos SOLO el grid */
-
     grid.innerHTML = "";
-
 
     const año =
         fechaActual.getFullYear();
@@ -1082,30 +1178,14 @@ function mostrarCalendario(){
     const mes =
         fechaActual.getMonth();
 
-
     label.textContent =
         nombresMeses[mes] + " " + año;
-
-
-    /*
-        Primer día del mes
-    */
 
     const primerDia =
         new Date(año, mes, 1).getDay();
 
-
-    /*
-        Número de días del mes
-    */
-
     const diasMes =
         new Date(año, mes + 1, 0).getDate();
-
-
-    /*
-        Espacios antes del día 1
-    */
 
     for(let i = 0; i < primerDia; i++){
 
@@ -1118,11 +1198,6 @@ function mostrarCalendario(){
         grid.appendChild(espacio);
     }
 
-
-    /*
-        Crear todos los días
-    */
-
     for(let dia = 1; dia <= diasMes; dia++){
 
         const celda =
@@ -1130,7 +1205,6 @@ function mostrarCalendario(){
 
         celda.className =
             "day";
-
 
         const numero =
             document.createElement("div");
@@ -1143,22 +1217,12 @@ function mostrarCalendario(){
 
         celda.appendChild(numero);
 
-
-        /*
-            Fecha YYYY-MM-DD
-        */
-
         const fecha =
             año +
             "-" +
             String(mes + 1).padStart(2,"0") +
             "-" +
             String(dia).padStart(2,"0");
-
-
-        /*
-            Buscar eventos de ese día
-        */
 
         const eventosDia =
             eventos.filter(evento => {
@@ -1170,11 +1234,6 @@ function mostrarCalendario(){
                        );
 
             });
-
-
-        /*
-            Mostrar eventos
-        */
 
         eventosDia.forEach(evento => {
 
@@ -1192,11 +1251,6 @@ function mostrarCalendario(){
 
         });
 
-
-        /*
-            Marcar día con evento
-        */
-
         if(eventosDia.length > 0){
 
             celda.classList.add("has-event");
@@ -1207,11 +1261,6 @@ function mostrarCalendario(){
                     .join("\n");
 
         }
-
-
-        /*
-            Marcar HOY
-        */
 
         const hoy =
             new Date();
@@ -1226,7 +1275,6 @@ function mostrarCalendario(){
 
         }
 
-
         grid.appendChild(celda);
 
     }
@@ -1235,7 +1283,7 @@ function mostrarCalendario(){
 
 
 /* ==================================================
-   MOSTRAR LISTA DE EVENTOS DEL MES ACTUAL
+   MOSTRAR LISTA DE EVENTOS
 ================================================== */
 
 function mostrarListaEventos(){
@@ -1243,13 +1291,7 @@ function mostrarListaEventos(){
     const container =
         document.getElementById("eventsContainer");
 
-
-    /* Limpiar solamente la lista de eventos */
-
     container.innerHTML = "";
-
-
-    /* Año y mes que estamos viendo */
 
     const añoActual =
         fechaActual.getFullYear();
@@ -1257,17 +1299,8 @@ function mostrarListaEventos(){
     const mesActual =
         fechaActual.getMonth() + 1;
 
-
-    /* Convertir mes a 01, 02, 03... */
-
     const mesFormato =
         String(mesActual).padStart(2, "0");
-
-
-    /*
-        Buscar solamente los eventos
-        del mes que estamos viendo
-    */
 
     const eventosDelMes =
         eventos
@@ -1290,9 +1323,6 @@ function mostrarListaEventos(){
             a.fecha.localeCompare(b.fecha)
         );
 
-
-    /* Título del mes */
-
     const titulo =
         document.createElement("h3");
 
@@ -1303,9 +1333,6 @@ function mostrarListaEventos(){
         añoActual;
 
     container.appendChild(titulo);
-
-
-    /* Si no hay eventos */
 
     if(eventosDelMes.length === 0){
 
@@ -1324,9 +1351,6 @@ function mostrarListaEventos(){
 
     }
 
-
-    /* Mostrar solamente los eventos del mes */
-
     eventosDelMes.forEach(evento => {
 
         const tarjeta =
@@ -1335,10 +1359,8 @@ function mostrarListaEventos(){
         tarjeta.className =
             "event-card";
 
-
         const fechaTexto =
             formatearFecha(evento.fecha);
-
 
         tarjeta.innerHTML = `
 
@@ -1356,7 +1378,6 @@ function mostrarListaEventos(){
             </p>
 
         `;
-
 
         container.appendChild(tarjeta);
 
@@ -1383,10 +1404,8 @@ function formatearFecha(fecha){
     const dia =
         Number(partes[2]);
 
-
     const fechaObj =
         new Date(año, mes, dia);
-
 
     const opciones = {
         weekday:"long",
@@ -1395,18 +1414,15 @@ function formatearFecha(fecha){
         year:"numeric"
     };
 
-
     let resultado =
         fechaObj.toLocaleDateString(
             "es-MX",
             opciones
         );
 
-
     resultado =
         resultado.charAt(0).toUpperCase() +
         resultado.slice(1);
-
 
     return resultado;
 }
@@ -1421,11 +1437,6 @@ function filtrarEventos(categoria, boton){
     filtroActual =
         categoria;
 
-
-    /*
-        Quitar active de todos
-    */
-
     document
         .querySelectorAll(".filter")
         .forEach(btn => {
@@ -1434,24 +1445,7 @@ function filtrarEventos(categoria, boton){
 
         });
 
-
-    /*
-        Activar botón seleccionado
-    */
-
     boton.classList.add("active");
-
-
-    /*
-        IMPORTANTE:
-
-        Estas dos funciones son independientes.
-
-        Una dibuja el calendario.
-        La otra dibuja la lista.
-
-        Ninguna borra a la otra.
-    */
 
     mostrarCalendario();
 
@@ -1473,21 +1467,19 @@ function mesAnterior(){
             1
         );
 
-
-    /*
-        No permitir antes de agosto 2026
-    */
-
     if(nuevaFecha < fechaInicio){
         return;
     }
 
-
     fechaActual =
         nuevaFecha;
 
-
     mostrarCalendario();
+
+    /* CORREGIDO:
+       también actualiza la lista de eventos */
+
+    mostrarListaEventos();
 
 }
 
@@ -1505,21 +1497,19 @@ function mesSiguiente(){
             1
         );
 
-
-    /*
-        No permitir después de diciembre 2027
-    */
-
     if(nuevaFecha > fechaFin){
         return;
     }
 
-
     fechaActual =
         nuevaFecha;
 
-
     mostrarCalendario();
+
+    /* CORREGIDO:
+       también actualiza la lista de eventos */
+
+    mostrarListaEventos();
 
 }
 
