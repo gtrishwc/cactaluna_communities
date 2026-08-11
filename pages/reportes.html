@@ -457,6 +457,10 @@ Categoría
 <select id="tipo">
 
 <option>
+🔊 Ruido
+</option>
+    
+<option>
 🚰 Agua
 </option>
     
@@ -469,11 +473,6 @@ Categoría
 </option>
     
  
-<option>
-🔊 Ruido
-</option>
-
-
 
 </select>
 
@@ -781,6 +780,8 @@ function enviarReporte(){
             ? campoFoto.files[0]
             : null;
 
+    console.log("FOTO:", archivo);
+
 
     // ==========================================
     // ENVIAR DATOS
@@ -964,6 +965,13 @@ function enviarReporte(){
     // SIN FOTO
     // ==========================================
 
+    console.log("¿Hay foto?", !!archivo);
+
+if(archivo){
+    console.log("Nombre:", archivo.name);
+    console.log("Tipo:", archivo.type);
+    console.log("Tamaño:", archivo.size);
+}
     if(!archivo){
 
         enviarDatos("");
