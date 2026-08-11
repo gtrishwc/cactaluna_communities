@@ -3,6 +3,897 @@
 <html lang="es">
 
 <head>
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Novedades | Cacta Luna Communities</title>
+
+<link rel="stylesheet" href="../style.css">
+
+
+<style>
+
+/* =====================================================
+   NOVEDADES
+===================================================== */
+
+.novedades-contenedor{
+    max-width:1100px;
+    margin:auto;
+}
+
+
+/* ENCABEZADO */
+
+.novedades-header{
+
+    background:linear-gradient(
+        135deg,
+        #2E8B57,
+        #43A047
+    );
+
+    color:white;
+
+    padding:28px;
+
+    border-radius:20px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.10);
+
+}
+
+.novedades-header h2{
+
+    margin:0 0 8px;
+
+    font-size:28px;
+
+}
+
+.novedades-header p{
+
+    margin:0;
+
+    font-size:15px;
+
+    opacity:.95;
+
+}
+
+
+/* INTRO */
+
+.novedades-intro{
+
+    background:white;
+
+    padding:22px;
+
+    border-radius:18px;
+
+    margin-bottom:28px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+
+    line-height:1.7;
+
+}
+
+.novedades-intro strong{
+
+    color:#2E8B57;
+
+}
+
+
+/* TITULOS */
+
+.titulo-novedades{
+
+    color:#2E8B57;
+
+    margin:30px 0 18px;
+
+    font-size:23px;
+
+}
+
+
+/* TARJETAS */
+
+.noticia{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    margin-bottom:18px;
+
+    border-left:5px solid #43A047;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+
+    transition:.2s ease;
+
+}
+
+.noticia:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.10);
+
+}
+
+
+/* FECHA */
+
+.fecha{
+
+    display:inline-block;
+
+    background:#E8F5E9;
+
+    color:#2E7D32;
+
+    padding:5px 11px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    margin-bottom:10px;
+
+}
+
+
+/* CATEGORIA */
+
+.categoria{
+
+    display:inline-block;
+
+    background:#F1F8E9;
+
+    color:#558B2F;
+
+    padding:5px 11px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    margin-left:5px;
+
+}
+
+
+/* TITULO NOTICIA */
+
+.noticia h3{
+
+    margin:9px 0 10px;
+
+    color:#1B5E20;
+
+    font-size:20px;
+
+}
+
+
+/* TEXTO */
+
+.noticia p{
+
+    margin:0;
+
+    color:#555;
+
+    line-height:1.7;
+
+}
+
+
+/* LISTA */
+
+.noticia ul{
+
+    margin-top:12px;
+
+    padding-left:22px;
+
+    color:#555;
+
+    line-height:1.7;
+
+}
+
+
+/* IMAGEN */
+
+.noticia img{
+
+    width:100%;
+
+    max-height:400px;
+
+    object-fit:cover;
+
+    border-radius:14px;
+
+    margin-top:16px;
+
+}
+
+
+/* SEPARADOR */
+
+.separador{
+
+    height:1px;
+
+    background:#e5e5e5;
+
+    margin:35px 0;
+
+}
+
+
+/* FOOTER */
+
+.novedades-footer{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:13px;
+
+    padding:25px 10px;
+
+}
+
+
+/* MOVIL */
+
+@media(max-width:700px){
+
+    .novedades-header{
+
+        padding:22px;
+
+        border-radius:16px;
+
+    }
+
+    .novedades-header h2{
+
+        font-size:24px;
+
+    }
+
+    .noticia{
+
+        padding:18px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BOTÓN MENÚ
+===================================================== -->
+
+<button
+    class="menu-btn"
+    onclick="toggleMenu()"
+>
+    ☰
+</button>
+
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<div
+    class="sidebar"
+    id="sidebar"
+>
+
+
+    <div class="logo-circle">
+
+        <img
+            src="../assets/logo-cacta-luna1.png"
+            alt="Cacta Luna Communities"
+        >
+
+    </div>
+
+
+    <a href="../index.html">
+        🏠 Inicio
+    </a>
+
+
+    <a href="#">
+        👥 Residentes
+    </a>
+
+
+    <!-- REPORTES -->
+
+    <a
+        href="https://script.google.com/macros/s/AKfycbyH1v6hRKVmyxnGlgnq6wjiOe6lOalaCJdrVO6LPg7WdtAc8-EUjJ0vKtGUuF36H8lYAA/exec"
+        target="_blank"
+    >
+        📝 Reportes
+    </a>
+
+
+    <a href="cuotas.html">
+        💰 Cuotas
+    </a>
+
+
+    <a href="calendario.html">
+        📅 Calendario
+    </a>
+
+
+    <a
+        href="novedades.html"
+        class="activo"
+    >
+        📢 Novedades
+    </a>
+
+
+    <a href="documentos.html">
+        📂 Documentos
+    </a>
+
+
+    <a
+        href="https://wa.me/5216621665671?text=Hola,%20solicito%20apoyo%20de%20emergencia%20vecinal%20en%20Real%20de%20Palmas%20Etapa%201"
+        target="_blank"
+    >
+        📲 Emergencias
+    </a>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+===================================================== -->
+
+<div class="main">
+
+
+<header class="topbar">
+
+
+    <div>
+
+        <h1>
+            Portal Vecinal 🏡
+        </h1>
+
+        <p>
+            Real de Palmas Etapa 1 • Novedades
+        </p>
+
+    </div>
+
+
+    <div class="profile">
+
+
+        <div class="avatar">
+            🏡
+        </div>
+
+
+        <div>
+
+            <strong>
+                Real de Palmas
+            </strong>
+
+            <br>
+
+            Comunidad
+
+        </div>
+
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
+
+<main class="novedades-contenedor">
+
+
+    <!-- ENCABEZADO -->
+
+    <section class="novedades-header">
+
+        <h2>
+            📢 Novedades de la Comunidad
+        </h2>
+
+        <p>
+            Noticias, avances, actividades y
+            acontecimientos importantes de
+            Real de Palmas Etapa 1.
+        </p>
+
+    </section>
+
+
+
+    <!-- INTRO -->
+
+    <section class="novedades-intro">
+
+        <p>
+
+            Este espacio será nuestra sección de
+            <strong>noticias de la comunidad</strong>.
+
+            Aquí podremos publicar nuevos avances,
+            avisos, actividades, reuniones,
+            gestiones y acontecimientos importantes.
+
+        </p>
+
+        <p>
+
+            Las novedades más recientes aparecerán
+            primero para que los residentes puedan
+            mantenerse informados.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         NOTICIAS RECIENTES
+    ================================================== -->
+
+    <h2 class="titulo-novedades">
+        📰 Noticias recientes
+    </h2>
+
+
+
+    <!-- NOTICIA 1 -->
+
+    <article class="noticia">
+
+        <span class="fecha">
+            2026
+        </span>
+
+        <span class="categoria">
+            🛡️ Seguridad
+        </span>
+
+
+        <h3>
+            Instalación de cámaras de vigilancia
+        </h3>
+
+
+        <p>
+
+            Como parte de las acciones para mejorar
+            la seguridad de nuestra comunidad,
+            se gestionó la instalación de cámaras
+            en diferentes puntos de la cerrada.
+
+        </p>
+
+    </article>
+
+
+
+    <!-- NOTICIA 2 -->
+
+    <article class="noticia">
+
+        <span class="fecha">
+            2026
+        </span>
+
+        <span class="categoria">
+            🌳 Comunidad
+        </span>
+
+
+        <h3>
+            Mejoras en el parque y áreas comunes
+        </h3>
+
+
+        <p>
+
+            Se consiguió la mejora y expansión
+            de nuestro parque, buscando contar
+            con mejores espacios para la convivencia
+            de las familias.
+
+        </p>
+
+    </article>
+
+
+
+    <!-- NOTICIA 3 -->
+
+    <article class="noticia">
+
+        <span class="fecha">
+            2026
+        </span>
+
+        <span class="categoria">
+            💧 Servicios
+        </span>
+
+
+        <h3>
+            Seguimiento a servicios públicos
+        </h3>
+
+
+        <p>
+
+            El Comité continúa dando seguimiento
+            a temas relacionados con agua,
+            recolección de basura, limpieza y
+            otros servicios de nuestra comunidad.
+
+        </p>
+
+    </article>
+
+
+
+    <!-- =================================================
+         SEPARADOR
+    ================================================== -->
+
+    <div class="separador"></div>
+
+
+
+    <!-- =================================================
+         LOGROS
+    ================================================== -->
+
+    <h2 class="titulo-novedades">
+        🏆 Logros de nuestra comunidad
+    </h2>
+
+
+
+    <!-- SEGURIDAD -->
+
+    <article class="noticia">
+
+        <span class="categoria">
+            🛡️ Seguridad
+        </span>
+
+
+        <h3>
+            Control de acceso y seguridad
+        </h3>
+
+
+        <ul>
+
+            <li>
+                Instalación de plumas de entrada
+                y salida.
+            </li>
+
+            <li>
+                Mejoras en el control vehicular.
+            </li>
+
+            <li>
+                Instalación de cámaras por parte
+                de la constructora.
+            </li>
+
+            <li>
+                Gestión e instalación de cámaras
+                propias en diferentes puntos
+                de la cerrada.
+            </li>
+
+        </ul>
+
+    </article>
+
+
+
+    <!-- AGUA -->
+
+    <article class="noticia">
+
+        <span class="categoria">
+            💧 Servicios
+        </span>
+
+
+        <h3>
+            Mejoras relacionadas con el agua
+        </h3>
+
+
+        <ul>
+
+            <li>
+                Reconocimiento del residencial
+                ante el municipio como Comité Vecinal.
+            </li>
+
+            <li>
+                Cambio de válvulas check.
+            </li>
+
+            <li>
+                Apoyo con pipas de agua durante
+                el verano de 2025.
+            </li>
+
+            <li>
+                Gestión para mejorar la continuidad
+                del servicio.
+            </li>
+
+        </ul>
+
+    </article>
+
+
+
+    <!-- INFRAESTRUCTURA -->
+
+    <article class="noticia">
+
+        <span class="categoria">
+            🏗️ Infraestructura
+        </span>
+
+
+        <h3>
+            Mejoras y seguridad perimetral
+        </h3>
+
+
+        <ul>
+
+            <li>
+                Cierre de calle Escaleta.
+            </li>
+
+            <li>
+                Refuerzo de malla en zonas vulnerables.
+            </li>
+
+            <li>
+                Revisión de terrenos y áreas
+                sin desarrollar.
+            </li>
+
+            <li>
+                Gestión para instalación de
+                malla eléctrica perimetral.
+            </li>
+
+        </ul>
+
+    </article>
+
+
+
+    <!-- LIMPIEZA -->
+
+    <article class="noticia">
+
+        <span class="categoria">
+            🧹 Entorno
+        </span>
+
+
+        <h3>
+            Limpieza y recolección de basura
+        </h3>
+
+
+        <ul>
+
+            <li>
+                Se logró el recorrido del camión
+                de basura dentro de nuestra comunidad.
+            </li>
+
+            <li>
+                Se realizaron campañas de limpieza
+                y retiro de escombro.
+            </li>
+
+        </ul>
+
+    </article>
+
+
+
+    <!-- COMUNIDAD -->
+
+    <article class="noticia">
+
+        <span class="categoria">
+            🎉 Comunidad
+        </span>
+
+
+        <h3>
+            Eventos y convivencia vecinal
+        </h3>
+
+
+        <ul>
+
+            <li>
+                Reuniones con el Ayuntamiento
+                para asesoría vecinal.
+            </li>
+
+            <li>
+                Celebración del Día del Niño.
+            </li>
+
+            <li>
+                Actividades de convivencia comunitaria.
+            </li>
+
+            <li>
+                Celebración Navideña 2025.
+            </li>
+
+            <li>
+                Halloween comunitario 2025.
+            </li>
+
+        </ul>
+
+    </article>
+
+
+
+    <!-- =================================================
+         FUTURAS NOVEDADES
+    ================================================== -->
+
+    <div class="separador"></div>
+
+
+    <section class="novedades-intro">
+
+        <p>
+
+            📢 <strong>Próximamente:</strong>
+
+            aquí podremos ir agregando nuevas noticias,
+            reuniones, gestiones, campañas, eventos
+            y avances de la comunidad.
+
+        </p>
+
+        <p>
+
+            💚 La participación de todos los vecinos
+            es fundamental para seguir mejorando
+            Real de Palmas.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="novedades-footer">
+
+        <p>
+            <strong>
+                Comité de Vecinos Real de Palmas
+            </strong>
+        </p>
+
+        <p>
+            Cacta Luna Communities
+        </p>
+
+        <p>
+            La participación vecinal es clave
+            para seguir mejorando nuestra comunidad.
+        </p>
+
+    </footer>
+
+
+</main>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT DEL MENÚ
+===================================================== -->
+
+<script>
+
+function toggleMenu(){
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("show");
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+```
 
 <meta charset="UTF-8">
 
@@ -283,7 +1174,7 @@
 </a>
 
 
-<a href="pages/calendario.html">
+<a href="novedades.html">
     📢 Novedades
 </a>
 
