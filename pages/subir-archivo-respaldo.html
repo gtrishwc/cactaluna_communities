@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <base target="_top">
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Reportar problema - Cacta Luna Communities</title>
+
+  <style>
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      padding:25px 15px;
+
+      font-family:Arial, Helvetica, sans-serif;
+
+      background:
+        linear-gradient(
+          135deg,
+          #eef7f0,
+          #ffffff
+        );
+
+      color:#333;
+    }
+
+    .contenedor{
+      width:100%;
+      max-width:600px;
+      margin:auto;
+    }
+
+    .tarjeta{
+      background:#fff;
+
+      border-radius:24px;
+
+      padding:30px;
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.10);
+    }
+
+    .encabezado{
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .icono{
+      width:80px;
+      height:80px;
+
+      margin:0 auto 12px;
+
+      border-radius:50%;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      background:#f1f8f3;
+
+      font-size:42px;
+    }
+
+    h1{
+      margin:5px 0;
+
+      color:#2E8B57;
+
+      font-size:26px;
+    }
+
+    .subtitulo{
+      color:#777;
+      font-size:14px;
+    }
+
+    .titulo{
+      margin-top:25px;
+      margin-bottom:8px;
+
+      font-size:22px;
+      font-weight:bold;
+
+      color:#333;
+    }
+
+    .descripcion{
+      color:#666;
+      line-height:1.5;
+
+      margin-bottom:25px;
+    }
+
+    .campo{
+      margin-bottom:18px;
+    }
+
+    label{
+      display:block;
+
+      margin-bottom:7px;
+
+      font-weight:bold;
+
+      color:#444;
+    }
+
+    input,
+    select,
+    textarea{
+
+      width:100%;
+
+      padding:13px 14px;
+
+      border:1px solid #d8d8d8;
+
+      border-radius:12px;
+
+      font-size:15px;
+
+      background:#fff;
+
+      outline:none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+
+      border-color:#2E8B57;
+
+      box-shadow:
+        0 0 0 3px
+        rgba(46,139,87,.12);
+    }
+
+    textarea{
+      min-height:120px;
+      resize:vertical;
+    }
+
+    .prioridad{
+
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:8px;
+    }
+
+    .prioridad label{
+
+      margin:0;
+
+      cursor:pointer;
+
+      font-weight:normal;
+    }
+
+    .prioridad input{
+      display:none;
+    }
+
+    .prioridad span{
+
+      display:block;
+
+      text-align:center;
+
+      padding:11px 5px;
+
+      border:1px solid #ddd;
+
+      border-radius:10px;
+
+      font-size:13px;
+    }
+
+    .prioridad input:checked + span{
+
+      background:#2E8B57;
+
+      color:white;
+
+      border-color:#2E8B57;
+    }
+
+    .archivo{
+
+      border:2px dashed #b9d9c3;
+
+      background:#f7fbf8;
+
+      padding:22px;
+
+      border-radius:15px;
+
+      text-align:center;
+    }
+
+    .archivo-icono{
+
+      font-size:35px;
+
+      margin-bottom:8px;
+    }
+
+    .archivo input{
+
+      border:0;
+
+      padding:5px;
+    }
+
+    .nombreArchivo{
+
+      margin-top:8px;
+
+      font-size:13px;
+
+      color:#777;
+    }
+
+    .boton{
+
+      width:100%;
+
+      border:0;
+
+      border-radius:14px;
+
+      padding:15px;
+
+      margin-top:10px;
+
+      background:#2E8B57;
+
+      color:white;
+
+      font-size:16px;
+
+      font-weight:bold;
+
+      cursor:pointer;
+    }
+
+    .boton:hover{
+
+      background:#247047;
+    }
+
+    .nota{
+
+      text-align:center;
+
+      color:#888;
+
+      font-size:12px;
+
+      line-height:1.5;
+
+      margin-top:18px;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="contenedor">
+
+  <div class="tarjeta">
+
+
+    <!-- ENCABEZADO -->
+
+    <div class="encabezado">
+
+      <div class="icono">
+        🚨
+      </div>
+
+      <h1>
+        Cacta Luna Communities
+      </h1>
+
+      <div class="subtitulo">
+        Real de Palmas · Etapa 1
+      </div>
+
+    </div>
+
+
+    <!-- TITULO -->
+
+    <div class="titulo">
+      📢 Reportar un problema
+    </div>
+
+
+    <div class="descripcion">
+
+      Ayúdanos a mantener nuestra comunidad
+      segura, limpia y en buenas condiciones.
+
+      Puedes adjuntar una fotografía como
+      evidencia de tu reporte.
+
+    </div>
+
+
+    <!-- NOMBRE -->
+
+    <div class="campo">
+
+      <label>
+        👤 Nombre
+      </label>
+
+      <input
+        type="text"
+        id="nombre"
+        placeholder="Escribe tu nombre">
+
+    </div>
+
+
+    <!-- TELEFONO -->
+
+    <div class="campo">
+
+      <label>
+        📞 Teléfono
+      </label>
+
+      <input
+        type="tel"
+        id="telefono"
+        placeholder="Tu número de teléfono">
+
+    </div>
+
+
+    <!-- CORREO -->
+
+    <div class="campo">
+
+      <label>
+        📧 Correo electrónico
+      </label>
+
+      <input
+        type="email"
+        id="correo"
+        placeholder="correo@ejemplo.com">
+
+    </div>
+
+
+    <!-- TIPO -->
+
+    <div class="campo">
+
+      <label>
+        ⚠️ Tipo de problema
+      </label>
+
+      <select id="tipo">
+
+        <option value="">
+          Selecciona una opción
+        </option>
+
+        <option value="Seguridad">
+          🚨 Seguridad
+        </option>
+
+        <option value="Limpieza">
+          🧹 Limpieza
+        </option>
+
+        <option value="Alumbrado">
+          💡 Alumbrado
+        </option>
+
+        <option value="Agua">
+          💧 Agua
+        </option>
+
+        <option value="Vialidad">
+          🚗 Vialidad
+        </option>
+
+        <option value="Áreas comunes">
+          🌳 Áreas comunes
+        </option>
+
+        <option value="Otro">
+          📝 Otro
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <!-- UBICACION -->
+
+    <div class="campo">
+
+      <label>
+        📍 Ubicación del problema
+      </label>
+
+      <input
+        type="text"
+        id="ubicacion"
+        placeholder="Privada, calle, área común, etc.">
+
+    </div>
+
+
+    <!-- PRIORIDAD -->
+
+    <div class="campo">
+
+      <label>
+        🚦 Prioridad
+      </label>
+
+      <div class="prioridad">
+
+        <label>
+
+          <input
+            type="radio"
+            name="prioridad"
+            value="Normal"
+            checked>
+
+          <span>
+            🟢 Normal
+          </span>
+
+        </label>
+
+
+        <label>
+
+          <input
+            type="radio"
+            name="prioridad"
+            value="Importante">
+
+          <span>
+            🟡 Importante
+          </span>
+
+        </label>
+
+
+        <label>
+
+          <input
+            type="radio"
+            name="prioridad"
+            value="Urgente">
+
+          <span>
+            🔴 Urgente
+          </span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+
+    <!-- DESCRIPCION -->
+
+    <div class="campo">
+
+      <label>
+        📝 Descripción del problema
+      </label>
+
+      <textarea
+        id="descripcion"
+        placeholder="Describe qué está sucediendo..."></textarea>
+
+    </div>
+
+
+    <!-- FOTO -->
+
+    <div class="campo">
+
+      <label>
+        📷 Evidencia fotográfica
+      </label>
+
+      <div class="archivo">
+
+        <div class="archivo-icono">
+          📸
+        </div>
+
+        <input
+          type="file"
+          id="archivo"
+          accept="image/*">
+
+        <div
+          class="nombreArchivo"
+          id="nombreArchivo">
+
+          Puedes adjuntar una fotografía
+          del problema.
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- BOTON -->
+
+    <button
+      class="boton"
+      onclick="prepararReporte()">
+
+      🚨 ENVIAR REPORTE
+
+    </button>
+
+
+    <div class="nota">
+
+      Tu reporte será enviado al Comité de Vecinos
+      para su revisión y seguimiento.
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+
+/* ==========================================
+   MOSTRAR NOMBRE DE LA FOTOGRAFÍA
+========================================== */
+
+document
+  .getElementById("archivo")
+  .addEventListener(
+    "change",
+    function(){
+
+      var archivo =
+        this.files[0];
+
+      if(archivo){
+
+        document
+          .getElementById("nombreArchivo")
+          .textContent =
+            "📎 " + archivo.name;
+
+      }
+
+    }
+  );
+
+
+/* ==========================================
+   FORMULARIO DE PRUEBA
+========================================== */
+
+function prepararReporte(){
+
+  var nombre =
+    document
+      .getElementById("nombre")
+      .value
+      .trim();
+
+  var tipo =
+    document
+      .getElementById("tipo")
+      .value;
+
+  var ubicacion =
+    document
+      .getElementById("ubicacion")
+      .value
+      .trim();
+
+  var descripcion =
+    document
+      .getElementById("descripcion")
+      .value
+      .trim();
+
+  if(!nombre){
+
+    alert(
+      "Por favor escribe tu nombre."
+    );
+
+    return;
+
+  }
+
+  if(!tipo){
+
+    alert(
+      "Selecciona el tipo de problema."
+    );
+
+    return;
+
+  }
+
+  if(!ubicacion){
+
+    alert(
+      "Indica dónde se encuentra el problema."
+    );
+
+    return;
+
+  }
+
+  if(!descripcion){
+
+    alert(
+      "Describe brevemente el problema."
+    );
+
+    return;
+
+  }
+
+
+  /*
+    ESTA VERSIÓN ES SOLAMENTE
+    PARA EL DISEÑO DE GITHUB.
+
+    TODAVÍA NO ENVÍA EL REPORTE.
+  */
+
+  alert(
+    "El formulario está listo.\n\n" +
+    "Esta es la versión de prueba para GitHub."
+  );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
