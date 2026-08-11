@@ -457,6 +457,10 @@ Categoría
 <select id="tipo">
 
 <option>
+🚨 Seguridad
+</option>
+
+<option>
 ❓ Otro
 </option>
 
@@ -468,9 +472,7 @@ Categoría
 🚰 Agua
 </option>
     
-<option>
-🚨 Seguridad
-</option>
+
     
    
  
@@ -974,17 +976,18 @@ function enviarReporte(){
                ERROR
             ========================================== */
 
-            else{
+          else{
 
-                alert(
-                    "❌ No se pudo guardar el reporte.\n\n" +
-                    (
-                        resultado.error ||
-                        "Error desconocido."
-                    )
-                );
+    alert(
+        "⚠️ El reporte fue procesado, pero el servidor respondió con error.\n\n" +
+        "Folio: " +
+        (resultado.folio || "No disponible") +
+        "\n\n" +
+        "Detalle: " +
+        (resultado.error || "Error desconocido.")
+    );
 
-            }
+}
 
 
             restaurarBoton();
