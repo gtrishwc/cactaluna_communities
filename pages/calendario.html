@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 
 <meta charset="UTF-8">
@@ -37,21 +36,20 @@
     box-sizing:border-box;
 }
 
-html{
+html,
+body{
+    margin:0;
+    padding:0;
     width:100%;
-    overflow-x:hidden;
+    min-height:100%;
 }
 
 body{
-    margin:0;
-    width:100%;
-    min-height:100vh;
     font-family:Arial, Helvetica, sans-serif;
     background:var(--fondo);
     color:var(--texto);
     overflow-x:hidden;
 }
-
 
 /* ==================================================
    LOGO
@@ -81,7 +79,6 @@ body{
     color:var(--gris);
     font-size:14px;
 }
-
 
 /* ==================================================
    MENU
@@ -118,7 +115,6 @@ body{
     border-color:var(--verde-principal);
 }
 
-
 /* ==================================================
    CONTENEDOR
 ================================================== */
@@ -130,9 +126,8 @@ body{
     padding:15px 25px 50px;
 }
 
-
 /* ==================================================
-   BOTÓN INICIO
+   BOTON INICIO
 ================================================== */
 
 .boton-inicio{
@@ -151,7 +146,6 @@ body{
 .boton-inicio:hover{
     background:var(--verde-claro);
 }
-
 
 /* ==================================================
    TOPBAR
@@ -200,7 +194,6 @@ body{
     font-weight:bold;
 }
 
-
 /* ==================================================
    FILTROS
 ================================================== */
@@ -233,14 +226,12 @@ body{
     border-color:var(--verde-principal);
 }
 
-
 /* ==================================================
    TARJETA CALENDARIO
 ================================================== */
 
 .calendar-card{
     width:100%;
-    max-width:100%;
     background:white;
     border:1px solid var(--borde);
     border-radius:20px;
@@ -265,7 +256,6 @@ body{
     color:var(--gris);
     font-size:14px;
 }
-
 
 /* ==================================================
    CONTROLES DE MES
@@ -298,18 +288,17 @@ body{
 
 .month-label{
     width:190px;
+    min-width:0;
     text-align:center;
     font-size:20px;
     font-weight:bold;
 }
 
-
 /* ==================================================
-   DÍAS DE SEMANA
+   DIAS DE SEMANA
 ================================================== */
 
 .weekdays{
-    width:100%;
     display:grid;
     grid-template-columns:repeat(7,minmax(0,1fr));
     gap:6px;
@@ -319,22 +308,21 @@ body{
 .weekdays div{
     min-width:0;
     text-align:center;
-    padding:10px 2px;
+    padding:10px 4px;
     font-size:13px;
     font-weight:bold;
     color:var(--gris);
 }
-
 
 /* ==================================================
    GRID DEL CALENDARIO
 ================================================== */
 
 .calendar-grid{
-    width:100%;
     display:grid;
     grid-template-columns:repeat(7,minmax(0,1fr));
     gap:6px;
+    width:100%;
 }
 
 .day{
@@ -374,14 +362,14 @@ body{
     box-shadow:0 4px 12px rgba(30,70,45,.12);
 }
 
-
 /* ==================================================
-   EVENTOS DENTRO DEL DÍA
+   EVENTOS DENTRO DEL DIA
 ================================================== */
 
 .day-event{
+    display:block;
     width:100%;
-    min-width:0;
+    max-width:100%;
     font-size:11px;
     padding:4px 5px;
     border-radius:6px;
@@ -412,7 +400,6 @@ body{
     background:var(--comunidad);
 }
 
-
 /* ==================================================
    LEYENDA
 ================================================== */
@@ -437,7 +424,6 @@ body{
 .legend-dot{
     width:11px;
     height:11px;
-    flex:0 0 11px;
     border-radius:50%;
 }
 
@@ -460,7 +446,6 @@ body{
 .dot-comunidad{
     background:var(--comunidad);
 }
-
 
 /* ==================================================
    LISTA DE EVENTOS
@@ -502,7 +487,6 @@ body{
     line-height:1.5;
 }
 
-
 /* ==================================================
    MENSAJE SIN EVENTOS
 ================================================== */
@@ -514,16 +498,27 @@ body{
     border-radius:10px;
 }
 
-
 /* ==================================================
-   RESPONSIVE - CELULAR
+   RESPONSIVE CELULAR
 ================================================== */
 
 @media(max-width:700px){
 
-    .main-content{
-        width:100%;
-        padding:10px 10px 35px;
+    body{
+        overflow-x:hidden;
+    }
+
+    .logo-area{
+        padding:18px 10px 14px;
+    }
+
+    .logo-area img{
+        width:75px;
+        height:75px;
+    }
+
+    .logo-area h2{
+        font-size:19px;
     }
 
     .menu{
@@ -537,23 +532,31 @@ body{
         padding:8px 9px;
     }
 
+    .main-content{
+        width:100%;
+        max-width:100%;
+        padding:8px 8px 30px;
+    }
+
     .boton-inicio{
-        margin-bottom:15px;
+        margin-bottom:14px;
+        font-size:13px;
+        padding:9px 12px;
     }
 
     .topbar{
         width:100%;
-        padding:17px;
+        padding:16px;
+        border-radius:15px;
         align-items:flex-start;
     }
 
     .topbar h1{
-        font-size:22px;
+        font-size:21px;
     }
 
     .topbar p{
         font-size:13px;
-        line-height:1.4;
     }
 
     .profile{
@@ -563,6 +566,7 @@ body{
     .filters{
         width:100%;
         gap:6px;
+        margin-bottom:15px;
     }
 
     .filter{
@@ -578,12 +582,12 @@ body{
 
     .calendar-header{
         display:block;
-        margin-bottom:15px;
+        margin-bottom:14px;
     }
 
     .calendar-header h2{
         font-size:19px;
-        margin-bottom:5px;
+        margin-bottom:4px;
     }
 
     .month{
@@ -591,59 +595,67 @@ body{
     }
 
     .month-controls{
+        width:100%;
         gap:8px;
-        margin-bottom:15px;
+        margin-bottom:14px;
     }
 
     .month-button{
-        width:38px;
-        height:38px;
-        flex-basis:38px;
-        font-size:24px;
+        width:36px;
+        height:36px;
+        flex:0 0 36px;
+        font-size:23px;
     }
 
     .month-label{
-        width:150px;
+        width:auto;
+        flex:1;
         font-size:16px;
     }
 
     .weekdays{
+        width:100%;
+        grid-template-columns:repeat(7,minmax(0,1fr));
         gap:2px;
         margin-bottom:3px;
     }
 
     .weekdays div{
-        font-size:9px;
-        padding:6px 1px;
+        padding:6px 0;
+        font-size:10px;
     }
 
     .calendar-grid{
+        width:100%;
+        grid-template-columns:repeat(7,minmax(0,1fr));
         gap:2px;
     }
 
     .day{
-        min-height:68px;
-        padding:4px 3px;
+        width:100%;
+        min-width:0;
+        min-height:58px;
+        padding:4px;
         border-radius:6px;
     }
 
     .day-number{
         font-size:11px;
-        margin-bottom:4px;
+        margin-bottom:3px;
     }
 
     .day-event{
         font-size:8px;
         line-height:1.1;
         padding:3px 2px;
+        margin-top:2px;
         border-radius:4px;
-        margin-top:3px;
     }
 
     .legend{
-        gap:8px;
-        margin-top:18px;
-        padding-top:15px;
+        gap:8px 12px;
+        margin-top:16px;
+        padding-top:14px;
     }
 
     .legend-item{
@@ -651,31 +663,45 @@ body{
     }
 
     .legend-dot{
-        width:9px;
-        height:9px;
-        flex-basis:9px;
+        width:8px;
+        height:8px;
+    }
+
+    .events-list{
+        margin-top:22px;
+    }
+
+    .events-list h3{
+        font-size:17px;
     }
 
     .event-card{
-        padding:14px;
+        padding:13px;
     }
 
     .event-card .title{
-        font-size:16px;
+        font-size:15px;
     }
 
+    .event-card p{
+        font-size:13px;
+    }
 }
 
-
 /* ==================================================
-   CELULAR MUY PEQUEÑO
+   CELULARES MUY PEQUEÑOS
 ================================================== */
 
 @media(max-width:380px){
 
+    .menu a{
+        font-size:11px;
+        padding:7px 8px;
+    }
+
     .main-content{
-        padding-left:7px;
-        padding-right:7px;
+        padding-left:5px;
+        padding-right:5px;
     }
 
     .calendar-card{
@@ -683,8 +709,8 @@ body{
     }
 
     .day{
-        min-height:62px;
-        padding:3px 2px;
+        min-height:52px;
+        padding:3px;
     }
 
     .day-number{
@@ -697,14 +723,12 @@ body{
     }
 
     .weekdays div{
-        font-size:8px;
+        font-size:9px;
     }
 
     .month-label{
-        width:135px;
         font-size:15px;
     }
-
 }
 
 </style>
@@ -712,7 +736,6 @@ body{
 </head>
 
 <body>
-
 
 <!-- ==================================================
      LOGO
@@ -789,7 +812,6 @@ body{
             </p>
 
         </div>
-
 
         <div class="profile">
 
@@ -932,9 +954,7 @@ body{
         </div>
 
 
-        <!-- ==================================================
-             EVENTOS
-        ================================================== -->
+        <!-- EVENTOS -->
 
         <div class="events-list">
 
@@ -954,7 +974,6 @@ body{
 
 <script>
 
-
 /* ==================================================
    CONFIGURACIÓN
 ================================================== */
@@ -973,9 +992,9 @@ let filtroActual = "todos";
 
 const eventos = [
 
-    /* ================================
+    /* ==============================
        AGOSTO 2026
-    ================================= */
+    ============================== */
 
     {
         fecha: "2026-08-13",
@@ -996,9 +1015,9 @@ const eventos = [
     },
 
 
-    /* ==================================================
-       DÍAS FESTIVOS Y CELEBRACIONES 2026
-    ================================================== */
+    /* ==============================
+       SEPTIEMBRE 2026
+    ============================== */
 
     {
         fecha: "2026-09-16",
@@ -1008,6 +1027,25 @@ const eventos = [
             "Día de la Independencia de México.",
         categoria: "mexico"
     },
+
+
+    /* ==============================
+       OCTUBRE 2026
+    ============================== */
+
+    {
+        fecha: "2026-10-31",
+        hora: "",
+        titulo: "🎃 Halloween",
+        descripcion:
+            "Celebración de Halloween.",
+        categoria: "celebracion"
+    },
+
+
+    /* ==============================
+       NOVIEMBRE 2026
+    ============================== */
 
     {
         fecha: "2026-11-02",
@@ -1027,6 +1065,11 @@ const eventos = [
         categoria: "mexico"
     },
 
+
+    /* ==============================
+       DICIEMBRE 2026
+    ============================== */
+
     {
         fecha: "2026-12-25",
         hora: "",
@@ -1037,9 +1080,9 @@ const eventos = [
     },
 
 
-    /* ==================================================
-       2027
-    ================================================== */
+    /* ==============================
+       ENERO 2027
+    ============================== */
 
     {
         fecha: "2027-01-01",
@@ -1049,6 +1092,11 @@ const eventos = [
             "Inicio del año 2027.",
         categoria: "celebracion"
     },
+
+
+    /* ==============================
+       FEBRERO 2027
+    ============================== */
 
     {
         fecha: "2027-02-05",
@@ -1068,6 +1116,11 @@ const eventos = [
         categoria: "celebracion"
     },
 
+
+    /* ==============================
+       MARZO 2027
+    ============================== */
+
     {
         fecha: "2027-03-21",
         hora: "",
@@ -1075,6 +1128,34 @@ const eventos = [
         descripcion:
             "Conmemoración del natalicio de Benito Juárez.",
         categoria: "mexico"
+    },
+
+
+    /* ==============================
+       ABRIL 2027
+    ============================== */
+
+    {
+        fecha: "2027-04-30",
+        hora: "",
+        titulo: "🧒 Día del Niño",
+        descripcion:
+            "Celebración del Día del Niño.",
+        categoria: "celebracion"
+    },
+
+
+    /* ==============================
+       MAYO 2027
+    ============================== */
+
+    {
+        fecha: "2027-05-01",
+        hora: "",
+        titulo: "💼 Día del Trabajo",
+        descripcion:
+            "Conmemoración del Día del Trabajo.",
+        categoria: "laboral"
     },
 
     {
@@ -1086,6 +1167,11 @@ const eventos = [
         categoria: "celebracion"
     },
 
+
+    /* ==============================
+       JUNIO 2027
+    ============================== */
+
     {
         fecha: "2027-06-20",
         hora: "",
@@ -1095,6 +1181,11 @@ const eventos = [
         categoria: "celebracion"
     },
 
+
+    /* ==============================
+       SEPTIEMBRE 2027
+    ============================== */
+
     {
         fecha: "2027-09-16",
         hora: "",
@@ -1103,6 +1194,25 @@ const eventos = [
             "Día de la Independencia de México.",
         categoria: "mexico"
     },
+
+
+    /* ==============================
+       OCTUBRE 2027
+    ============================== */
+
+    {
+        fecha: "2027-10-31",
+        hora: "",
+        titulo: "🎃 Halloween",
+        descripcion:
+            "Celebración de Halloween.",
+        categoria: "celebracion"
+    },
+
+
+    /* ==============================
+       NOVIEMBRE 2027
+    ============================== */
 
     {
         fecha: "2027-11-02",
@@ -1121,6 +1231,11 @@ const eventos = [
             "Conmemoración de la Revolución Mexicana.",
         categoria: "mexico"
     },
+
+
+    /* ==============================
+       DICIEMBRE 2027
+    ============================== */
 
     {
         fecha: "2027-12-25",
@@ -1177,10 +1292,8 @@ function mostrarCalendario(){
     label.textContent =
         nombresMeses[mes] + " " + año;
 
-
     const primerDia =
         new Date(año, mes, 1).getDay();
-
 
     const diasMes =
         new Date(año, mes + 1, 0).getDate();
@@ -1231,19 +1344,19 @@ function mostrarCalendario(){
             String(dia).padStart(2,"0");
 
 
-        /* EVENTOS DEL DÍA */
-
         const eventosDia =
             eventos.filter(evento => {
 
                 return evento.fecha === fecha &&
-                       (
-                           filtroActual === "todos" ||
-                           evento.categoria === filtroActual
-                       );
+                    (
+                        filtroActual === "todos" ||
+                        evento.categoria === filtroActual
+                    );
 
             });
 
+
+        /* MOSTRAR EVENTOS */
 
         eventosDia.forEach(evento => {
 
@@ -1255,9 +1368,6 @@ function mostrarCalendario(){
                 evento.categoria;
 
             eventoDiv.textContent =
-                evento.titulo;
-
-            eventoDiv.title =
                 evento.titulo;
 
             celda.appendChild(eventoDiv);
@@ -1277,7 +1387,7 @@ function mostrarCalendario(){
         }
 
 
-        /* HOY */
+        /* MARCAR HOY */
 
         const hoy =
             new Date();
@@ -1310,7 +1420,6 @@ function mostrarListaEventos(){
         document.getElementById("eventsContainer");
 
     container.innerHTML = "";
-
 
     const añoActual =
         fechaActual.getFullYear();
@@ -1370,6 +1479,7 @@ function mostrarListaEventos(){
         container.appendChild(mensaje);
 
         return;
+
     }
 
 
@@ -1462,7 +1572,7 @@ function formatearFecha(fecha){
    FILTROS
 ================================================== */
 
-function filtrarEventos(categoria, boton){
+function filtrarEventos(categoria,boton){
 
     filtroActual =
         categoria;
@@ -1512,8 +1622,6 @@ function mesAnterior(){
 
     mostrarCalendario();
 
-    /* CORREGIDO:
-       también actualiza la lista */
     mostrarListaEventos();
 
 }
@@ -1544,8 +1652,6 @@ function mesSiguiente(){
 
     mostrarCalendario();
 
-    /* CORREGIDO:
-       también actualiza la lista */
     mostrarListaEventos();
 
 }
